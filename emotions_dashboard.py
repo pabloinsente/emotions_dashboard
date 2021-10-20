@@ -45,8 +45,7 @@ def simple_per_bar(
     align='left',
     baseline='middle',
     dx=3,  # Nudges text to right so it doesn't appear on top of the bar
-    fontSize=text_size,
-    fontWeight="bold"
+    fontSize=text_size
     ).encode(
         alt.Text(X, format='.1%')
     )
@@ -316,35 +315,35 @@ col5, col6 = st.columns(2)
 col7, col8 = st.columns(2)
 
 with col1:
-    st.subheader("Selected labels for images depicting 'anger'")
+    st.subheader("Images depicting 'anger'")
     col1.altair_chart(chart_anger, use_container_width=True)
 
 with col2:
-    st.subheader("Selected labels for images depicting 'disgust'")
+    st.subheader("Images depicting 'disgust'")
     col2.altair_chart(chart_disgust, use_container_width=True)
 
 with col3:
-    st.subheader("Selected labels for images depicting 'fear'")
+    st.subheader("Images depicting 'fear'")
     col3.altair_chart(chart_fear, use_container_width=True)
 
 with col4:
-    st.subheader("Selected labels for images depicting 'surprise'")
+    st.subheader("Images depicting 'surprise'")
     col4.altair_chart(chart_surprise, use_container_width=True)
 
 with col5:
-    st.subheader("Selected labels for images depicting 'happiness'")
+    st.subheader("Images depicting 'happiness'")
     col5.altair_chart(chart_happiness, use_container_width=True)
 
 with col6:
-    st.subheader("Selected labels for images depicting 'sadness'")
+    st.subheader("Images depicting 'sadness'")
     col6.altair_chart(chart_sadness, use_container_width=True)
 
 with col7:
-    st.subheader("Selected labels for images depicting 'uncertain'")
+    st.subheader("Images depicting 'uncertain'")
     col7.altair_chart(chart_uncertain, use_container_width=True)
 
 with col8:
-    st.subheader("Selected labels for images depicting 'neutral'")
+    st.subheader("Images depicting 'neutral'")
     col8.altair_chart(chart_neutral, use_container_width=True)
 
 st.write("""
@@ -382,8 +381,8 @@ chart_white = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'whi
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Selected labels for images depicting BIPOC")
+    st.subheader("Images depicting BIPOC")
     col1.altair_chart(chart_bipoc, use_container_width=True)
 with col2:
-    st.subheader("Selected labels for images depicting Caucasian people")
+    st.subheader("Images depicting Caucasians")
     col2.altair_chart(chart_white, use_container_width=True)
