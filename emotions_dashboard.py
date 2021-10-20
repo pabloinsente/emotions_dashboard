@@ -137,8 +137,8 @@ chart_formal_education= simple_per_bar(source, title=title, X=X, Y=Y)
 ##########################
 ### DEMOGRAPHICS BLOCK ###
 
-col1, col2 = st.beta_columns(2)
-col3, col4 = st.beta_columns(2)
+col1, col2 = st.columns(2)
+col3, col4 = st.columns(2)
 
 with col1:
     st.subheader("Participants by sex")
