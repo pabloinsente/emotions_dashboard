@@ -17,7 +17,7 @@ def load_data():
     
     return df, df_labels
 
-df, labels = load_data()
+df, df_labels = load_data()
 
 @st.cache(allow_output_mutation=True)
 def count_freq_labels(df, X="all" ):
