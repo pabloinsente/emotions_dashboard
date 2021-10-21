@@ -107,20 +107,6 @@ st.write("""
 ## Demographics
 """)
 
-@st.cache(persist=True, allow_output_mutation=True)
-def wrapper_demo(var='sex', X='percent:Q', Y='sex:N'):
-    source = count_freq_labels(df, X=var) 
-    title = var + '| n = '+ source['counts'].sum().astype(str)
-    chart = simple_per_bar(source, title=title, X=X, Y=Y)
-    return chart
-
-chart_test = wrapper_demo(var='sex', X='percent:Q', Y='sex:N')
-
-st.altair_chart(chart_test, use_container_width=True)
-st.altair_chart(chart_test, use_container_width=True)
-st.altair_chart(chart_test, use_container_width=True)
-st.altair_chart(chart_test, use_container_width=True)
-
 #####################
 ### - sex chart - ###
 
