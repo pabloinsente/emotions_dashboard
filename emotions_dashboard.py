@@ -12,6 +12,7 @@ st.write("""
 df = pd.read_csv('clean_data/forced_choice_emotion_uw_students.csv')
 df_labels = pd.read_csv('data/emotion_labels.csv')
 
+@st.cache 
 def count_freq_labels(df, X="all" ):
     if X == "all":
         df_counts = df.stack().reset_index(drop=True).value_counts() # stack as series
@@ -26,6 +27,7 @@ def count_freq_labels(df, X="all" ):
     df_counts['percent'] = df_counts['counts'] / df_counts['counts'].sum() # compute percentage
     return df_counts
 
+@st.cache 
 def simple_per_bar(
     df, title='Title', X='percent:Q', Y='emotion:N', \
     width=450, height=250, sort='-x', \
@@ -59,6 +61,7 @@ def simple_per_bar(
     
     return chart
 
+@st.cache 
 def simple_count_bar(
     df, title='Title', X='counts:Q', Y='emotion:N', \
     width=450, height=250, sort='-x', \
@@ -196,6 +199,7 @@ st.write("""
 ## Results by expected emotion label
 """)
 
+@st.cache 
 def emotion_df_formated(df_emo_answers, emotion_label):
     df_emo_cat = df_emo_answers.copy() 
     df_emo_cat_t = df_emo_cat.T # transpose
@@ -350,6 +354,7 @@ st.write("""
 ## Results by expected emotion label, and photo's ethnicity
 """)
 
+@st.cache 
 def emotion_df_formated_et(df_emo_answers, emotion_label, ethnicity):
     df_emo_cat = df_emo_answers.copy() 
     df_emo_cat_t = df_emo_cat.T # transpose
@@ -359,6 +364,7 @@ def emotion_df_formated_et(df_emo_answers, emotion_label, ethnicity):
     df_label =  df_emo_cat_t_labels[(df_emo_cat_t_labels['label'] == emotion_label) & (df_emo_cat_t_labels['ethnicity'] == ethnicity)]
     return df_label
 
+@st.cache 
 def wrapper_chart_emotion(df_emo_answers, emotion, ethnicity):
     df = emotion_df_formated_et(df_emo_answers, emotion,  ethnicity) # subset 'anger' rows
     df_formated_ans = df.drop(['photo_id', 'ethnicity', 'sex','age', 'label', 'url'], axis=1)
