@@ -9,8 +9,15 @@ st.write("""
 # Emotion categorization surveys results
 """)
 
-df = pd.read_csv('clean_data/forced_choice_emotion_uw_students.csv')
-df_labels = pd.read_csv('data/emotion_labels.csv')
+
+st.cache(persist=True)
+def load_data():
+    df = pd.read_csv('clean_data/forced_choice_emotion_uw_students.csv')
+    df_labels = pd.read_csv('data/emotion_labels.csv')
+    
+    return df, df_labels
+
+df, labels = load_data()
 
 @st.cache(allow_output_mutation=True)
 def count_freq_labels(df, X="all" ):
