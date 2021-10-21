@@ -10,7 +10,7 @@ st.write("""
 """)
 
 
-st.cache(persist=True)
+@st.cache
 def load_data():
     df = pd.read_csv('clean_data/forced_choice_emotion_uw_students.csv')
     df_labels = pd.read_csv('data/emotion_labels.csv')
