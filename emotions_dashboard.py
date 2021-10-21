@@ -107,6 +107,7 @@ st.write("""
 ## Demographics
 """)
 
+@st.cache(persist=True, allow_output_mutation=True)
 def wrapper_demo(var='sex', X='percent:Q', Y='sex:N'):
     source = count_freq_labels(df, X=var) 
     title = var + '| n = '+ source['counts'].sum().astype(str)
