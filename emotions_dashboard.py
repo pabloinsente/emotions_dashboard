@@ -6,8 +6,17 @@ alt.renderers.enable('svg')
 alt.themes.enable('vox')
 st.set_page_config(layout="wide")
 
+st.title('Emotion categorization surveys results', 'top')
+
+st.header('Table of contents', 'toc')
+
 st.write("""
-# Emotion categorization surveys results
+[**Forced-choice results**](#title-fc):
+- [Participants demographics](#header-fc-dem)
+- [Overall results](#header-fc-overall)
+- [Results by emotion label](#header-fc-emotions)
+
+[**Free-labeling results**](#title-free):
 """)
 
 @st.cache(persist=True, allow_output_mutation=True)
@@ -100,9 +109,9 @@ def simple_count_bar(
     
     return chart
 
-st.write("""
-## Demographics
-""")
+st.title('Forced-choice results', 'title-fc')
+
+st.header('Participants demographics', 'header-fc-dem')
 
 df, df_labels = load_data('clean_data/forced_choice_emotion_uw_students.csv', 'data/emotion_labels.csv')
 
@@ -161,13 +170,9 @@ with col4:
     st.subheader("Participants by formal education")
     col4.altair_chart(chart_formal_education, use_container_width=True)
 
-
-st.write("""
-## Overall results
-""")
+st.header('Overall results', 'header-fc-overall')
 
 df_emo_answers = df.loc[:, 'Q2.1':'Q195.1'] # subset photos
-
 
 ##############################
 ### - overall per chart - ###
@@ -201,9 +206,7 @@ with col2:
     st.subheader("Selected labels for all images as count")
     col2.altair_chart(chart_overall_count, use_container_width=True)
 
-st.write("""
-## Results by expected emotion label
-""")
+st.header('Results by expected emotion label', 'header-fc-emotions')
 
 @st.cache(persist=True, allow_output_mutation=True)
 def emotion_df_formated(df_emo_answers, emotion_label):
@@ -398,3 +401,5 @@ with col2:
 st.write("""
 ## Free-labeling categorization results
 """)
+
+st.title('Free-labeling results', 'title-free')
