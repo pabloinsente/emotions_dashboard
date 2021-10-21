@@ -88,8 +88,7 @@ def simple_count_bar(
     align='left',
     baseline='middle',
     dx=3,  # Nudges text to right so it doesn't appear on top of the bar
-    fontSize=text_size,
-    fontWeight="bold"
+    fontSize=text_size
     ).encode(
         alt.Text(X)
     )
@@ -377,11 +376,6 @@ def wrapper_chart_emotion(df_emo_answers, emotion, ethnicity):
         title='Expected label: '+ emotion + ' | n = '+ df_count['counts'].sum().astype(str), \
          emotion=emotion.capitalize())
     return chart
-
-
-# with st.form('Form1'):
-#     emotion_select = st.selectbox("Select emotion", emotion_option)
-#     submitted1 = st.form_submit_button('Submit to run')
     
 emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
 emotion_select = st.selectbox("Select emotion", emotion_option)
