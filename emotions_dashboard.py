@@ -107,6 +107,19 @@ st.write("""
 ## Demographics
 """)
 
+def wrapper_demo(var='sex', X='percent:Q', Y='sex:N'):
+    source = count_freq_labels(df, X=var) 
+    title = var + '| n = '+ source['counts'].sum().astype(str)
+    chart = simple_per_bar(source, title=title, X=X, Y=Y)
+    return chart
+
+chart_test = wrapper_demo(var='sex', X='percent:Q', Y='sex:N')
+
+st.altair_chart(chart_test, use_container_width=True)
+st.altair_chart(chart_test, use_container_width=True)
+st.altair_chart(chart_test, use_container_width=True)
+st.altair_chart(chart_test, use_container_width=True)
+
 #####################
 ### - sex chart - ###
 
@@ -261,8 +274,6 @@ df_formated_ans = df_formated.drop(['photo_id', 'ethnicity', 'sex','age', 'label
 source = count_freq_labels(df_formated_ans, X="all") 
 title = 'Expcted label: '+ emotion + ' | n = '+ source['counts'].sum().astype(str)
 X, Y = 'percent:Q', 'emotion:N'
-w, h= 450, 200
-txs, ls, ts = 12, 11, 12
 
 chart_surprise = simple_per_bar(source, title=title, X=X, Y=Y, emotion=emotion.capitalize())
 
@@ -312,8 +323,6 @@ df_formated_ans = df_formated.drop(['photo_id', 'ethnicity', 'sex','age', 'label
 source = count_freq_labels(df_formated_ans, X="all") 
 title = 'Expcted label: '+ emotion + ' | n = '+ source['counts'].sum().astype(str)
 X, Y = 'percent:Q', 'emotion:N'
-w, h= 450, 200
-txs, ls, ts = 12, 11, 12
 
 chart_neutral = simple_per_bar(source, title=title, X=X, Y=Y, emotion=emotion.capitalize())
 
@@ -387,8 +396,7 @@ def wrapper_chart_emotion(df_emo_answers, emotion, ethnicity):
 #     emotion_select = st.selectbox("Select emotion", emotion_option)
 #     submitted1 = st.form_submit_button('Submit to run')
     
-# emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
-emotion_option = ['Anger', 'Sadness', 'Neutral']
+emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
 emotion_select = st.selectbox("Select emotion", emotion_option)
 
 chart_bipoc = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'bipoc')
