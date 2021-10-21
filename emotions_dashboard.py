@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import numpy as np
 alt.renderers.enable('svg')
 alt.themes.enable('vox')
 st.set_page_config(layout="wide")
@@ -9,15 +10,14 @@ st.write("""
 # Emotion categorization surveys results
 """)
 
-
 @st.cache(persist=True, allow_output_mutation=True)
-def load_data():
-    df = pd.read_csv('clean_data/forced_choice_emotion_uw_students.csv')
-    df_labels = pd.read_csv('data/emotion_labels.csv')
+def load_data(path1, path2):
+    df = pd.read_csv(path1)
+    df_labels = pd.read_csv(path2)
     
     return df, df_labels
 
-df, df_labels = load_data()
+df, df_labels = load_data('clean_data/forced_choice_emotion_uw_students.csv', 'data/emotion_labels.csv')
 
 @st.cache(persist=True, allow_output_mutation=True)
 def count_freq_labels(df, X="all" ):
@@ -394,3 +394,36 @@ with col1:
 with col2:
     st.subheader("Images depicting Caucasians")
     col2.altair_chart(chart_white, use_container_width=True)
+
+st.write("""
+## Free-labeling categorization results
+""")
+
+df, df_label = load_data('/clean_data/free_choice_emotion_uw_students_overall.csv', '/data/emotion_labels_free_choice.csv')
+df_label['url'] = df_label['url'].astype(str)
+
+# replicate rows by 4 to match with free responses
+df_labels = pd.DataFrame(np.repeat(df_label.values, 4, axis=0))
+df_labels.columns = df_label.columns
+
+bars = alt.Chart(df, title=title).mark_bar().encode(
+    alt.X('percent:Q'),
+    y=alt.Y('emotion:N', sort='-x')
+    )
+
+text = bars.mark_text(
+align='left',
+baseline='middle',
+dx=3,  # Nudges text to right so it doesn't appear on top of the bar
+fontSize=12
+).encode(
+    alt.Text(X)
+)
+
+chart_free_overall= (bars + text).configure_axis(
+    labelFontSize=12,
+    titleFontSize=12).properties(
+        width=300, 
+        height=500)
+
+st.altair_chart(chart_free_overall, use_container_width=True)
