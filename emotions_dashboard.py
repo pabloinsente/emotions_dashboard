@@ -398,8 +398,4 @@ with col2:
     st.subheader("Images depicting Caucasians")
     col2.altair_chart(chart_white, use_container_width=True)
 
-st.write("""
-## Free-labeling categorization results
-""")
-
 st.title('Free-labeling results', 'title-free')
