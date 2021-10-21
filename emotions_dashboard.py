@@ -387,11 +387,13 @@ emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
 with st.form('Form1'):
     emotion_select = st.selectbox("Select emotion", emotion_option)
     submitted1 = st.form_submit_button('Submit to run')
+    
 
 # emotion_select = st.selectbox("Select emotion", emotion_option)
 
-chart_bipoc = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'bipoc')
-chart_white = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'white')
+if submitted1:
+    chart_bipoc = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'bipoc')
+    chart_white = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'white')
 
 ####################################
 ### BY EMOTION & ETHNICITY BLOCK ###
