@@ -145,8 +145,8 @@ chart_formal_education= simple_per_bar(source, title=title, X=X, Y=Y)
 ##########################
 ### DEMOGRAPHICS BLOCK ###
 
-col1, col2 = st.columns(2)
-col3, col4 = st.columns(2)
+col1, col2 = st.beta_columns(2)
+col3, col4 = st.beta_columns(2)
 
 with col1:
     st.subheader("Participants by sex")
@@ -191,7 +191,7 @@ chart_overall_count = simple_count_bar(source, title=title, X=X, Y=Y)
 #############################
 ### OVERALL RESULTS BLOCK ###
 
-col1, col2 = st.columns(2)
+col1, col2 = st.beta_columns(2)
 
 with col1:
     st.subheader("Selected labels for all images as percentage")
@@ -315,10 +315,10 @@ chart_neutral = simple_per_bar(source, title=title, X=X, Y=Y, emotion=emotion.ca
 ########################
 ### BY EMOTION BLOCK ###
 
-col1, col2 = st.columns(2)
-col3, col4 = st.columns(2)
-col5, col6 = st.columns(2)
-col7, col8 = st.columns(2)
+col1, col2 = st.beta_columns(2)
+col3, col4 = st.beta_columns(2)
+col5, col6 = st.beta_columns(2)
+col7, col8 = st.beta_columns(2)
 
 with col1:
     st.subheader("Images depicting 'anger'")
@@ -386,7 +386,7 @@ chart_white = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'whi
 ####################################
 ### BY EMOTION & ETHNICITY BLOCK ###
 
-col1, col2 = st.columns(2)
+col1, col2 = st.beta_columns(2)
 
 with col1:
     st.subheader("Images depicting BIPOC")
