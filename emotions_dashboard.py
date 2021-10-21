@@ -387,7 +387,8 @@ def wrapper_chart_emotion(df_emo_answers, emotion, ethnicity):
 #     emotion_select = st.selectbox("Select emotion", emotion_option)
 #     submitted1 = st.form_submit_button('Submit to run')
     
-emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
+# emotion_option = count_freq_labels(df_emo_answers, X="all")['emotion'].tolist()
+emotion_option = ['Anger', 'Sadness', 'Neutral']
 emotion_select = st.selectbox("Select emotion", emotion_option)
 
 chart_bipoc = wrapper_chart_emotion(df_emo_answers, emotion_select.lower(), 'bipoc')
