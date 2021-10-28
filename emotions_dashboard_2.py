@@ -27,6 +27,10 @@ st.write("""
     - [K-means solution](#subheader-fc-km-s)
 - [Free-labeling clustering](#header-fl-km)
 
+[**PCA results**](#title-pca):
+- [2 components solution](#header-1-pca)
+- [3 components solution](#header-2-pca)
+
 """)
 
 st.write("""['back to the top'](#toc)]""")
@@ -181,7 +185,8 @@ st.write("""['back to the top'](#toc)""")
 
 
 
-
+##################
+## K MEANS RESULTS
 
 st.title('K-means clustering results', 'title-km')
 
@@ -220,3 +225,32 @@ image = Image.open('data/k_means_free_labeling_10.png')
 st.image(image)
 
 st.write("""['back to the top'](#toc)""")
+
+##############
+## PCA RESULTS
+
+st.title('PCA results', 'title-pca')
+
+st.header('2 components solution', 'header-1-pca')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+image = Image.open('data/pca_chart_2d_images.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+st.header('3 components solution', 'header-2-pca')
+
+st.write("""In progress...""")
+
+st.write("""['back to the top'](#toc)""")
+
