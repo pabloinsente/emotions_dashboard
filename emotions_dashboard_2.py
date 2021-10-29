@@ -3,6 +3,8 @@ import pandas as pd
 import altair as alt
 import numpy as np
 import base64
+import plotly.express as px
+
 
 st.set_page_config(layout="wide")
 
@@ -26,6 +28,8 @@ st.write("""
     - [K-means evaluation](#subheader-fc-km-e)
     - [K-means solution](#subheader-fc-km-s)
 - [Free-labeling clustering](#header-fl-km)
+    - [K-means evaluation](#subheader-fl-km-e)
+    - [K-means solution](#subheader-fl-km-s)
 
 [**PCA results**](#title-pca):
 - [2 components solution](#header-1-pca)
@@ -213,7 +217,6 @@ st.write("""['back to the top'](#toc)""")
 
 st.header('Free-labeling clustering', 'header-fl-km')
 
-
 ## K-means evaluation free choice ##
 st.subheader(df_svg_free['image_title'][4], 'subheader-fl-km-e')
 render_svg(df_svg_free['svg'][4])
@@ -250,7 +253,43 @@ st.write("""['back to the top'](#toc)""")
 
 st.header('3 components solution', 'header-2-pca')
 
-st.write("""In progress...""")
+st.write("**Interactive charts**: user the pointer to rotate and explore labels")
+
+
+#######################
+## forced-choice PCA 3D
+ 
+df_pca_forced = pd.read_csv('data/forced_choice_pca_3.csv')
+
+fig_forced = px.scatter_3d(df_pca_forced, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=7,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+#######################
+## free-labeling PCA 3D
+
+df_pca_free = pd.read_csv('data/free_labeling_pca_3.csv')
+
+fig_free = px.scatter_3d(df_pca_free, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=7,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling")
+    st.plotly_chart(fig_free)
 
 st.write("""['back to the top'](#toc)""")
 
