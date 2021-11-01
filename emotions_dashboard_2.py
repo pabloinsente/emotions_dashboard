@@ -269,6 +269,13 @@ fig_forced.update_traces(marker=dict(size=7,
                                         color='DarkSlateGrey')),
                   selector=dict(mode='markers'))
 
+fig_forced.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+
+
 #######################
 ## free-labeling PCA 3D
 
@@ -281,6 +288,12 @@ fig_free.update_traces(marker=dict(size=7,
                               line=dict(width=1,
                                         color='DarkSlateGrey')),
                   selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
 
 col1, col2 = st.beta_columns(2)
 
