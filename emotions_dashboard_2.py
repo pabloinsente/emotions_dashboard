@@ -35,9 +35,13 @@ st.write("""
 - [2 components solution](#header-1-pca)
 - [3 components solution](#header-2-pca)
 
+[**Sentiment analysis results**](#title-sen):
+- [Sentiment score distributions](#header-sen-d)
+- [Sentiment score means and confidence intervals](#header-sen-m)
+
 """)
 
-st.write("""['back to the top'](#toc)]""")
+st.write("""['back to the top'](#toc)""")
 
 def render_svg(svg):
     """Renders the given svg string."""
@@ -306,3 +310,69 @@ with col2:
 
 st.write("""['back to the top'](#toc)""")
 
+#####################
+## SENTIMENT ANALYSIS
+
+df_sentiment_svg = pd.read_csv('data/sentiment_svg_strings.csv')
+
+st.title('Sentiment analysis results', 'title-sen')
+
+#################################
+## sentiment scores distributions
+
+st.header('Sentiment score distributions', 'header-sen-d')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+## overall sentiment ##
+st.subheader(df_sentiment_svg['image_title'][0])
+render_svg(df_sentiment_svg['svg'][0])
+
+## overall sex ##
+st.subheader(df_sentiment_svg['image_title'][1])
+render_svg(df_sentiment_svg['svg'][1])
+
+## overall ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][2])
+render_svg(df_sentiment_svg['svg'][2])
+
+## overall age ##
+st.subheader(df_sentiment_svg['image_title'][3])
+render_svg(df_sentiment_svg['svg'][3])
+
+st.write("""['back to the top'](#toc)""")
+
+#############################
+## sentiment scores means/std
+
+st.header('Sentiment score means and confidence intervals', 'header-sen-m')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+## compounded sentiment ##
+st.subheader(df_sentiment_svg['image_title'][4])
+render_svg(df_sentiment_svg['svg'][4])
+
+## negative sentiment ##
+st.subheader(df_sentiment_svg['image_title'][5])
+render_svg(df_sentiment_svg['svg'][5])
+
+## positive sentiment ##
+st.subheader(df_sentiment_svg['image_title'][6])
+render_svg(df_sentiment_svg['svg'][6])
+
+## neutral sentiment ##
+st.subheader(df_sentiment_svg['image_title'][7])
+render_svg(df_sentiment_svg['svg'][7])
+
+st.write("""['back to the top'](#toc)""")
