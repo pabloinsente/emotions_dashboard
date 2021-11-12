@@ -32,8 +32,21 @@ st.write("""
     - [K-means solution](#subheader-fl-km-s)
 
 [**PCA results**](#title-pca):
-- [2 components solution](#header-1-pca)
-- [3 components solution](#header-2-pca)
+- [2 components solution by survey method](#header-pca-2d-all)
+- [Forced-choice 2 components solution by image ethnicity](#header-pca-2d-forced-et)
+- [Free-labeling 2 components solution by image ethnicity](#header-pca-2d-free-et)
+- [PCA 2 components embeddings evaluation](#header-2d-pca-eval)
+    - [Silhouette score](#subheader-pca-2d-ss)
+    - [Calinski-Harabasz score](#subheader-pca-2d-chs)
+    - [Davies-Bouldin score](#subheader-pca-2d-dbs)
+- [3 components solution by survey method](#header-pca-3d-all)
+- [3 components solution by survey method - BIPOC](#header-pca-3d-bipoc)
+- [3 components solution by survey method - Caucasian](#header-pca-3d-caucasian)
+- [PCA 3 components embeddings evaluation](#header-3d-pca-eval)
+    - [Silhouette score](#subheader-pca-3d-ss)
+    - [Calinski-Harabasz score](#subheader-pca-3d-chs)
+    - [Davies-Bouldin score](#subheader-pca-3d-dbs)
+
 
 [**Sentiment analysis results**](#title-sen):
 - [Sentiment score distributions](#header-sen-d)
@@ -238,7 +251,9 @@ st.write("""['back to the top'](#toc)""")
 
 st.title('PCA results', 'title-pca')
 
-st.header('2 components solution', 'header-1-pca')
+## aggregated ##
+
+st.header('2 components solution by survey method', 'header-pca-2d-all')
 
 col1, col2 = st.beta_columns(2)
 
@@ -247,28 +262,94 @@ with col1:
 with col2:
     st.subheader("Free-labeling")
 
-image = Image.open('data/pca_chart_2d_images.png')
+image = Image.open('data/pca_chart_2d_images_all.png')
 st.image(image)
 
-image = Image.open('data/pca_chart_2d_text.png')
+image = Image.open('data/pca_chart_2d_text_all.png')
 st.image(image)
 
 st.write("""['back to the top'](#toc)""")
 
-st.header('3 components solution', 'header-2-pca')
+
+## forced-choice by ethnicity ##
+
+st.header('Forced-choice 2 components solution by image ethnicity', 'header-pca-2d-forced-et')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Caucasian")
+with col2:
+    st.subheader("Bipoc")
+
+image = Image.open('data/pca_chart_2d_images_forced_ethnicity.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_forced_ethnicity.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+## free-choice by ethnicity ##
+
+st.header('Free-labeling 2 components solution by image ethnicity', 'header-pca-2d-free-et')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Caucasian")
+with col2:
+    st.subheader("Bipoc")
+
+image = Image.open('data/pca_chart_2d_images_free_ethnicity.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_free_ethnicity.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+
+## PCA evaluation ##
+
+df_pca_eval = pd.read_csv('data/pca_svg_strings.csv')
+
+st.header('PCA 2 components embeddings evaluation', 'header-2d-pca-eval')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][0])
+render_svg(df_pca_eval['svg'][0])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][1])
+render_svg(df_pca_eval['svg'][1])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][2])
+render_svg(df_pca_eval['svg'][2])
+
+st.write("""['back to the top'](#toc)""")
+
+
+st.header('3 components solution by survey method', 'header-pca-3d-all')
 
 st.write("**Interactive charts**: user the pointer to rotate and explore labels")
 
+from sklearn import decomposition
+from sklearn import preprocessing as pp
 
 #######################
 ## forced-choice PCA 3D
- 
-df_pca_forced = pd.read_csv('data/forced_choice_pca_3.csv')
 
-fig_forced = px.scatter_3d(df_pca_forced, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+df_label_a = pd.read_csv('data/pca_3d_aggregated_forced.csv')
+
+fig_forced = px.scatter_3d(df_label_a, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
               color='label')
 
-fig_forced.update_traces(marker=dict(size=7,
+fig_forced.update_traces(marker=dict(size=8,
                               line=dict(width=1,
                                         color='DarkSlateGrey')),
                   selector=dict(mode='markers'))
@@ -283,9 +364,9 @@ fig_forced.update_layout(
 #######################
 ## free-labeling PCA 3D
 
-df_pca_free = pd.read_csv('data/free_labeling_pca_3.csv')
+df_label_free_a = pd.read_csv('data/pca_3d_aggregated_free.csv')
 
-fig_free = px.scatter_3d(df_pca_free, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+fig_free = px.scatter_3d(df_label_free_a, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
               color='label')
 
 fig_free.update_traces(marker=dict(size=7,
@@ -299,6 +380,10 @@ fig_free.update_layout(
         yaxis = dict(nticks=8, range=[-1.6,1.6],),
         zaxis = dict(nticks=8, range=[-1.6,1.6],)))
 
+
+st.header('3 components solution by survey method', 'header-pca-3d-all')
+
+# PLOT #
 col1, col2 = st.beta_columns(2)
 
 with col1:
@@ -307,6 +392,136 @@ with col1:
 with col2:
     st.subheader("Free-labeling")
     st.plotly_chart(fig_free)
+
+st.write("""['back to the top'](#toc)""")
+
+
+#######################
+## forced-choice PCA 3D - BIPOC
+
+df_label_b = pd.read_csv('data/pca_3d_bipoc_forced.csv')
+
+fig_forced = px.scatter_3d(df_label_b, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_forced.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+
+#######################
+## Free-choice PCA 3D - BIPOC
+
+df_label_free_b = pd.read_csv('data/pca_3d_bipoc_free.csv')
+
+fig_free = px.scatter_3d(df_label_free_b, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+
+st.header('3 components solution by survey method - BIPOC', 'header-pca-3d-bipoc')
+
+# PLOT #
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice - BIPOC")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling - BIPOC")
+    st.plotly_chart(fig_free)
+
+st.write("""['back to the top'](#toc)""")
+
+
+#######################
+## forced-choice PCA 3D - Caucasian
+
+df_label_c = pd.read_csv('data/pca_3d_caucasian_forced.csv')
+
+fig_forced = px.scatter_3d(df_label_b, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_forced.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+
+
+#######################
+## Free-choice PCA 3D - Caucasian
+
+df_label_free_c = pd.read_csv('data/pca_3d_caucasian_free.csv')
+
+fig_free = px.scatter_3d(df_label_free_c, width=700, height=600, x='x_pca_3', y='y_pca_3', z='z_pca_3',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.6,1.6],),
+        yaxis = dict(nticks=8, range=[-1.6,1.6],),
+        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+
+
+st.header('3 components solution by survey method - Caucasian', 'header-pca-3d-caucasian')
+
+# PLOT #
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice - Caucasian")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling - Caucasian")
+    st.plotly_chart(fig_free)
+
+st.write("""['back to the top'](#toc)""")
+
+
+## PCA ****3D**** evaluation ##
+
+st.header('PCA 3 components embeddings evaluation', 'header-3d-pca-eval')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][3])
+render_svg(df_pca_eval['svg'][3])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][4])
+render_svg(df_pca_eval['svg'][4])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][5])
+render_svg(df_pca_eval['svg'][5])
 
 st.write("""['back to the top'](#toc)""")
 
