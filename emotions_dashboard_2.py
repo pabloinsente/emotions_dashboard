@@ -338,8 +338,6 @@ st.header('3 components solution by survey method', 'header-pca-3d-all')
 
 st.write("**Interactive charts**: user the pointer to rotate and explore labels")
 
-from sklearn import decomposition
-from sklearn import preprocessing as pp
 
 #######################
 ## forced-choice PCA 3D
