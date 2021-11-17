@@ -4,6 +4,7 @@ import altair as alt
 import numpy as np
 import base64
 import plotly.express as px
+from PIL import Image
 
 
 st.set_page_config(layout="wide")
@@ -21,7 +22,9 @@ st.write("""
 
 [**Free-labeling results**](#title-fl):
 - [Participants demographics](#header-fl-dem)
-- ... in progress
+- [Overall results](#header-fl-overall)
+- [Results by emotion label](#header-fl-emotions)
+- [Results by emotion label and ethnicity](#header-fl-emotions-et)
 
 [**K-means clustering results**](#title-km):
 - [Forced-choice clustering](#header-fc-km)
@@ -177,12 +180,9 @@ render_svg(df_svg['svg'][21])
 
 st.write("""['back to the top'](#toc)""")
 
+
 st.title('Free-labeling results', 'title-fl')
 df_svg_free = pd.read_csv('data/free_choice_svg_strings.csv')
-
-st.write("""In progress...""")
-
-
 
 st.header('Participants demographics', 'header-fl-dem')
 
@@ -205,6 +205,97 @@ render_svg(df_svg_free['svg'][3])
 st.write("""['back to the top'](#toc)""")
 
 
+st.header('Overall results', 'header-fl-overall')
+
+## overall % ##
+st.write(df_svg_free['image_title'][4])
+render_svg(df_svg_free['svg'][4])
+
+## overall cnt ##
+st.write(df_svg_free['image_title'][5])
+render_svg(df_svg_free['svg'][5])
+
+st.write("""['back to the top'](#toc)""")
+
+st.header('Results by expected emotion label', 'header-fl-emotions')
+
+## anger ##
+st.write(df_svg_free['image_title'][6])
+render_svg(df_svg_free['svg'][6])
+
+## disgust  ##
+st.write(df_svg_free['image_title'][7])
+render_svg(df_svg_free['svg'][7])
+
+## fear  ##
+st.write(df_svg_free['image_title'][8])
+render_svg(df_svg_free['svg'][8])
+
+## surprise ##
+st.write(df_svg_free['image_title'][9])
+render_svg(df_svg_free['svg'][9])
+
+## happiness  ##
+st.write(df_svg_free['image_title'][10])
+render_svg(df_svg_free['svg'][10])
+
+## sadness ##
+st.write(df_svg_free['image_title'][11])
+render_svg(df_svg_free['svg'][11])
+
+## uncertain  ##
+st.write(df_svg_free['image_title'][12])
+render_svg(df_svg_free['svg'][12])
+
+## neutral ##
+st.write(df_svg_free['image_title'][13])
+render_svg(df_svg_free['svg'][13])
+
+st.write("""['back to the top'](#toc)""")
+
+st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC images")
+with col2:
+    st.subheader("Caucasian images")
+
+## anger * ethnicity ##
+st.write(df_svg_free['image_title'][14])
+render_svg(df_svg_free['svg'][14])
+
+## disgust * ethnicity ##
+st.write(df_svg_free['image_title'][15])
+render_svg(df_svg_free['svg'][15])
+
+## fear * ethnicity ##
+st.write(df_svg_free['image_title'][16])
+render_svg(df_svg_free['svg'][16])
+
+## surprise * ethnicity ##
+st.write(df_svg_free['image_title'][17])
+render_svg(df_svg_free['svg'][17])
+
+## happiness * ethnicity ##
+st.write(df_svg_free['image_title'][18])
+render_svg(df_svg_free['svg'][18])
+
+## sadness * ethnicity ##
+st.write(df_svg_free['image_title'][19])
+render_svg(df_svg_free['svg'][19])
+
+## neutral * ethnicity ##
+st.write(df_svg_free['image_title'][20])
+render_svg(df_svg_free['svg'][20])
+
+## uncertain * ethnicity ##
+st.write(df_svg_free['image_title'][21])
+render_svg(df_svg_free['svg'][21])
+
+st.write("""['back to the top'](#toc)""")
+
 
 ##################
 ## K MEANS RESULTS
@@ -216,14 +307,13 @@ st.title('K-means clustering results', 'title-km')
 
 st.header('Forced-choice clustering', 'header-fc-km')
 
-## K-means evaluation forced choice ##
+## K-means *evaluation* forced choice ##
 st.subheader(df_svg['image_title'][22], 'subheader-fc-km-e')
 render_svg(df_svg['svg'][22])
 
-## K-means clusters forced choice ##
-from PIL import Image
+## K-means *clusters* forced choice ##
 
-st.subheader(df_svg['image_title'][23], 'subheader-fc-km-s')
+st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s')
 image = Image.open('data/k_means_forced_choice_6.png')
 st.image(image)
 
@@ -234,11 +324,11 @@ st.write("""['back to the top'](#toc)""")
 
 st.header('Free-labeling clustering', 'header-fl-km')
 
-## K-means evaluation free choice ##
-st.subheader(df_svg_free['image_title'][4], 'subheader-fl-km-e')
-render_svg(df_svg_free['svg'][4])
+## K-means *evaluation* free choice ##
+st.subheader(df_svg_free['image_title'][22], 'subheader-fl-km-e')
+render_svg(df_svg_free['svg'][22])
 
-## K-means clusters forced choice ##
+## K-means *clusters* forced choice ##
 
 st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s')
 image = Image.open('data/k_means_free_labeling_10.png')
@@ -353,10 +443,10 @@ fig_forced.update_traces(marker=dict(size=8,
                   selector=dict(mode='markers'))
 
 fig_forced.update_layout(
-    scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+    scene = dict( 
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 
 #######################
@@ -374,9 +464,9 @@ fig_free.update_traces(marker=dict(size=7,
 
 fig_free.update_layout(
     scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 
 st.header('3 components solution by survey method', 'header-pca-3d-all')
@@ -409,9 +499,9 @@ fig_forced.update_traces(marker=dict(size=8,
 
 fig_forced.update_layout(
     scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 #######################
 ## Free-choice PCA 3D - BIPOC
@@ -428,9 +518,9 @@ fig_free.update_traces(marker=dict(size=8,
 
 fig_free.update_layout(
     scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,2.2],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 st.header('3 components solution by survey method - BIPOC', 'header-pca-3d-bipoc')
 
@@ -462,9 +552,9 @@ fig_forced.update_traces(marker=dict(size=8,
 
 fig_forced.update_layout(
     scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 
 #######################
@@ -482,9 +572,9 @@ fig_free.update_traces(marker=dict(size=8,
 
 fig_free.update_layout(
     scene = dict(
-        xaxis = dict(nticks=8, range=[-1.6,1.6],),
-        yaxis = dict(nticks=8, range=[-1.6,1.6],),
-        zaxis = dict(nticks=8, range=[-1.6,1.6],)))
+        xaxis = dict(nticks=8, range=[-1.7,2.2],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
 
 st.header('3 components solution by survey method - Caucasian', 'header-pca-3d-caucasian')
