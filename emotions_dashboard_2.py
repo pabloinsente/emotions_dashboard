@@ -50,10 +50,19 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-3d-chs)
     - [Davies-Bouldin score](#subheader-pca-3d-dbs)
 
-
 [**Sentiment analysis results**](#title-sen):
 - [Sentiment score distributions](#header-sen-d)
 - [Sentiment score means and confidence intervals](#header-sen-m)
+
+[**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
+- [Participants demographics](#header-db-dem)
+- [Word-ranking for 'anger'](#header-db-anger)
+- [Word-ranking for 'disgust'](#header-db-disgust)
+- [Word-ranking for 'fear'](#header-db-fear)
+- [Word-ranking for 'happiness'](#header-db-happiness)
+- [Word-ranking for 'neutral'](#header-db-neutral)
+- [Word-ranking for 'sadness'](#header-db-sadness)
+- [Word-ranking for 'surprise'](#header-db-surprise)
 
 """)
 
@@ -678,4 +687,102 @@ render_svg(df_sentiment_svg['svg'][6])
 st.subheader(df_sentiment_svg['image_title'][7])
 render_svg(df_sentiment_svg['svg'][7])
 
+st.write("""['back to the top'](#toc)""")
+
+#############################
+## DUELING BANDINTS EXPERIMENT
+
+st.title('Dueling-bandits ranking experiment and comparison with surveys results', 'title-db')
+
+## DEMOGRAPHICS ##
+st.header('Participants demographics', 'header-db-dem')
+st.write("""['back to the top'](#toc)""")
+
+## ANGER RANKINGS##
+st.header('Word-rankings for anger', 'header-db-anger')
+
+# anger female of color #
+image = Image.open('data/anger_bfa_next_panel.png')
+st.image(image)
+
+# anger male of color #
+image = Image.open('data/anger_bma_next_panel.png')
+st.image(image)
+
+# anger white female #
+image = Image.open('data/anger_wfa_next_panel.png')
+st.image(image)
+
+# anger white male  #
+image = Image.open('data/anger_wma_next_panel.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+## DISGUST RANKINGS ##
+st.header('Word-rankings for disgust', 'header-db-disgust')
+
+# disgust female of color #
+image = Image.open('data/disgust_bfa_next_panel.png')
+st.image(image)
+
+# disgust male of color #
+image = Image.open('data/disgust_bma_next_panel.png')
+st.image(image)
+
+# disgust white female #
+image = Image.open('data/disgust_wfa_next_panel.png')
+st.image(image)
+
+# disgust white male  #
+image = Image.open('data/disgust_wma_next_panel.png')
+st.image(image)
+
+## FEAR RANKINGS ##
+st.header('Word-rankings for fear', 'header-db-fear')
+
+# fear female of color #
+image = Image.open('data/fear_bfa_next_panel.png')
+st.image(image)
+
+# fear male of color #
+image = Image.open('data/fear_bma_next_panel.png')
+st.image(image)
+
+# fear white female #
+image = Image.open('data/fear_wfa_next_panel.png')
+st.image(image)
+
+# fear white male  #
+image = Image.open('data/fear_wma_next_panel.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+## HAPPINESS RANKINGS ##
+st.header('Word-rankings for happiness', 'header-db-happiness')
+
+# happiness female of color #
+image = Image.open('data/happiness_bfa_next_panel.png')
+st.image(image)
+
+# happiness male of color #
+image = Image.open('data/happiness_bma_next_panel.png')
+st.image(image)
+
+st.write("""['back to the top'](#toc)""")
+
+## NEUTRAL RANKINGS ##
+st.header('Word-rankings for neutral', 'header-db-neutral')
+st.write("""pending data...""")
+st.write("""['back to the top'](#toc)""")
+
+## SADNESS RANKINGS ##
+st.header('Word-rankings for sadness', 'header-db-sadness')
+st.write("""pending data...""")
+st.write("""['back to the top'](#toc)""")
+
+## SURPRISE RANKINGS ##
+st.header('Word-rankings for surprise', 'header-db-surprise')
+st.write("""pending data...""")
 st.write("""['back to the top'](#toc)""")
