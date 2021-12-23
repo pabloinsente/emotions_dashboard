@@ -95,7 +95,19 @@ Spanish-speaking participants from South America, which happens to be the region
 
 """)
 
-st.title('Undergraduate students sample results', 'st-sample')
+st.header('Navigation', 'navigation')
+
+st.write("""
+
+This is a long dashboard. To jump to the results for each sample of participants, click on the links below:
+
+- **I. Undergraduate students sample results.** [Jump to section](#st-sample)
+- **II. English-speaking MTurk sample results.** [Jump to section](#mturk-sample)
+- **III. Snpanish-speaking MTurk sample results.** [Jump to section](#mturk-sample-spanish)
+
+""")
+
+st.title('I: Undergraduate students sample results', 'st-sample')
 
 st.subheader('Table of contents', 'toc')
 
@@ -152,8 +164,9 @@ st.write("""
 
 """)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
+## SVG images ##
 def render_svg(svg):
     """Renders the given svg string."""
     b64 = base64.b64encode(svg.encode('utf-8')).decode("utf-8")
@@ -182,7 +195,7 @@ render_svg(df_svg['svg'][2])
 st.write(df_svg['image_title'][3])
 render_svg(df_svg['svg'][3])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 st.header('Overall results', 'header-fc-overall')
 
@@ -194,7 +207,7 @@ render_svg(df_svg['svg'][4])
 st.write(df_svg['image_title'][5])
 render_svg(df_svg['svg'][5])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 st.header('Results by expected emotion label', 'header-fc-emotions')
 
@@ -230,7 +243,7 @@ render_svg(df_svg['svg'][12])
 st.write(df_svg['image_title'][13])
 render_svg(df_svg['svg'][13])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fc-emotions-et')
 
@@ -273,8 +286,7 @@ render_svg(df_svg['svg'][20])
 st.write(df_svg['image_title'][21])
 render_svg(df_svg['svg'][21])
 
-st.write("""['back to the top'](#toc)""")
-
+st.write("""[back to the toc](#toc)""")
 
 st.title('Free-labeling results', 'title-fl')
 df_svg_free = pd.read_csv('data/free_choice_svg_strings.csv')
@@ -297,7 +309,7 @@ render_svg(df_svg_free['svg'][2])
 st.write(df_svg_free['image_title'][3])
 render_svg(df_svg_free['svg'][3])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 st.header('Overall results', 'header-fl-overall')
@@ -310,7 +322,7 @@ render_svg(df_svg_free['svg'][4])
 st.write(df_svg_free['image_title'][5])
 render_svg(df_svg_free['svg'][5])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 st.header('Results by expected emotion label', 'header-fl-emotions')
 
@@ -346,7 +358,7 @@ render_svg(df_svg_free['svg'][12])
 st.write(df_svg_free['image_title'][13])
 render_svg(df_svg_free['svg'][13])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et')
 
@@ -389,7 +401,7 @@ render_svg(df_svg_free['svg'][20])
 st.write(df_svg_free['image_title'][21])
 render_svg(df_svg_free['svg'][21])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 ##################
@@ -412,7 +424,7 @@ st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s')
 image = Image.open('data/k_means_forced_choice_6.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ###########################
 ## Free labeling clustering
@@ -429,7 +441,7 @@ st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s')
 image = Image.open('data/k_means_free_labeling_10.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ##############
 ## PCA RESULTS
@@ -453,7 +465,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_all.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 ## forced-choice by ethnicity ##
@@ -473,7 +485,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_forced_ethnicity.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## free-choice by ethnicity ##
 
@@ -492,7 +504,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_free_ethnicity.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 ## PCA evaluation ##
@@ -516,7 +528,7 @@ render_svg(df_pca_eval['svg'][1])
 st.subheader(df_pca_eval['image_title'][2])
 render_svg(df_pca_eval['svg'][2])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 st.header('3 components solution by survey method', 'header-pca-3d-all')
@@ -576,7 +588,7 @@ with col2:
     st.subheader("Free-labeling")
     st.plotly_chart(fig_free)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 #######################
@@ -629,7 +641,7 @@ with col2:
     st.subheader("Free-labeling - BIPOC")
     st.plotly_chart(fig_free)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 #######################
@@ -684,7 +696,7 @@ with col2:
     st.subheader("Free-labeling - Caucasian")
     st.plotly_chart(fig_free)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 
 ## PCA ****3D**** evaluation ##
@@ -706,7 +718,7 @@ render_svg(df_pca_eval['svg'][4])
 st.subheader(df_pca_eval['image_title'][5])
 render_svg(df_pca_eval['svg'][5])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 #####################
 ## SENTIMENT ANALYSIS
@@ -743,7 +755,7 @@ render_svg(df_sentiment_svg['svg'][2])
 st.subheader(df_sentiment_svg['image_title'][3])
 render_svg(df_sentiment_svg['svg'][3])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 #############################
 ## sentiment scores means/std
@@ -773,7 +785,7 @@ render_svg(df_sentiment_svg['svg'][6])
 st.subheader(df_sentiment_svg['image_title'][7])
 render_svg(df_sentiment_svg['svg'][7])
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 #############################
 ## DUELING BANDINTS EXPERIMENT
@@ -782,7 +794,7 @@ st.title('Dueling-bandits ranking experiment and comparison with surveys results
 
 ## DEMOGRAPHICS ##
 st.header('Participants demographics', 'header-db-dem')
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## ANGER RANKINGS##
 st.header('Word-rankings for anger', 'header-db-anger')
@@ -803,7 +815,7 @@ st.image(image)
 image = Image.open('data/anger_wma_next_panel.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## DISGUST RANKINGS ##
 st.header('Word-rankings for disgust', 'header-db-disgust')
@@ -843,7 +855,7 @@ st.image(image)
 image = Image.open('data/fear_wma_next_panel.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## HAPPINESS RANKINGS ##
 st.header('Word-rankings for happiness', 'header-db-happiness')
@@ -856,19 +868,206 @@ st.image(image)
 image = Image.open('data/happiness_bma_next_panel.png')
 st.image(image)
 
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## NEUTRAL RANKINGS ##
 st.header('Word-rankings for neutral', 'header-db-neutral')
 st.write("""pending data...""")
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## SADNESS RANKINGS ##
 st.header('Word-rankings for sadness', 'header-db-sadness')
 st.write("""pending data...""")
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
 
 ## SURPRISE RANKINGS ##
 st.header('Word-rankings for surprise', 'header-db-surprise')
 st.write("""pending data...""")
-st.write("""['back to the top'](#toc)""")
+st.write("""[back to the toc](#toc)""")
+
+##########################
+##########################
+## English-speaking MTurk 
+##########################
+##########################
+
+st.title('II: English-speaking MTurk sample results', 'mturk-sample')
+
+st.subheader('Table of contents', 'toc-mturk')
+
+st.write("""
+[**Forced-choice results**](#title-fc-mturk):
+- [Participants demographics](#header-fc-dem-mturk)
+- [Overall results](#header-fc-overall-mturk)
+- [Results by emotion label](#header-fc-emotions-mturk)
+- [Results by emotion label and ethnicity](#header-fc-emotions-et-mturk)
+
+[**Free-labeling results**](#title-fl-mturk):
+- [Participants demographics](#header-fl-dem-mturk)
+- [Overall results](#header-fl-overall-mturk)
+- [Results by emotion label](#header-fl-emotions-mturk)
+- [Results by emotion label and ethnicity](#header-fl-emotions-et-mturk)
+
+[**K-means clustering results**](#title-km-mturk):
+- [Forced-choice clustering](#header-fc-km-mturk)
+    - [K-means evaluation](#subheader-fc-km-e-mturk)
+    - [K-means solution](#subheader-fc-km-s-mturk)
+- [Free-labeling clustering](#header-fl-km-mturk)
+    - [K-means evaluation](#subheader-fl-km-e-mturk)
+    - [K-means solution](#subheader-fl-km-s-mturk)
+
+""")
+
+st.write("""[back to the toc](#toc-mturk)""")
+
+df_svg = pd.read_csv('data/forced_choice_svg_strings_mturk.csv')
+
+st.title('Forced-choice results', 'title-fc-mturk')
+
+st.header('Participants demographics', 'header-fc-dem-mturk')
+
+
+## participants by sex ##
+st.write(df_svg['image_title'][0])
+render_svg(df_svg['svg'][0])
+
+## participants by age ##
+st.write(df_svg['image_title'][1])
+render_svg(df_svg['svg'][1])
+
+## participants by ethnicity ##
+st.write(df_svg['image_title'][2])
+render_svg(df_svg['svg'][2])
+
+## participants by formal education ##
+st.write(df_svg['image_title'][3])
+render_svg(df_svg['svg'][3])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+st.header('Overall results', 'header-fc-overall-mturk')
+
+## overall % ##
+st.write(df_svg['image_title'][4])
+render_svg(df_svg['svg'][4])
+
+## overall cnt ##
+st.write(df_svg['image_title'][5])
+render_svg(df_svg['svg'][5])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+st.header('Results by expected emotion label', 'header-fc-emotions-mturk')
+
+## anger ##
+st.write(df_svg['image_title'][6])
+render_svg(df_svg['svg'][6])
+
+## disgust  ##
+st.write(df_svg['image_title'][7])
+render_svg(df_svg['svg'][7])
+
+## fear  ##
+st.write(df_svg['image_title'][8])
+render_svg(df_svg['svg'][8])
+
+## surprise ##
+st.write(df_svg['image_title'][9])
+render_svg(df_svg['svg'][9])
+
+## happiness  ##
+st.write(df_svg['image_title'][10])
+render_svg(df_svg['svg'][10])
+
+## sadness ##
+st.write(df_svg['image_title'][11])
+render_svg(df_svg['svg'][11])
+
+## uncertain  ##
+st.write(df_svg['image_title'][12])
+render_svg(df_svg['svg'][12])
+
+## neutral ##
+st.write(df_svg['image_title'][13])
+render_svg(df_svg['svg'][13])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+st.header('Results by expected emotion and ethnicity', 'header-fc-emotions-et-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC images")
+with col2:
+    st.subheader("Caucasian images")
+
+## anger * ethnicity ##
+st.write(df_svg['image_title'][14])
+render_svg(df_svg['svg'][14])
+
+## disgust * ethnicity ##
+st.write(df_svg['image_title'][15])
+render_svg(df_svg['svg'][15])
+
+## fear * ethnicity ##
+st.write(df_svg['image_title'][16])
+render_svg(df_svg['svg'][16])
+
+## surprise * ethnicity ##
+st.write(df_svg['image_title'][17])
+render_svg(df_svg['svg'][17])
+
+## happiness * ethnicity ##
+st.write(df_svg['image_title'][18])
+render_svg(df_svg['svg'][18])
+
+## sadness * ethnicity ##
+st.write(df_svg['image_title'][19])
+render_svg(df_svg['svg'][19])
+
+## neutral * ethnicity ##
+st.write(df_svg['image_title'][20])
+render_svg(df_svg['svg'][20])
+
+## uncertain * ethnicity ##
+st.write(df_svg['image_title'][21])
+render_svg(df_svg['svg'][21])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+##################
+## K MEANS RESULTS
+
+st.title('K-means clustering results', 'title-km-mturk')
+
+###########################
+## Forced choice clustering
+
+st.header('Forced-choice clustering', 'header-fc-km-mturk')
+
+## K-means *evaluation* forced choice ##
+st.subheader(df_svg['image_title'][22], 'subheader-fc-km-e-mturk')
+render_svg(df_svg['svg'][22])
+
+## K-means *clusters* forced choice ##
+st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s-mturk')
+image = Image.open('data/k_means_forced_choice_6_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc](#toc)""")
+
+# --------- %% --------- #
+
+##########################
+##########################
+## English-speaking MTurk 
+##########################
+##########################
+
+# --------- %% --------- #
+
+
+st.title('III: English-speaking MTurk sample results', 'mturk-sample-spanish')
+
+st.write('Pending data...')
