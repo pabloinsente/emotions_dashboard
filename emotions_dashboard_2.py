@@ -29,12 +29,12 @@ for my research goals. These requirements are:
 
 (1) Images from a wide **variety of ethnic, nationality, sex, and age groups**   
 (2) Images obtained in a **"naturalistic-like" manner**. This contrasts to images obtained in studio settings, from paid actors 
-*posing* an exhagerated facial configuration of what is thaught in western culture as archetypical of certain emotion
+*posing* an exaggerated facial configuration of what is thought in western culture as archetypical of certain emotion
 
 The [AffecNet database](http://mohammadmahoor.com/affectnet/) of facial expressions "in the wild" satisfy these criteria. It contains 
 over 1 million of facial images gathered from the internet, by querying 1250 emotion related terms in six languages. Around 440 thousand 
 of these images were manually annotated by trained raters, following the seven so-called ["basic" or "universal" emotions](https://www.paulekman.com/resources/universal-facial-expressions/): 
- *anger, disgust, fear, happines, neutral, sadness, and surprises*. 
+ *anger, disgust, fear, happiness, neutral, sadness, and surprises*. 
 
  Utilizing the annotated images from the AffecNet database, it is not an endorsement of such a model, but an opportunity to test whether
  using this conceptualization model holds when confronted to different methodologies for collecting judgments about facial expressions.
@@ -56,7 +56,7 @@ study, yielding a total of approximately 1100 participants overall.
 The first study, consist of comparing two methods to measure how humans categorize facial expressions of emotion:  
 
 (1) A **"forced-choice" method**, where participants are presented with a series of images of facial expressions, and asked
- to select among the seven alternatives provided by the basic emotions model. These is the most widely used method in the literature, 
+ to select among the seven alternatives provided by the basic emotions model. This is the most widely used method in the literature, 
  and the one used by the trained raters to categorize the AffecNet images    
 (2) A **"free-choice" (or free-labeling) method**, where participants are presented with the same images, but allowed to produce 
 their own categories to label the images
@@ -65,12 +65,12 @@ their own categories to label the images
 
 When asking people to categorize facial expressions, we are effectively asking them to *rank* potential descriptors of such expressions. 
 The force-choice method requires participants to pick the best descriptor among seven pre-selected alternatives, whereas the free-choice 
-method requires to select the best descriptor among the ones that comes to mind while looking at the image. A reasonable question is 
+method requires selecting the best descriptor among the ones that comes to mind while looking at the image. A reasonable question is 
 whether people would select a different term to describe a facial expression, if they have access to a wider range of words, either written 
-down in fron of them, or in the lexicon of their minds during that particular instance in time. They may have choseen differently. 
+down in from of them, or in the lexicon of their minds during that particular instance in time. They may have chosen differently. 
 
-To address the above mentioned issue, I utilize a **dueling-banding method** approach, where participants are presented, sequentually, with
-pairs of words to describe a facial expression, and then select which word (from that pair) is a best descriptor. Dueling-bandits experiments 
+To address the above-mentioned issue, I utilize a **dueling-banding method** approach, where participants are presented, sequentially, with
+pairs of words to describe a facial expression, and then select which word (from that pair) is the best descriptor. Dueling-bandits experiments 
 have been used as a ranking method for a variety of problems in the past, but not, to my knowledge, to rank descriptors for facial expressions 
 of emotion. 
 
@@ -87,10 +87,10 @@ Language and culture defines how we process the world around us, particularly or
 expressions of emotion it is also subject to these forces, it has been a contested subject in the literature. A coarse generalization 
 of the debate is the following: the "universalist", like Paul Ekman and colleagues, who claim that emotions are categorical entities 
 universally recognizable across cultures, versus the "constructivist", like James A. Russell and Lisa F. Barret, who claim that emotions 
-are contextual and socio-culturally fabricated entities. We can add to these contrasting views a plethora of authors "in between", 
-proposing variations or combinations of both intelectual streams.  
+are contextual and socioculturally fabricated entities. We can add to these contrasting views a plethora of authors "in between", 
+proposing variations or combinations of both intellectual streams.  
 
-In my third study I contribute to disentagle the debate, by comparing the results obtained in Study I and II, to a sample of native 
+In my third study I contribute to disentangle the debate, by comparing the results obtained in Study I and II, to a sample of native 
 Spanish-speaking participants from South America, which happens to be the region of the world where I come from. 
 
 """)
