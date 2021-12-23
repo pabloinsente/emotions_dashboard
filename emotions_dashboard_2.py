@@ -9,9 +9,95 @@ from PIL import Image
 
 st.set_page_config(layout="wide")
 
-st.title('Emotion categorization surveys results', 'top')
+st.title('Emotion categorization analysis', 'top')
 
-st.header('Table of contents', 'toc')
+st.write("""
+
+My dissertation investigates three questions at the intersection of cognitive science and the psychology of emotion:  
+ 
+(1) how humans **categorize** and **conceptualize** facial expressions of emotion  
+(2) whether different **methods** for asking people to categorize facial expressions alters such behavior  
+(3) whether perceived **social characteristics** of faces (like race and gender) impacts humans categorization behavior  
+
+I approached these questions in three studies on three different samples. I'll briefly describe the stimulus and samples studied, 
+to then concisely describe the three studies.
+
+## Images of facial expressions 
+
+I study categorization behavior on images of facial expressions, as it is the only source of stimulus that satisfies the requirements 
+for my research goals. These requirements are:
+
+(1) Images from a wide **variety of ethnic, nationality, sex, and age groups**   
+(2) Images obtained in a **"naturalistic-like" manner**. This contrasts to images obtained in studio settings, from paid actors 
+*posing* an exhagerated facial configuration of what is thaught in western culture as archetypical of certain emotion
+
+The [AffecNet database](http://mohammadmahoor.com/affectnet/) of facial expressions "in the wild" satisfy these criteria. It contains 
+over 1 million of facial images gathered from the internet, by querying 1250 emotion related terms in six languages. Around 440 thousand 
+of these images were manually annotated by trained raters, following the seven so-called ["basic" or "universal" emotions](https://www.paulekman.com/resources/universal-facial-expressions/): 
+ *anger, disgust, fear, happines, neutral, sadness, and surprises*. 
+
+ Utilizing the annotated images from the AffecNet database, it is not an endorsement of such a model, but an opportunity to test whether
+ using this conceptualization model holds when confronted to different methodologies for collecting judgments about facial expressions.
+
+## Populations under study
+
+As this research project was done during the COVID-19 pandemic, all the data collection was completed on-line. Data was collected from 
+three groups:
+
+(1) Undergraduates from a large public university in the United States  
+(2) English-speaking adults workers from the United States in Amazon MTurk   
+(3) Spanish-speaking adults workers from South America in Amazon MTurk (pending...)  
+
+Sample sizes were approximately 100 participants (on each group) for the first study, and between 200-300 participants for the second 
+study, yielding a total of approximately 1100 participants overall.
+
+## Study I: Comparing forced-choice and free-choice methods for the categorization of facial expressions of emotion
+
+The first study, consist of comparing two methods to measure how humans categorize facial expressions of emotion:  
+
+(1) A **"forced-choice" method**, where participants are presented with a series of images of facial expressions, and asked
+ to select among the seven alternatives provided by the basic emotions model. These is the most widely used method in the literature, 
+ and the one used by the trained raters to categorize the AffecNet images    
+(2) A **"free-choice" (or free-labeling) method**, where participants are presented with the same images, but allowed to produce 
+their own categories to label the images
+
+## Study II: A dueling-bandit approach to rank descriptors for facial expressions of emotion 
+
+When asking people to categorize facial expressions, we are effectively asking them to *rank* potential descriptors of such expressions. 
+The force-choice method requires participants to pick the best descriptor among seven pre-selected alternatives, whereas the free-choice 
+method requires to select the best descriptor among the ones that comes to mind while looking at the image. A reasonable question is 
+whether people would select a different term to describe a facial expression, if they have access to a wider range of words, either written 
+down in fron of them, or in the lexicon of their minds during that particular instance in time. They may have choseen differently. 
+
+To address the above mentioned issue, I utilize a **dueling-banding method** approach, where participants are presented, sequentually, with
+pairs of words to describe a facial expression, and then select which word (from that pair) is a best descriptor. Dueling-bandits experiments 
+have been used as a ranking method for a variety of problems in the past, but not, to my knowledge, to rank descriptors for facial expressions 
+of emotion. 
+
+The words selected for this study, are the ones produced by participants in the free-choice survey from my first study, instead of being 
+manually selected by myself. Concretely, I combined all the words used to describe a face belonging to a given emotion (in accordance to 
+the annotations in AffecNet), and use that set to run the dueling-bandit study. 
+
+This study was implemented in NEXT, a platform that leverages active learning to crowdsourcing. NEXT computes [Borda Scores](https://en.wikipedia.org/wiki/Borda_count), 
+wich then used to rank descriptors for each face image. 
+
+## Study III: Cultural variations in the categorization of facial expression of emotion
+
+Language and culture defines how we process the world around us, particularly or social interactions. Whether categorization of facial 
+expressions of emotion it is also subject to these forces, it has been a contested subject in the literature. A coarse generalization 
+of the debate is the following: the "universalist", like Paul Ekman and colleagues, who claim that emotions are categorical entities 
+universally recognizable across cultures, versus the "constructivist", like James A. Russell and Lisa F. Barret, who claim that emotions 
+are contextual and socio-culturally fabricated entities. We can add to these contrasting views a plethora of authors "in between", 
+proposing variations or combinations of both intelectual streams.  
+
+In my third study I contribute to disentagle the debate, by comparing the results obtained in Study I and II, to a sample of native 
+Spanish-speaking participants from South America, which happens to be the region of the world where I come from. 
+
+""")
+
+st.title('Undergraduate students sample results', 'st-sample')
+
+st.subheader('Table of contents', 'toc')
 
 st.write("""
 [**Forced-choice results**](#title-fc):
