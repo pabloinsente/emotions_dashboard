@@ -126,11 +126,15 @@ st.write("""
 
 [**K-means clustering results**](#title-km):
 - [Forced-choice clustering](#header-fc-km)
-    - [K-means evaluation](#subheader-fc-km-e)
+    - [K-means cluster selection criteria](#subheader-fc-km-e)
     - [K-means solution](#subheader-fc-km-s)
 - [Free-labeling clustering](#header-fl-km)
-    - [K-means evaluation](#subheader-fl-km-e)
+    - [K-means cluster selection criteria](#subheader-fl-km-e)
     - [K-means solution](#subheader-fl-km-s)
+- [K-means clustering evaluation](#header-km-eval)
+    - [Silhouette score](#subheader-km-ss)
+    - [Calinski-Harabasz score](#subheader-km-chs)
+    - [Davies-Bouldin score](#subheader-km-dbs)
 
 [**PCA results**](#title-pca):
 - [2 components solution by survey method](#header-pca-2d-all)
@@ -443,6 +447,32 @@ st.image(image)
 
 st.write("""[back to the toc](#toc)""")
 
+##############################
+## KMeans clusters evaluation
+###############################
+
+df_pca_eval = pd.read_csv('data/pca_svg_strings.csv')
+
+st.header('K-means clustering evaluation', 'header-km-eval')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][0])
+render_svg(df_pca_eval['svg'][0])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][1])
+render_svg(df_pca_eval['svg'][1])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][2])
+render_svg(df_pca_eval['svg'][2])
+
+st.write("""[back to the toc](#toc)""")
+
+
 ##############
 ## PCA RESULTS
 
@@ -475,9 +505,9 @@ st.header('Forced-choice 2 components solution by image ethnicity', 'header-pca-
 col1, col2 = st.beta_columns(2)
 
 with col1:
-    st.subheader("Caucasian")
+    st.subheader("POC")
 with col2:
-    st.subheader("Bipoc")
+    st.subheader("Caucasian")
 
 image = Image.open('data/pca_chart_2d_images_forced_ethnicity.png')
 st.image(image)
@@ -494,9 +524,9 @@ st.header('Free-labeling 2 components solution by image ethnicity', 'header-pca-
 col1, col2 = st.beta_columns(2)
 
 with col1:
-    st.subheader("Caucasian")
+    st.subheader("POC")
 with col2:
-    st.subheader("Bipoc")
+    st.subheader("Caucasian")
 
 image = Image.open('data/pca_chart_2d_images_free_ethnicity.png')
 st.image(image)
@@ -506,8 +536,9 @@ st.image(image)
 
 st.write("""[back to the toc](#toc)""")
 
-
+#####################
 ## PCA evaluation ##
+####################
 
 df_pca_eval = pd.read_csv('data/pca_svg_strings.csv')
 
@@ -515,18 +546,18 @@ st.header('PCA 2 components embeddings evaluation', 'header-2d-pca-eval')
 
 ### silhouette_score ###
 
-st.subheader(df_pca_eval['image_title'][0])
-render_svg(df_pca_eval['svg'][0])
+st.subheader(df_pca_eval['image_title'][3])
+render_svg(df_pca_eval['svg'][3])
 
 ### calinski_harabasz_score ###
 
-st.subheader(df_pca_eval['image_title'][1])
-render_svg(df_pca_eval['svg'][1])
+st.subheader(df_pca_eval['image_title'][4])
+render_svg(df_pca_eval['svg'][4])
 
 ### davies_bouldin_score ###
 
-st.subheader(df_pca_eval['image_title'][2])
-render_svg(df_pca_eval['svg'][2])
+st.subheader(df_pca_eval['image_title'][5])
+render_svg(df_pca_eval['svg'][5])
 
 st.write("""[back to the toc](#toc)""")
 
@@ -705,18 +736,18 @@ st.header('PCA 3 components embeddings evaluation', 'header-3d-pca-eval')
 
 ### silhouette_score ###
 
-st.subheader(df_pca_eval['image_title'][3])
-render_svg(df_pca_eval['svg'][3])
+st.subheader(df_pca_eval['image_title'][6])
+render_svg(df_pca_eval['svg'][6])
 
 ### calinski_harabasz_score ###
 
-st.subheader(df_pca_eval['image_title'][4])
-render_svg(df_pca_eval['svg'][4])
+st.subheader(df_pca_eval['image_title'][7])
+render_svg(df_pca_eval['svg'][7])
 
 ### davies_bouldin_score ###
 
-st.subheader(df_pca_eval['image_title'][5])
-render_svg(df_pca_eval['svg'][5])
+st.subheader(df_pca_eval['image_title'][8])
+render_svg(df_pca_eval['svg'][8])
 
 st.write("""[back to the toc](#toc)""")
 
@@ -910,11 +941,24 @@ st.write("""
 
 [**K-means clustering results**](#title-km-mturk):
 - [Forced-choice clustering](#header-fc-km-mturk)
-    - [K-means evaluation](#subheader-fc-km-e-mturk)
+    - [K-means cluster selection criteria](#subheader-fc-km-e-mturk)
     - [K-means solution](#subheader-fc-km-s-mturk)
 - [Free-labeling clustering](#header-fl-km-mturk)
-    - [K-means evaluation](#subheader-fl-km-e-mturk)
+    - [K-means cluster selection criteria](#subheader-fl-km-e-mturk)
     - [K-means solution](#subheader-fl-km-s-mturk)
+- [K-means clustering evaluation](#header-km-eval-mturk)
+    - [Silhouette score](#subheader-km-ss-mturk)
+    - [Calinski-Harabasz score](#subheader-km-chs-mturk)
+    - [Davies-Bouldin score](#subheader-km-dbs-mturk)
+
+[**PCA results**](#title-pca-mturk):
+- [2 components solution by survey method](#header-pca-2d-all-mturk)
+- [Forced-choice 2 components solution by image ethnicity](#header-pca-2d-forced-et-mturk)
+- [Free-labeling 2 components solution by image ethnicity](#header-pca-2d-free-et-mturk)
+- [PCA 2 components embeddings evaluation](#header-2d-pca-eval-mturk)
+    - [Silhouette score](#subheader-pca-2d-ss-mturk)
+    - [Calinski-Harabasz score](#subheader-pca-2d-chs-mturk)
+    - [Davies-Bouldin score](#subheader-pca-2d-dbs-mturk)
 
 """)
 
@@ -1036,6 +1080,124 @@ render_svg(df_svg['svg'][21])
 
 st.write("""[back to the toc](#mturk-sample)""")
 
+
+st.title('Free-labeling results', 'title-fl-mturk')
+
+df_svg_free = pd.read_csv('data/free_choice_svg_strings_mturk.csv')
+
+st.header('Participants demographics', 'header-fl-dem-mturk')
+
+## participants by sex ##
+st.write(df_svg_free['image_title'][0])
+render_svg(df_svg_free['svg'][0])
+
+## participants by age ##
+st.write(df_svg_free['image_title'][1])
+render_svg(df_svg_free['svg'][1])
+
+## participants by ethnicity ##
+st.write(df_svg_free['image_title'][2])
+render_svg(df_svg_free['svg'][2])
+
+## participants by formal education ##
+st.write(df_svg_free['image_title'][3])
+render_svg(df_svg_free['svg'][3])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+
+st.header('Overall results', 'header-fl-overall-mturk')
+
+## overall % ##
+st.write(df_svg_free['image_title'][4])
+render_svg(df_svg_free['svg'][4])
+
+## overall cnt ##
+st.write(df_svg_free['image_title'][5])
+render_svg(df_svg_free['svg'][5])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+st.header('Results by expected emotion label', 'header-fl-emotions-mturk')
+
+## anger ##
+st.write(df_svg_free['image_title'][6])
+render_svg(df_svg_free['svg'][6])
+
+## disgust  ##
+st.write(df_svg_free['image_title'][7])
+render_svg(df_svg_free['svg'][7])
+
+## fear  ##
+st.write(df_svg_free['image_title'][8])
+render_svg(df_svg_free['svg'][8])
+
+## surprise ##
+st.write(df_svg_free['image_title'][9])
+render_svg(df_svg_free['svg'][9])
+
+## happiness  ##
+st.write(df_svg_free['image_title'][10])
+render_svg(df_svg_free['svg'][10])
+
+## sadness ##
+st.write(df_svg_free['image_title'][11])
+render_svg(df_svg_free['svg'][11])
+
+## uncertain  ##
+st.write(df_svg_free['image_title'][12])
+render_svg(df_svg_free['svg'][12])
+
+## neutral ##
+st.write(df_svg_free['image_title'][13])
+render_svg(df_svg_free['svg'][13])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC images")
+with col2:
+    st.subheader("Caucasian images")
+
+## anger * ethnicity ##
+st.write(df_svg_free['image_title'][14])
+render_svg(df_svg_free['svg'][14])
+
+## disgust * ethnicity ##
+st.write(df_svg_free['image_title'][15])
+render_svg(df_svg_free['svg'][15])
+
+## fear * ethnicity ##
+st.write(df_svg_free['image_title'][16])
+render_svg(df_svg_free['svg'][16])
+
+## surprise * ethnicity ##
+st.write(df_svg_free['image_title'][17])
+render_svg(df_svg_free['svg'][17])
+
+## happiness * ethnicity ##
+st.write(df_svg_free['image_title'][18])
+render_svg(df_svg_free['svg'][18])
+
+## sadness * ethnicity ##
+st.write(df_svg_free['image_title'][19])
+render_svg(df_svg_free['svg'][19])
+
+## neutral * ethnicity ##
+st.write(df_svg_free['image_title'][20])
+render_svg(df_svg_free['svg'][20])
+
+## uncertain * ethnicity ##
+st.write(df_svg_free['image_title'][21])
+render_svg(df_svg_free['svg'][21])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+
 ##################
 ## K MEANS RESULTS
 
@@ -1055,19 +1217,147 @@ st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s-mturk')
 image = Image.open('data/k_means_forced_choice_6_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc](#mturk-sample)""")
+
+###########################
+## Free labeling clustering
+
+st.header('Free-labeling clustering', 'header-fl-km-mturk')
+
+## K-means *evaluation* free choice ##
+st.subheader(df_svg_free['image_title'][22], 'subheader-fl-km-e-mturk')
+render_svg(df_svg_free['svg'][22])
+
+## K-means *clusters* forced choice ##
+
+st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s-mturk')
+image = Image.open('data/k_means_free_choice_10_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+##############################
+## KMeans clusters evaluation
+###############################
+
+df_pca_eval = pd.read_csv('data/pca_svg_strings_mturk.csv')
+
+st.header('K-means clustering evaluation', 'header-km-eval-mturk')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][0])
+render_svg(df_pca_eval['svg'][0])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][1])
+render_svg(df_pca_eval['svg'][1])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][2])
+render_svg(df_pca_eval['svg'][2])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+##############
+## PCA RESULTS
+
+st.title('PCA results', 'title-pca-mturk')
+
+## aggregated ##
+
+st.header('2 components solution by survey method', 'header-pca-2d-all-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+image = Image.open('data/pca_chart_2d_images_all_mturk.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_all_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+
+## forced-choice by ethnicity ##
+
+st.header('Forced-choice 2 components solution by image ethnicity', 'header-pca-2d-forced-et-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC")
+with col2:
+    st.subheader("Caucasian")
+
+image = Image.open('data/pca_chart_2d_images_forced_ethnicity_mturk.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_forced_ethnicity_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+## free-choice by ethnicity ##
+
+st.header('Free-labeling 2 components solution by image ethnicity', 'header-pca-2d-free-et-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC")
+with col2:
+    st.subheader("Caucasian")
+
+image = Image.open('data/pca_chart_2d_images_free_ethnicity_mturk.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_free_ethnicity_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+#####################
+## PCA evaluation ##
+####################
+
+st.header('PCA 2 components embeddings evaluation', 'header-2d-pca-eval-mturk')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][3])
+render_svg(df_pca_eval['svg'][3])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][4])
+render_svg(df_pca_eval['svg'][4])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][5])
+render_svg(df_pca_eval['svg'][5])
+
+st.write("""[back to the toc](#mturk-sample)""")
 
 # --------- %% --------- #
 
 ##########################
 ##########################
-## English-speaking MTurk 
+## Spanish-speaking MTurk 
 ##########################
 ##########################
 
 # --------- %% --------- #
 
 
-st.title('III: English-speaking MTurk sample results', 'mturk-sample-spanish')
+st.title('III: Spanish-speaking MTurk sample results', 'mturk-sample-spanish')
 
 st.write('Pending data...')
