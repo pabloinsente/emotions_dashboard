@@ -955,6 +955,10 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-3d-chs-mturk)
     - [Davies-Bouldin score](#subheader-pca-3d-dbs-mturk)
 
+[**Sentiment analysis results**](#title-sen-mturk):
+- [Sentiment score distributions](#header-sen-d-mturk)
+- [Sentiment score means and confidence intervals](#header-sen-m-mturk)
+
 """)
 
 st.write("""[back to the toc](#toc-mturk)""")
@@ -1532,6 +1536,61 @@ render_svg(df_pca_eval['svg'][7])
 
 st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+#####################
+## SENTIMENT ANALYSIS
+
+df_sentiment_svg = pd.read_csv('data/sentiment_svg_strings_mturk.csv')
+
+st.title('Sentiment analysis results', 'title-sen-mturk')
+
+#################################
+## sentiment scores distributions
+
+st.header('Sentiment score distributions', 'header-sen-d-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+## overall sentiment ##
+st.subheader(df_sentiment_svg['image_title'][0])
+render_svg(df_sentiment_svg['svg'][0])
+
+## overall sex ##
+st.subheader(df_sentiment_svg['image_title'][1])
+render_svg(df_sentiment_svg['svg'][1])
+
+## overall ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][2])
+render_svg(df_sentiment_svg['svg'][2])
+
+## overall age ##
+st.subheader(df_sentiment_svg['image_title'][3])
+render_svg(df_sentiment_svg['svg'][3])
+
+st.write("""[back to the toc](#mturk-sample)""")
+
+#############################
+## sentiment scores means/std
+
+st.header('Sentiment score means and 95% confidence intervals', 'header-sen-m-mturk')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+## compounded sentiment ##
+st.subheader(df_sentiment_svg['image_title'][4])
+render_svg(df_sentiment_svg['svg'][4])
 
 st.write("""[back to the toc](#mturk-sample)""")
 
