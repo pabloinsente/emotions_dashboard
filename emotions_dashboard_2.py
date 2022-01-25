@@ -791,7 +791,7 @@ st.write("""[back to the toc](#toc)""")
 #############################
 ## sentiment scores means/std
 
-st.header('Sentiment score means and confidence intervals', 'header-sen-m')
+st.header('Sentiment score means and 95% confidence intervals', 'header-sen-m')
 
 col1, col2 = st.beta_columns(2)
 
@@ -803,18 +803,6 @@ with col2:
 ## compounded sentiment ##
 st.subheader(df_sentiment_svg['image_title'][4])
 render_svg(df_sentiment_svg['svg'][4])
-
-## negative sentiment ##
-st.subheader(df_sentiment_svg['image_title'][5])
-render_svg(df_sentiment_svg['svg'][5])
-
-## positive sentiment ##
-st.subheader(df_sentiment_svg['image_title'][6])
-render_svg(df_sentiment_svg['svg'][6])
-
-## neutral sentiment ##
-st.subheader(df_sentiment_svg['image_title'][7])
-render_svg(df_sentiment_svg['svg'][7])
 
 st.write("""[back to the toc](#toc)""")
 
