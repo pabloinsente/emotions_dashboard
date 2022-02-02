@@ -162,7 +162,6 @@ st.write("""
 - [Word-ranking for 'disgust'](#header-db-disgust)
 - [Word-ranking for 'fear'](#header-db-fear)
 - [Word-ranking for 'happiness'](#header-db-happiness)
-- [Word-ranking for 'neutral'](#header-db-neutral)
 - [Word-ranking for 'sadness'](#header-db-sadness)
 - [Word-ranking for 'surprise'](#header-db-surprise)
 
@@ -885,6 +884,21 @@ st.image(image)
 
 # happiness male of color #
 image = Image.open('data/happiness_bma_next_panel.png')
+st.image(image)
+
+# happiness white female #
+image = Image.open('data/happiness_wfa_next_panel.png')
+st.image(image)
+
+# happiness white male #
+image = Image.open('data/happiness_wma_next_panel.png')
+st.image(image)
+
+## SADNESS RANKINGS ##
+st.header('Word-rankings for sadness', 'header-db-sadness')
+
+# sadness female of color #
+image = Image.open('data/sadness_bfa_next_panel.png')
 st.image(image)
 
 st.write("""[back to the toc](#toc)""")
