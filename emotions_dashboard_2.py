@@ -5,6 +5,7 @@ import numpy as np
 import base64
 import plotly.express as px
 from PIL import Image
+import streamlit.components.v1 as components
 
 
 st.set_page_config(layout="wide")
@@ -153,8 +154,12 @@ st.write("""
     - [Davies-Bouldin score](#subheader-pca-3d-dbs)
 
 [**Sentiment analysis results**](#title-sen):
-- [Sentiment score distributions](#header-sen-d)
-- [Sentiment score means and confidence intervals](#header-sen-m)
+- [Histograms sentiment-score distributions](#header-sen-d)
+- [Boxplots sentiment-score by groups](#header-box-m)
+- [Linear Mixed-Effect Model](#header-lmer)
+    - [Model specification](#subheader-lmer-m)
+    - [Model summary](#subheader-lmer-s)
+    - [NOVA for fixed-effects coefficients](#subheader-lmer-a)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -760,7 +765,7 @@ st.title('Sentiment analysis results', 'title-sen')
 #################################
 ## sentiment scores distributions
 
-st.header('Sentiment score distributions', 'header-sen-d')
+st.header('Histograms sentiment-score distributions', 'header-sen-d')
 
 col1, col2 = st.beta_columns(2)
 
@@ -785,12 +790,18 @@ render_svg(df_sentiment_svg['svg'][2])
 st.subheader(df_sentiment_svg['image_title'][3])
 render_svg(df_sentiment_svg['svg'][3])
 
+## Mean sentiment-scores grouped by participants ##
+st.subheader(df_sentiment_svg['image_title'][4])
+render_svg(df_sentiment_svg['svg'][4])
+
+## Mean sentiment-scores grouped by photos ##
+st.subheader(df_sentiment_svg['image_title'][5])
+render_svg(df_sentiment_svg['svg'][5])
+
 st.write("""[back to the toc](#toc)""")
 
 #############################
-## sentiment scores means/std
-
-st.header('Sentiment score means and 95% confidence intervals', 'header-sen-m')
+## boxplots
 
 col1, col2 = st.beta_columns(2)
 
@@ -799,11 +810,57 @@ with col1:
 with col2:
     st.subheader("Free-labeling")
 
-## compounded sentiment ##
-st.subheader(df_sentiment_svg['image_title'][4])
-render_svg(df_sentiment_svg['svg'][4])
+st.header('Boxplots sentiment-score by groups', 'header-box-m')
+
+## boxplot by sex ##
+st.subheader(df_sentiment_svg['image_title'][6])
+render_svg(df_sentiment_svg['svg'][6])
+
+## boxplot by ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][7])
+render_svg(df_sentiment_svg['svg'][7])
+
+## boxplot by age ##
+st.subheader(df_sentiment_svg['image_title'][8])
+render_svg(df_sentiment_svg['svg'][8])
+
+## boxplot by sex and ethnicity - forced-responses##
+st.subheader(df_sentiment_svg['image_title'][9])
+render_svg(df_sentiment_svg['svg'][9])
+
+## boxplot by sex and ethnicity - free-responses##
+st.subheader(df_sentiment_svg['image_title'][10])
+render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc](#toc)""")
+
+
+st.header('Linear Mixed-Effect Models', 'header-lmer')
+
+### Formula ###
+st.subheader("Model specification", "subheader-lmer-m")
+
+st.write("pending...")
+
+### LMER summary ####
+st.subheader("Model summary", "subheader-lmer-s")
+
+HtmlFile = open("data/lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 600)
+
+### ANOVA table for coeff ####
+st.subheader("ANOVA for fixed-effects coefficients", "subheader-lmer-a")
+
+HtmlFile = open("data/anova_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 200)
+
+st.write("""[back to the toc](#toc)""")
+
+
 
 #############################
 ## DUELING BANDINTS EXPERIMENT
@@ -970,8 +1027,8 @@ st.write("""
     - [Davies-Bouldin score](#subheader-pca-3d-dbs-mturk)
 
 [**Sentiment analysis results**](#title-sen-mturk):
-- [Sentiment score distributions](#header-sen-d-mturk)
-- [Sentiment score means and confidence intervals](#header-sen-m-mturk)
+- [Histograms sentiment-score distributions](#header-sen-d-mturk)
+- [Boxplots sentiment-score by groups](#header-box-m-mturk)
 
 """)
 
@@ -1563,7 +1620,7 @@ st.title('Sentiment analysis results', 'title-sen-mturk')
 #################################
 ## sentiment scores distributions
 
-st.header('Sentiment score distributions', 'header-sen-d-mturk')
+st.header('Histograms sentiment-score distributions', 'header-sen-d-mturk')
 
 col1, col2 = st.beta_columns(2)
 
@@ -1588,12 +1645,18 @@ render_svg(df_sentiment_svg['svg'][2])
 st.subheader(df_sentiment_svg['image_title'][3])
 render_svg(df_sentiment_svg['svg'][3])
 
+## Mean sentiment-scores grouped by participants ##
+st.subheader(df_sentiment_svg['image_title'][4])
+render_svg(df_sentiment_svg['svg'][4])
+
+## Mean sentiment-scores grouped by photos ##
+st.subheader(df_sentiment_svg['image_title'][5])
+render_svg(df_sentiment_svg['svg'][5])
+
 st.write("""[back to the toc](#mturk-sample)""")
 
 #############################
-## sentiment scores means/std
-
-st.header('Sentiment score means and 95% confidence intervals', 'header-sen-m-mturk')
+## boxplots
 
 col1, col2 = st.beta_columns(2)
 
@@ -1602,9 +1665,27 @@ with col1:
 with col2:
     st.subheader("Free-labeling")
 
-## compounded sentiment ##
-st.subheader(df_sentiment_svg['image_title'][4])
-render_svg(df_sentiment_svg['svg'][4])
+st.header('Boxplots sentiment-score by groups', 'header-box-m-mturk')
+
+## boxplot by sex ##
+st.subheader(df_sentiment_svg['image_title'][6])
+render_svg(df_sentiment_svg['svg'][6])
+
+## boxplot by ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][7])
+render_svg(df_sentiment_svg['svg'][7])
+
+## boxplot by age ##
+st.subheader(df_sentiment_svg['image_title'][8])
+render_svg(df_sentiment_svg['svg'][8])
+
+## boxplot by sex and ethnicity - forced-responses##
+st.subheader(df_sentiment_svg['image_title'][9])
+render_svg(df_sentiment_svg['svg'][9])
+
+## boxplot by sex and ethnicity - free-responses##
+st.subheader(df_sentiment_svg['image_title'][10])
+render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc](#mturk-sample)""")
 
@@ -1622,3 +1703,8 @@ st.write("""[back to the toc](#mturk-sample)""")
 st.title('III: Spanish-speaking MTurk sample results', 'mturk-sample-spanish')
 
 st.write('Pending data...')
+
+
+
+
+
