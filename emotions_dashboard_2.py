@@ -153,14 +153,19 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-3d-chs)
     - [Davies-Bouldin score](#subheader-pca-3d-dbs)
 
-[**Sentiment analysis results**](#title-sen):
+[**Sentiment analysis descriptives results**](#title-sen):
 - [Histograms sentiment-score distributions](#header-sen-d)
 - [Boxplots sentiment-score by groups](#header-box-m)
-- [Linear Mixed-Effect Model](#header-lmer)
-    - [Model specification](#subheader-lmer-m)
-    - [Model summary](#subheader-lmer-s)
-    - [ANOVA for fixed-effects coefficients](#subheader-lmer-a)
-    - [Individual participant data for each condition](#subheader-lmer-ind)
+
+[**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f):
+- [Model specification](#header-lmer-f-m)
+- [Model summary](#header-lmer-f-s)
+- [ANOVA for fixed-effects coefficients](#header-lmer-f-a)
+- [Individual participant data for each condition](#header-lmer-f-ind)
+- [Homogeneity of variance assumption](#header-lmer-f-var) 
+    - [ANOVA for between subjects residuals](#header-lmer-f-a-res)
+    - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot)
+- [Normality of error term assumption](#header-lmer-f-nor) 
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -761,7 +766,7 @@ st.write("""[back to the toc](#toc)""")
 
 df_sentiment_svg = pd.read_csv('data/sentiment_svg_strings.csv')
 
-st.title('Sentiment analysis results', 'title-sen')
+st.title('Sentiment analysis descriptives results', 'title-sen')
 
 #################################
 ## sentiment scores distributions
@@ -838,11 +843,11 @@ st.write("""[back to the toc](#toc)""")
 ############################
 ### LMER FORCED SURVEY #####
 
-st.header('Linear Mixed-Effect Models', 'header-lmer')
+st.title('Sentiment analysis linear mixed-effect model - Forced-choice survey', 'title-lmer-f')
 
 ###############
 ### Formula ###
-st.subheader("Model specification", "subheader-lmer-m")
+st.header("Model specification", "header-lmer-f-m")
 
 with open('data/formula_lmer_summary_forced_uw_students.txt') as f:
     formula = f.read().rstrip()
@@ -851,7 +856,7 @@ st.latex(formula)
 
 #####################
 ### LMER summary ####
-st.subheader("Model summary", "subheader-lmer-s")
+st.header("Model summary", "header-lmer-f-s")
 
 HtmlFile = open("data/lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
@@ -860,17 +865,75 @@ components.html(source_code, height = 600)
 
 ###############################
 ### ANOVA table for coeff ####
-st.subheader("ANOVA for fixed-effects coefficients", "subheader-lmer-a")
+st.header("ANOVA for fixed-effects coefficients", "header-lmer-f-a")
 
 HtmlFile = open("data/anova_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 200)
+components.html(source_code, height = 150)
 
 ### Individual participant data ####
-st.subheader("Individual participant data for each condition", "subheader-lmer-ind")
-image = Image.open('data/participants_charts_lmer_forced_uw_students.png')
-st.image(image, use_column_width= 'never',  width=800)
+st.header("Individual participant data for each condition", "header-lmer-f-ind")
+with open('data/participants_charts_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+############################################
+#### Homogeneity of variance assumption ####
+############################################
+st.header("Homogeneity of variance assumption", "header-lmer-f-var")
+
+    ################################################
+    ### ANOVA table between subjects residuials ####
+st.subheader("ANOVA for between subjects residuals", "subheader-lmer-f-a-res")
+
+HtmlFile = open("data/anova_bwt_res_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+    ##################################
+    ### Fitted vs residuals plot  ####
+st.subheader("Fitted vs residuals plot", "subheader-lmer-f-a-res-plot")
+
+with open('data/fitted_vs_residual_plot_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##################################
+    ### Level 1 residual plot  ####
+st.subheader("Level 1 residuals plot", "subheader-lmer-f-a-res-plot-l1")
+
+with open('data/l1_res_plot_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ###########################################
+    ### Level 2 residual plot - intercept  ####
+st.subheader("Level 2 residuals plot", "subheader-lmer-f-a-res-plot-l2-int")
+
+with open('data/l2_int_res_plot_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+
+###########################################
+### Normality of error term assumption ###
+
+st.header("Normality of error term assumption", "header-lmer-f-nor")
+
+    ###########################################
+    ### Quantile-Quantile Plot  ####
+st.subheader("Quantile-Quantile Plot", "subheader-lmer-f-a-qq")
+
+with open('data/qqplot_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
 
 st.write("""[back to the toc](#toc)""")
 
