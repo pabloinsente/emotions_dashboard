@@ -159,7 +159,8 @@ st.write("""
 - [Linear Mixed-Effect Model](#header-lmer)
     - [Model specification](#subheader-lmer-m)
     - [Model summary](#subheader-lmer-s)
-    - [NOVA for fixed-effects coefficients](#subheader-lmer-a)
+    - [ANOVA for fixed-effects coefficients](#subheader-lmer-a)
+    - [Individual participant data for each condition](#subheader-lmer-ind)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -834,14 +835,21 @@ render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc](#toc)""")
 
+############################
+### LMER FORCED SURVEY #####
 
 st.header('Linear Mixed-Effect Models', 'header-lmer')
 
+###############
 ### Formula ###
 st.subheader("Model specification", "subheader-lmer-m")
 
-st.write("pending...")
+with open('data/formula_lmer_summary_forced_uw_students.txt') as f:
+    formula = f.read().rstrip()
 
+st.latex(formula)
+
+#####################
 ### LMER summary ####
 st.subheader("Model summary", "subheader-lmer-s")
 
@@ -850,6 +858,7 @@ source_code = HtmlFile.read()
 print(source_code)
 components.html(source_code, height = 600)
 
+###############################
 ### ANOVA table for coeff ####
 st.subheader("ANOVA for fixed-effects coefficients", "subheader-lmer-a")
 
@@ -858,9 +867,12 @@ source_code = HtmlFile.read()
 print(source_code)
 components.html(source_code, height = 200)
 
+### Individual participant data ####
+st.subheader("Individual participant data for each condition", "subheader-lmer-ind")
+image = Image.open('data/participants_charts_lmer_forced_uw_students.png')
+st.image(image, use_column_width= 'never',  width=800)
+
 st.write("""[back to the toc](#toc)""")
-
-
 
 #############################
 ## DUELING BANDINTS EXPERIMENT
