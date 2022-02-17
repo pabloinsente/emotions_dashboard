@@ -160,12 +160,24 @@ st.write("""
 [**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f):
 - [Model specification](#header-lmer-f-m)
 - [Model summary](#header-lmer-f-s)
+- [Model comparison](#header-lmer-f-com)
 - [ANOVA for fixed-effects coefficients](#header-lmer-f-a)
 - [Individual participant data for each condition](#header-lmer-f-ind)
 - [Homogeneity of variance assumption](#header-lmer-f-var) 
     - [ANOVA for between subjects residuals](#header-lmer-f-a-res)
     - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot)
+    - [Level 1 residuals plot](#subheader-lmer-f-a-res-plot-l1)
+    - [Level 2 residuals plot](#subheader-lmer-f-a-res-plot-l2-int)
 - [Normality of error term assumption](#header-lmer-f-nor) 
+    - [Quantile-Quantile Plot](#subheader-lmer-f-a-qq)
+- [Influence check](#header-lmer-f-inf)
+    - [Influence datapoints](#subheader-lmer-f-inf-dp)
+    - [Influence participants](#subheader-lmer-f-inf-ind)
+- [Leverage check](#header-lmer-f-inf)
+    - [Leverage datapoints](#subheader-lmer-f-lev-dp)
+    - [Leverage participants](#subheader-lmer-f-lev-ind)
+- [Model summary for reffited model](#header-lmer-f-s-re)
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-f-a-re)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -863,9 +875,18 @@ source_code = HtmlFile.read()
 print(source_code)
 components.html(source_code, height = 600)
 
+#########################################
+### ANOVA table for model comparison ####
+st.header("ANOVA for model comparison", "header-lmer-f-com")
+
+HtmlFile = open("data/anova_comparison_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 150)
+
 ###############################
 ### ANOVA table for coeff ####
-st.header("ANOVA for fixed-effects coefficients", "header-lmer-f-a")
+st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-f-a")
 
 HtmlFile = open("data/anova_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
@@ -878,6 +899,7 @@ with open('data/participants_charts_lmer_forced_uw_students.txt') as f:
     svg_image = f.read().rstrip()
 
 render_svg(svg_image)
+
 
 ############################################
 #### Homogeneity of variance assumption ####
@@ -920,6 +942,7 @@ with open('data/l2_int_res_plot_forced_uw_students.txt') as f:
 
 render_svg(svg_image)
 
+st.write("""[back to the toc](#toc)""")
 
 ###########################################
 ### Normality of error term assumption ###
@@ -935,10 +958,80 @@ with open('data/qqplot_lmer_forced_uw_students.txt') as f:
 
 render_svg(svg_image)
 
+#######################
+### Influence check ###
+
+st.header("Influence check", "header-lmer-f-inf")
+
+    ##############################
+    ### Influence datapoints  ####
+st.subheader("Influence datapoints", "subheader-lmer-f-inf-dp")
+
+with open('data/influence_datapoints_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ################################
+    ### Influence participants  ####
+st.subheader("Influence participants", "subheader-lmer-f-inf-ind")
+
+with open('data/influence_participants_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#######################
+### Influence check ###
+
+st.header("Leverage check", "header-lmer-f-lev")
+
+    ##############################
+    ### leverage  datapoints  ####
+st.subheader("Leverage datapoints", "subheader-lmer-f-lev-dp")
+
+with open('data/leverage_datapoints_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##############################
+    ### leverage participants  ####
+st.subheader("Leverage participants", "subheader-lmer-f-lev-ind")
+
+with open('data/leverage_participants_lmer_forced_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
 st.write("""[back to the toc](#toc)""")
 
-#############################
+#################################################
+### LMER refitted summary for reffited model ####
+st.header("Model summary for reffited model", "header-lmer-f-s-re")
+
+HtmlFile = open("data/lmer_refit_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 600)
+
+#######################################
+### ANOVA table for refitted coeff ####
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-f-a")
+
+HtmlFile = open("data/anova_lmer_refit_summary_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 150)
+
+
+#######################################
+#######################################
+
 ## DUELING BANDINTS EXPERIMENT
+
+#######################################
+#######################################
 
 st.title('Dueling-bandits ranking experiment and comparison with surveys results', 'title-db')
 
