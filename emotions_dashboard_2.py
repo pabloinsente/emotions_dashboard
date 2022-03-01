@@ -176,8 +176,28 @@ st.write("""
 - [Leverage check](#header-lmer-f-inf)
     - [Leverage datapoints](#subheader-lmer-f-lev-dp)
     - [Leverage participants](#subheader-lmer-f-lev-ind)
-- [Model summary for reffited model](#header-lmer-f-s-re)
-- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-f-a-re)
+
+[**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr):
+- [Model specification](#header-lmer-fr-m)
+- [Model summary](#header-lmer-fr-s)
+- [Model comparison](#header-lmer-fr-com)
+- [ANOVA for fixed-effects coefficients](#header-lmer-fr-a)
+- [Individual participant data for each condition](#header-lmer-fr-ind)
+- [Homogeneity of variance assumption](#header-lmer-fr-var) 
+    - [ANOVA for between subjects residuals](#header-lmer-fr-a-res)
+    - [Fitted vs residuals plot](#subheader-lmer-fr-a-res-plot)
+    - [Level 1 residuals plot](#subheader-lmer-fr-a-res-plot-l1)
+    - [Level 2 residuals plot](#subheader-lmer-fr-a-res-plot-l2-int)
+- [Normality of error term assumption](#header-lmer-fr-nor) 
+    - [Quantile-Quantile Plot](#subheader-lmer-fr-a-qq)
+- [Influence check](#header-lmer-fr-inf)
+    - [Influence datapoints](#subheader-lmer-fr-inf-dp)
+    - [Influence participants](#subheader-lmer-fr-inf-ind)
+- [Leverage check](#header-lmer-fr-inf)
+    - [Leverage datapoints](#subheader-lmer-fr-lev-dp)
+    - [Leverage participants](#subheader-lmer-fr-lev-ind)
+- [Model summary for reffited model](#header-lmer-fr-s-re)
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -1006,24 +1026,182 @@ render_svg(svg_image)
 
 st.write("""[back to the toc](#toc)""")
 
+
+
+############################
+############################
+### LMER FREE SURVEY #######
+
+st.title('Sentiment analysis linear mixed-effect model - Free-choice survey', 'title-lmer-fr')
+
+###############
+### Formula ###
+st.header("Model specification", "header-lmer-fr-m")
+
+with open('data/formula_lmer_summary_free_uw_students.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### LMER summary ####
+st.header("Model summary", "header-lmer-fr-s")
+
+HtmlFile = open("data/lmer_summary_free_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 600)
+
+#########################################
+### ANOVA table for model comparison ####
+st.header("ANOVA for model comparison", "header-lmer-fr-com")
+
+HtmlFile = open("data/anova_comparison_lmer_summary_free_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 150)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-fr-a")
+
+HtmlFile = open("data/anova_lmer_summary_free_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 150)
+
+### Individual participant data ####
+st.header("Individual participant data for each condition", "header-lmer-fr-ind")
+with open('data/participants_charts_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+
+############################################
+#### Homogeneity of variance assumption ####
+############################################
+st.header("Homogeneity of variance assumption", "header-lmer-fr-var")
+
+    ################################################
+    ### ANOVA table between subjects residuials ####
+st.subheader("ANOVA for between subjects residuals", "subheader-lmer-fr-a-res")
+
+HtmlFile = open("data/anova_bwt_res_summary_free_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+    ##################################
+    ### Fitted vs residuals plot  ####
+st.subheader("Fitted vs residuals plot", "subheader-lmer-fr-a-res-plot")
+
+with open('data/fitted_vs_residual_plot_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##################################
+    ### Level 1 residual plot  ####
+st.subheader("Level 1 residuals plot", "subheader-lmer-fr-a-res-plot-l1")
+
+with open('data/l1_res_plot_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ###########################################
+    ### Level 2 residual plot - intercept  ####
+st.subheader("Level 2 residuals plot", "subheader-lmer-fr-a-res-plot-l2-int")
+
+with open('data/l2_int_res_plot_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc](#toc)""")
+
+###########################################
+### Normality of error term assumption ###
+
+st.header("Normality of error term assumption", "header-lmer-fr-nor")
+
+    ###########################################
+    ### Quantile-Quantile Plot  ####
+st.subheader("Quantile-Quantile Plot", "subheader-lmer-fr-a-qq")
+
+with open('data/qqplot_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#######################
+### Influence check ###
+
+st.header("Influence check", "header-lmer-fr-inf")
+
+    ##############################
+    ### Influence datapoints  ####
+st.subheader("Influence datapoints", "subheader-lmer-fr-inf-dp")
+
+with open('data/influence_datapoints_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ################################
+    ### Influence participants  ####
+st.subheader("Influence participants", "subheader-lmer-fr-inf-ind")
+
+with open('data/influence_participants_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#######################
+### Influence check ###
+
+st.header("Leverage check", "header-lmer-fr-lev")
+
+    ##############################
+    ### leverage  datapoints  ####
+st.subheader("Leverage datapoints", "subheader-lmer-fr-lev-dp")
+
+with open('data/leverage_datapoints_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##############################
+    ### leverage participants  ####
+st.subheader("Leverage participants", "subheader-lmer-fr-lev-ind")
+
+with open('data/leverage_participants_lmer_free_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc](#toc)""")
+
 #################################################
 ### LMER refitted summary for reffited model ####
-st.header("Model summary for reffited model", "header-lmer-f-s-re")
+st.header("Model summary for reffited model", "header-lmer-fr-s-re")
 
-HtmlFile = open("data/lmer_refit_summary_forced_uw_students.html", 'r', encoding='utf-8')
+HtmlFile = open("data/lmer_refit_summary_free_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code, height = 600)
 
 #######################################
 ### ANOVA table for refitted coeff ####
-st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-f-a")
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-fr-a")
 
-HtmlFile = open("data/anova_lmer_refit_summary_forced_uw_students.html", 'r', encoding='utf-8')
+HtmlFile = open("data/anova_lmer_refit_summary_free_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code, height = 150)
 
+st.write("""[back to the toc](#toc)""")
 
 #######################################
 #######################################
