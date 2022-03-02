@@ -202,12 +202,35 @@ st.write("""
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
 - [Word-ranking for 'anger'](#header-db-anger)
+    - [Female of color](#subheader-db-anger-fc)
+    - [Male of color](#subheader-db-anger-fm)
+    - [White female](#subheader-db-anger-wf)
+    - [White male](#subheader-db-anger-wm)
 - [Word-ranking for 'disgust'](#header-db-disgust)
+    - [Female of color](#subheader-db-disgust-fc)
+    - [Male of color](#subheader-db-disgust-fm)
+    - [White female](#subheader-db-disgust-wf)
+    - [White male](#subheader-db-disgust-wm)
 - [Word-ranking for 'fear'](#header-db-fear)
+    - [Female of color](#subheader-db-fear-fc)
+    - [Male of color](#subheader-db-fear-fm)
+    - [White female](#subheader-db-fear-wf)
+    - [White male](#subheader-db-fear-wm)
 - [Word-ranking for 'happiness'](#header-db-happiness)
+    - [Female of color](#subheader-db-happiness-fc)
+    - [Male of color](#subheader-db-happiness-fm)
+    - [White female](#subheader-db-happiness-wf)
+    - [White male](#subheader-db-happiness-wm)
 - [Word-ranking for 'sadness'](#header-db-sadness)
+    - [Female of color](#subheader-db-sadness-fc)
+    - [Male of color](#subheader-db-sadness-fm)
+    - [White female](#subheader-db-sadness-wf)
+    - [White male](#subheader-db-sadness-wm)
 - [Word-ranking for 'surprise'](#header-db-surprise)
-
+    - [Female of color](#subheader-db-surprise-fc)
+    - [Male of color](#subheader-db-surprise-fm)
+    - [White female](#subheader-db-surprise-wf)
+    - [White male](#subheader-db-surprise-wm)
 """)
 
 st.write("""[back to the toc](#toc)""")
@@ -1221,18 +1244,22 @@ st.write("""[back to the toc](#toc)""")
 st.header('Word-rankings for anger', 'header-db-anger')
 
 # anger female of color #
+st.subheader("Female of color", "subheader-db-anger-fc")
 image = Image.open('data/anger_bfa_next_panel.png')
 st.image(image)
 
 # anger male of color #
+st.subheader("Male of color", "subheader-db-anger-mc")
 image = Image.open('data/anger_bma_next_panel.png')
 st.image(image)
 
 # anger white female #
+st.subheader("White female", "subheader-db-anger-wf")
 image = Image.open('data/anger_wfa_next_panel.png')
 st.image(image)
 
 # anger white male  #
+st.subheader("White male", "subheader-db-anger-wm")
 image = Image.open('data/anger_wma_next_panel.png')
 st.image(image)
 
@@ -1242,18 +1269,22 @@ st.write("""[back to the toc](#toc)""")
 st.header('Word-rankings for disgust', 'header-db-disgust')
 
 # disgust female of color #
+st.subheader("Female of color", "subheader-db-disgust-fc")
 image = Image.open('data/disgust_bfa_next_panel.png')
 st.image(image)
 
 # disgust male of color #
+st.subheader("Male of color", "subheader-db-disgust-mc")
 image = Image.open('data/disgust_bma_next_panel.png')
 st.image(image)
 
 # disgust white female #
+st.subheader("White female", "subheader-db-disgust-wf")
 image = Image.open('data/disgust_wfa_next_panel.png')
 st.image(image)
 
 # disgust white male  #
+st.subheader("White male", "subheader-db-disgust-wm")
 image = Image.open('data/disgust_wma_next_panel.png')
 st.image(image)
 
@@ -1316,11 +1347,31 @@ st.image(image)
 image = Image.open('data/sadness_wfa_next_panel.png')
 st.image(image)
 
+# sadness white male #
+image = Image.open('data/sadness_wma_next_panel.png')
+st.image(image)
+
 st.write("""[back to the toc](#toc)""")
 
 ## SURPRISE RANKINGS ##
 st.header('Word-rankings for surprise', 'header-db-surprise')
-st.write("""pending data...""")
+
+# surprise female of color #
+image = Image.open('data/surprise_bfa_next_panel.png')
+st.image(image)
+
+# surprise male of color #
+image = Image.open('data/surprise_bma_next_panel.png')
+st.image(image)
+
+# surprise white female #
+image = Image.open('data/surprise_wfa_next_panel.png')
+st.image(image)
+
+# surprise white male #
+image = Image.open('data/surprise_wma_next_panel.png')
+st.image(image)
+
 st.write("""[back to the toc](#toc)""")
 
 ##########################
