@@ -210,7 +210,7 @@ st.write("""
 
 """)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## SVG images ##
 def render_svg(svg):
@@ -241,7 +241,7 @@ render_svg(df_svg['svg'][2])
 st.write(df_svg['image_title'][3])
 render_svg(df_svg['svg'][3])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.header('Overall results', 'header-fc-overall')
 
@@ -253,7 +253,7 @@ render_svg(df_svg['svg'][4])
 st.write(df_svg['image_title'][5])
 render_svg(df_svg['svg'][5])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.header('Results by expected emotion label', 'header-fc-emotions')
 
@@ -289,7 +289,7 @@ render_svg(df_svg['svg'][12])
 st.write(df_svg['image_title'][13])
 render_svg(df_svg['svg'][13])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fc-emotions-et')
 
@@ -332,7 +332,7 @@ render_svg(df_svg['svg'][20])
 st.write(df_svg['image_title'][21])
 render_svg(df_svg['svg'][21])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.title('Free-labeling results', 'title-fl')
 df_svg_free = pd.read_csv('data/free_choice_svg_strings.csv')
@@ -355,7 +355,7 @@ render_svg(df_svg_free['svg'][2])
 st.write(df_svg_free['image_title'][3])
 render_svg(df_svg_free['svg'][3])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 st.header('Overall results', 'header-fl-overall')
@@ -368,7 +368,7 @@ render_svg(df_svg_free['svg'][4])
 st.write(df_svg_free['image_title'][5])
 render_svg(df_svg_free['svg'][5])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.header('Results by expected emotion label', 'header-fl-emotions')
 
@@ -404,7 +404,7 @@ render_svg(df_svg_free['svg'][12])
 st.write(df_svg_free['image_title'][13])
 render_svg(df_svg_free['svg'][13])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et')
 
@@ -447,7 +447,7 @@ render_svg(df_svg_free['svg'][20])
 st.write(df_svg_free['image_title'][21])
 render_svg(df_svg_free['svg'][21])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 ##################
@@ -470,7 +470,7 @@ st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s')
 image = Image.open('data/k_means_forced_choice_6.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ###########################
 ## Free labeling clustering
@@ -487,7 +487,7 @@ st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s')
 image = Image.open('data/k_means_free_labeling_10.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ##############################
 ## KMeans clusters evaluation
@@ -512,7 +512,7 @@ render_svg(df_pca_eval['svg'][1])
 st.subheader(df_pca_eval['image_title'][2])
 render_svg(df_pca_eval['svg'][2])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 ##############
@@ -537,7 +537,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_all.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 ## forced-choice by ethnicity ##
@@ -557,7 +557,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_forced_ethnicity.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## free-choice by ethnicity ##
 
@@ -576,7 +576,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_free_ethnicity.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 #####################
 ## PCA evaluation ##
@@ -601,7 +601,7 @@ render_svg(df_pca_eval['svg'][4])
 st.subheader(df_pca_eval['image_title'][5])
 render_svg(df_pca_eval['svg'][5])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 st.header('3 components solution by survey method', 'header-pca-3d-all')
@@ -661,7 +661,7 @@ with col2:
     st.subheader("Free-labeling")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 #######################
@@ -714,7 +714,7 @@ with col2:
     st.subheader("Free-labeling - BIPOC")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 #######################
@@ -769,7 +769,7 @@ with col2:
     st.subheader("Free-labeling - Caucasian")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 ## PCA ****3D**** evaluation ##
@@ -791,7 +791,7 @@ render_svg(df_pca_eval['svg'][7])
 st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 #####################
 ## SENTIMENT ANALYSIS
@@ -836,7 +836,7 @@ render_svg(df_sentiment_svg['svg'][4])
 st.subheader(df_sentiment_svg['image_title'][5])
 render_svg(df_sentiment_svg['svg'][5])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 #############################
 ## boxplots
@@ -870,7 +870,7 @@ render_svg(df_sentiment_svg['svg'][9])
 st.subheader(df_sentiment_svg['image_title'][10])
 render_svg(df_sentiment_svg['svg'][10])
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ############################
 ### LMER FORCED SURVEY #####
@@ -962,7 +962,7 @@ with open('data/l2_int_res_plot_forced_uw_students.txt') as f:
 
 render_svg(svg_image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ###########################################
 ### Normality of error term assumption ###
@@ -1024,7 +1024,7 @@ with open('data/leverage_participants_lmer_forced_uw_students.txt') as f:
 
 render_svg(svg_image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 
 
@@ -1119,7 +1119,7 @@ with open('data/l2_int_res_plot_free_uw_students.txt') as f:
 
 render_svg(svg_image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ###########################################
 ### Normality of error term assumption ###
@@ -1181,7 +1181,7 @@ with open('data/leverage_participants_lmer_free_uw_students.txt') as f:
 
 render_svg(svg_image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 #################################################
 ### LMER refitted summary for reffited model ####
@@ -1201,7 +1201,7 @@ source_code = HtmlFile.read()
 print(source_code)
 components.html(source_code, height = 150)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 #######################################
 #######################################
@@ -1215,7 +1215,7 @@ st.title('Dueling-bandits ranking experiment and comparison with surveys results
 
 ## DEMOGRAPHICS ##
 st.header('Participants demographics', 'header-db-dem')
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## ANGER RANKINGS##
 st.header('Word-rankings for anger', 'header-db-anger')
@@ -1236,7 +1236,7 @@ st.image(image)
 image = Image.open('data/anger_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## DISGUST RANKINGS ##
 st.header('Word-rankings for disgust', 'header-db-disgust')
@@ -1257,7 +1257,7 @@ st.image(image)
 image = Image.open('data/disgust_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## FEAR RANKINGS ##
 st.header('Word-rankings for fear', 'header-db-fear')
@@ -1278,7 +1278,7 @@ st.image(image)
 image = Image.open('data/fear_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## HAPPINESS RANKINGS ##
 st.header('Word-rankings for happiness', 'header-db-happiness')
@@ -1299,7 +1299,7 @@ st.image(image)
 image = Image.open('data/happiness_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## SADNESS RANKINGS ##
 st.header('Word-rankings for sadness', 'header-db-sadness')
@@ -1320,7 +1320,7 @@ st.image(image)
 image = Image.open('data/sadness_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ## SURPRISE RANKINGS ##
 st.header('Word-rankings for surprise', 'header-db-surprise')
@@ -1341,7 +1341,7 @@ st.image(image)
 image = Image.open('data/surprise_wma_next_panel.png')
 st.image(image)
 
-st.write("""[back to the toc](#toc)""")
+st.write("""[back to the toc study I](#st-sample)""")
 
 ##########################
 ##########################
@@ -1350,6 +1350,8 @@ st.write("""[back to the toc](#toc)""")
 ##########################
 
 st.title('II: English-speaking MTurk sample results', 'mturk-sample')
+
+st.write("""[back to the toc study I](#toc)""")
 
 st.subheader('Table of contents', 'toc-mturk')
 
@@ -1398,9 +1400,18 @@ st.write("""
 - [Histograms sentiment-score distributions](#header-sen-d-mturk)
 - [Boxplots sentiment-score by groups](#header-box-m-mturk)
 
+[**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk):
+- [Participants demographics](#header-db-dem-mturk)
+- [Word-ranking for 'anger'](#header-db-anger-mturk)
+- [Word-ranking for 'disgust'](#header-db-disgust-mturk)
+- [Word-ranking for 'fear'](#header-db-fear-mturk)
+- [Word-ranking for 'happiness'](#header-db-happiness-mturk)
+- [Word-ranking for 'sadness'](#header-db-sadness-mturk)
+- [Word-ranking for 'surprise'](#header-db-surprise-mturk)
+
 """)
 
-st.write("""[back to the toc](#toc-mturk)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 df_svg = pd.read_csv('data/forced_choice_svg_strings_mturk.csv')
 
@@ -1425,7 +1436,7 @@ render_svg(df_svg['svg'][2])
 st.write(df_svg['image_title'][3])
 render_svg(df_svg['svg'][3])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 st.header('Overall results', 'header-fc-overall-mturk')
 
@@ -1437,7 +1448,7 @@ render_svg(df_svg['svg'][4])
 st.write(df_svg['image_title'][5])
 render_svg(df_svg['svg'][5])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 st.header('Results by expected emotion label', 'header-fc-emotions-mturk')
 
@@ -1473,7 +1484,7 @@ render_svg(df_svg['svg'][12])
 st.write(df_svg['image_title'][13])
 render_svg(df_svg['svg'][13])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fc-emotions-et-mturk')
 
@@ -1516,7 +1527,7 @@ render_svg(df_svg['svg'][20])
 st.write(df_svg['image_title'][21])
 render_svg(df_svg['svg'][21])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 st.title('Free-labeling results', 'title-fl-mturk')
@@ -1541,7 +1552,7 @@ render_svg(df_svg_free['svg'][2])
 st.write(df_svg_free['image_title'][3])
 render_svg(df_svg_free['svg'][3])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 st.header('Overall results', 'header-fl-overall-mturk')
@@ -1554,7 +1565,7 @@ render_svg(df_svg_free['svg'][4])
 st.write(df_svg_free['image_title'][5])
 render_svg(df_svg_free['svg'][5])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 st.header('Results by expected emotion label', 'header-fl-emotions-mturk')
 
@@ -1590,7 +1601,7 @@ render_svg(df_svg_free['svg'][12])
 st.write(df_svg_free['image_title'][13])
 render_svg(df_svg_free['svg'][13])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et-mturk')
 
@@ -1633,7 +1644,7 @@ render_svg(df_svg_free['svg'][20])
 st.write(df_svg_free['image_title'][21])
 render_svg(df_svg_free['svg'][21])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 ##################
@@ -1655,7 +1666,7 @@ st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s-mturk')
 image = Image.open('data/k_means_forced_choice_6_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 ###########################
 ## Free labeling clustering
@@ -1672,7 +1683,7 @@ st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s-mturk')
 image = Image.open('data/k_means_free_choice_10_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 ##############################
 ## KMeans clusters evaluation
@@ -1697,7 +1708,7 @@ render_svg(df_pca_eval['svg'][1])
 st.subheader(df_pca_eval['image_title'][2])
 render_svg(df_pca_eval['svg'][2])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 ##############
 ## PCA RESULTS
@@ -1721,7 +1732,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_all_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 ## forced-choice by ethnicity ##
@@ -1741,7 +1752,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_forced_ethnicity_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 ## free-choice by ethnicity ##
 
@@ -1760,7 +1771,7 @@ st.image(image)
 image = Image.open('data/pca_chart_2d_text_free_ethnicity_mturk.png')
 st.image(image)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 #####################
 ## PCA evaluation ##
@@ -1783,7 +1794,7 @@ render_svg(df_pca_eval['svg'][4])
 st.subheader(df_pca_eval['image_title'][5])
 render_svg(df_pca_eval['svg'][5])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 ############################
 ## PCA 3D MTURK
@@ -1846,7 +1857,7 @@ with col2:
     st.subheader("Free-labeling")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 #####################################
@@ -1899,7 +1910,7 @@ with col2:
     st.subheader("Free-labeling - BIPOC")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 ###########################################
@@ -1954,7 +1965,7 @@ with col2:
     st.subheader("Free-labeling - Caucasian")
     st.plotly_chart(fig_free)
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 ## PCA ****3D**** evaluation ##
@@ -1976,7 +1987,7 @@ render_svg(df_pca_eval['svg'][7])
 st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 #####################
 ## SENTIMENT ANALYSIS
@@ -2021,7 +2032,7 @@ render_svg(df_sentiment_svg['svg'][4])
 st.subheader(df_sentiment_svg['image_title'][5])
 render_svg(df_sentiment_svg['svg'][5])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 #############################
 ## boxplots
@@ -2055,7 +2066,158 @@ render_svg(df_sentiment_svg['svg'][9])
 st.subheader(df_sentiment_svg['image_title'][10])
 render_svg(df_sentiment_svg['svg'][10])
 
-st.write("""[back to the toc](#mturk-sample)""")
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+
+#######################################
+#######################################
+
+## DUELING BANDINTS EXPERIMENT
+
+#######################################
+#######################################
+
+st.title('Dueling-bandits ranking experiment and comparison with surveys results', 'title-db-mturk')
+
+## DEMOGRAPHICS ##
+st.header('Participants demographics', 'header-db-dem-mturk')
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## ANGER RANKINGS##
+st.header('Word-rankings for anger', 'header-db-anger-mturk')
+
+# anger female of color #
+image = Image.open('data/anger_bfa_next_panel_mturk.png')
+st.image(image)
+
+# anger male of color #
+image = Image.open('data/anger_bma_next_panel_mturk.png')
+st.image(image)
+
+# anger white female #
+image = Image.open('data/anger_wfa_next_panel_mturk.png')
+st.image(image)
+
+# anger white male  #
+image = Image.open('data/anger_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## DISGUST RANKINGS ##
+st.header('Word-rankings for disgust', 'header-db-disgust-mturk')
+
+# disgust female of color #
+image = Image.open('data/disgust_bfa_next_panel_mturk.png')
+st.image(image)
+
+# disgust male of color #
+image = Image.open('data/disgust_bma_next_panel_mturk.png')
+st.image(image)
+
+# disgust white female #
+image = Image.open('data/disgust_wfa_next_panel_mturk.png')
+st.image(image)
+
+# disgust white male  #
+image = Image.open('data/disgust_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## FEAR RANKINGS ##
+st.header('Word-rankings for fear', 'header-db-fear-mturk')
+
+# fear female of color #
+image = Image.open('data/fear_bfa_next_panel_mturk.png')
+st.image(image)
+
+# fear male of color #
+image = Image.open('data/fear_bma_next_panel_mturk.png')
+st.image(image)
+
+# fear white female #
+image = Image.open('data/fear_wfa_next_panel_mturk.png')
+st.image(image)
+
+# fear white male  #
+image = Image.open('data/fear_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## HAPPINESS RANKINGS ##
+st.header('Word-rankings for happiness', 'header-db-happiness-mturk')
+
+# happiness female of color #
+image = Image.open('data/happiness_bfa_next_panel_mturk.png')
+st.image(image)
+
+# happiness male of color #
+image = Image.open('data/happiness_bma_next_panel_mturk.png')
+st.image(image)
+
+# happiness white female #
+image = Image.open('data/happiness_wfa_next_panel_mturk.png')
+st.image(image)
+
+# happiness white male #
+image = Image.open('data/happiness_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## SADNESS RANKINGS ##
+st.header('Word-rankings for sadness', 'header-db-sadness-mturk')
+
+# sadness female of color #
+image = Image.open('data/sadness_bfa_next_panel_mturk.png')
+st.image(image)
+
+# sadness male of color #
+image = Image.open('data/sadness_bma_next_panel_mturk.png')
+st.image(image)
+
+# sadness white female #
+image = Image.open('data/sadness_wfa_next_panel_mturk.png')
+st.image(image)
+
+# sadness white male #
+image = Image.open('data/sadness_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+## SURPRISE RANKINGS ##
+st.header('Word-rankings for surprise', 'header-db-surprise-mturk')
+
+# surprise female of color #
+image = Image.open('data/surprise_bfa_next_panel_mturk.png')
+st.image(image)
+
+# surprise male of color #
+image = Image.open('data/surprise_bma_next_panel_mturk.png')
+st.image(image)
+
+# surprise white female #
+image = Image.open('data/surprise_wfa_next_panel_mturk.png')
+st.image(image)
+
+# surprise white male #
+image = Image.open('data/surprise_wma_next_panel_mturk.png')
+st.image(image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+
 
 # --------- %% --------- #
 
