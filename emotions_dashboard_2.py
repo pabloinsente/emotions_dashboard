@@ -1079,6 +1079,7 @@ with open('data/participants_charts_lmer_free_uw_students.txt') as f:
 
 render_svg(svg_image)
 
+st.write("""[back to the toc study I](#st-sample)""")
 
 ############################################
 #### Homogeneity of variance assumption ####
@@ -1136,6 +1137,8 @@ with open('data/qqplot_lmer_free_uw_students.txt') as f:
     svg_image = f.read().rstrip()
 
 render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
 
 #######################
 ### Influence check ###
@@ -1421,6 +1424,28 @@ st.write("""
 - [Leverage check](#header-lmer-f-inf-mturk)
     - [Leverage datapoints](#subheader-lmer-f-lev-dp-mturk)
     - [Leverage participants](#subheader-lmer-f-lev-ind-mturk)
+
+[**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr-mturk):
+- [Model specification](#header-lmer-fr-m-mturk)
+- [Model summary](#header-lmer-fr-s-mturk)
+- [Model comparison](#header-lmer-fr-com-mturk)
+- [ANOVA for fixed-effects coefficients](#header-lmer-fr-a-mturk)
+- [Individual participant data for each condition](#header-lmer-fr-ind-mturk)
+- [Homogeneity of variance assumption](#header-lmer-fr-var-mturk) 
+    - [ANOVA for between subjects residuals](#header-lmer-fr-a-res-mturk)
+    - [Fitted vs residuals plot](#subheader-lmer-fr-a-res-plot-mturk)
+    - [Level 1 residuals plot](#subheader-lmer-fr-a-res-plot-l1-mturk)
+    - [Level 2 residuals plot](#subheader-lmer-fr-a-res-plot-l2-int-mturk)
+- [Normality of error term assumption](#header-lmer-fr-nor-mturk) 
+    - [Quantile-Quantile Plot](#subheader-lmer-fr-a-qq-mturk)
+- [Influence check](#header-lmer-fr-inf-mturk)
+    - [Influence datapoints](#subheader-lmer-fr-inf-dp-mturk)
+    - [Influence participants](#subheader-lmer-fr-inf-ind-mturk)
+- [Leverage check](#header-lmer-fr-inf-mturk)
+    - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk)
+    - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk)
+- [Model summary for reffited model](#header-lmer-fr-s-re-mturk)
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re-mturk)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk):
 - [Participants demographics](#header-db-dem-mturk)
@@ -2248,7 +2273,6 @@ render_svg(svg_image)
 st.write("""[back to the toc study II](#mturk-sample)""")
 
 
-
 ############################
 ############################
 ### LMER FREE SURVEY #######
@@ -2344,7 +2368,8 @@ render_svg(svg_image)
 st.write("""[back to the toc study II](#mturk-sample)""")
 
 ###########################################
-### Normality of error term assumption ###
+### Normality of error term assumption ####
+###########################################
 
 st.header("Normality of error term assumption", "header-lmer-fr-nor-mturk")
 
@@ -2356,6 +2381,8 @@ with open('data/qqplot_lmer_free_mturk.txt') as f:
     svg_image = f.read().rstrip()
 
 render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 #######################
 ### Influence check ###
@@ -2380,8 +2407,8 @@ with open('data/influence_participants_lmer_free_mturk.txt') as f:
 
 render_svg(svg_image)
 
-#######################
-### Influence check ###
+######################
+### Leverage check ###
 
 st.header("Leverage check", "header-lmer-fr-lev-mturk")
 
@@ -2416,7 +2443,7 @@ components.html(source_code, height = 600)
 
 #######################################
 ### ANOVA table for refitted coeff ####
-st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-fr-a-mturk")
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-fr-a-re-mturk")
 
 HtmlFile = open("data/anova_lmer_refit_summary_free_mturk.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
