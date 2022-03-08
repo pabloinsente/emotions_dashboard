@@ -104,7 +104,7 @@ This is a long dashboard. To jump to the results for each sample of participants
 
 - **I. Undergraduate students sample results.** [Jump to section](#st-sample)
 - **II. English-speaking MTurk sample results.** [Jump to section](#mturk-sample)
-- **III. Snpanish-speaking MTurk sample results.** [Jump to section](#mturk-sample-spanish)
+- **III. Spanish-speaking MTurk sample results.** [Jump to section](#mturk-sample-sp)
 
 """)
 
@@ -1356,7 +1356,7 @@ st.write("""[back to the toc study I](#st-sample)""")
 
 st.title('II: English-speaking MTurk sample results', 'mturk-sample')
 
-st.write("""[back to the toc study I](#toc)""")
+st.write("""[back to study selection](#navigation)""")
 
 st.subheader('Table of contents', 'toc-mturk')
 
@@ -2600,7 +2600,6 @@ st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 
-
 # --------- %% --------- #
 
 ##########################
@@ -2612,11 +2611,230 @@ st.write("""[back to the toc study II](#mturk-sample)""")
 # --------- %% --------- #
 
 
-st.title('III: Spanish-speaking MTurk sample results', 'mturk-sample-spanish')
+st.title('III: Spanish-speaking Latinamerican MTurk sample results', 'mturk-sample-sp')
 
-st.write('Pending data...')
+st.write("""[back to study selection](#navigation)""")
+
+st.subheader('Table of contents', 'toc-mturk-sp')
+
+st.write("""
+[**Forced-choice results**](#title-fc-mturk-sp):
+- [Participants demographics](#header-fc-dem-mturk-sp)
+- [Overall results](#header-fc-overall-mturk-sp)
+- [Results by emotion label](#header-fc-emotions-mturk-sp)
+- [Results by emotion label and ethnicity](#header-fc-emotions-et-mturk-sp)
+
+[**Free-labeling results**](#title-fl-mturk-sp):
+- [Participants demographics](#header-fl-dem-mturk-sp)
+- [Overall results](#header-fl-overall-mturk-sp)
+- [Results by emotion label](#header-fl-emotions-mturk-sp)
+- [Results by emotion label and ethnicity](#header-fl-emotions-et-mturk-sp)
+
+[**K-means clustering results**](#title-km-mturk-sp):
+- [Forced-choice clustering](#header-fc-km-mturk-sp)
+    - [K-means cluster selection criteria](#subheader-fc-km-e-mturk-sp)
+    - [K-means solution](#subheader-fc-km-s-mturk-sp)
+- [Free-labeling clustering](#header-fl-km-mturk-sp)
+    - [K-means cluster selection criteria](#subheader-fl-km-e-mturk-sp)
+    - [K-means solution](#subheader-fl-km-s-mturk-sp)
+- [K-means clustering evaluation](#header-km-eval-mturk-sp)
+    - [Silhouette score](#subheader-km-ss-mturk-sp)
+    - [Calinski-Harabasz score](#subheader-km-chs-mturk-sp)
+    - [Davies-Bouldin score](#subheader-km-dbs-mturk-sp)
+
+[**PCA results**](#title-pca-mturk-sp):
+- [2 components solution by survey method](#header-pca-2d-all-mturk-sp)
+- [Forced-choice 2 components solution by image ethnicity](#header-pca-2d-forced-et-mturk-sp)
+- [Free-labeling 2 components solution by image ethnicity](#header-pca-2d-free-et-mturk-sp)
+- [PCA 2 components embeddings evaluation](#header-2d-pca-eval-mturk-sp)
+    - [Silhouette score](#subheader-pca-2d-ss-mturk-sp)
+    - [Calinski-Harabasz score](#subheader-pca-2d-chs-mturk-sp)
+    - [Davies-Bouldin score](#subheader-pca-2d-dbs-mturk-sp)
+- [3 components solution by survey method](#header-pca-3d-all-mturk-sp)
+- [3 components solution by survey method - BIPOC](#header-pca-3d-bipoc-mturk-sp)
+- [3 components solution by survey method - Caucasian](#header-pca-3d-caucasian-mturk-sp)
+- [PCA 3 components embeddings evaluation](#header-3d-pca-eval-mturk-sp)
+    - [Silhouette score](#subheader-pca-3d-ss-mturk-sp)
+    - [Calinski-Harabasz score](#subheader-pca-3d-chs-mturk-sp)
+    - [Davies-Bouldin score](#subheader-pca-3d-dbs-mturk-sp)
+
+[**Sentiment analysis results**](#title-sen-mturk-sp):
+- [Histograms sentiment-score distributions](#header-sen-d-mturk-sp)
+- [Boxplots sentiment-score by groups](#header-box-m-mturk-sp)
+
+[**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f-mturk-sp):
+- [Model specification](#header-lmer-f-m-mturk-sp)
+- [Model summary](#header-lmer-f-s-mturk-sp)
+- [Model comparison](#header-lmer-f-com-mturk-sp)
+- [ANOVA for fixed-effects coefficients](#header-lmer-f-a-mturk-sp)
+- [Individual participant data for each condition](#header-lmer-f-ind-mturk-sp)
+- [Homogeneity of variance assumption](#header-lmer-f-var-mturk-sp) 
+    - [ANOVA for between subjects residuals](#header-lmer-f-a-res-mturk-sp)
+    - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot-mturk-sp)
+    - [Level 1 residuals plot](#subheader-lmer-f-a-res-plot-l1-mturk-sp)
+    - [Level 2 residuals plot](#subheader-lmer-f-a-res-plot-l2-int-mturk-sp)
+- [Normality of error term assumption](#header-lmer-f-nor-mturk-sp) 
+    - [Quantile-Quantile Plot](#subheader-lmer-f-a-qq-mturk-sp)
+- [Influence check](#header-lmer-f-inf-mturk-sp)
+    - [Influence datapoints](#subheader-lmer-f-inf-dp-mturk-sp)
+    - [Influence participants](#subheader-lmer-f-inf-ind-mturk-sp)
+- [Leverage check](#header-lmer-f-inf-mturk-sp)
+    - [Leverage datapoints](#subheader-lmer-f-lev-dp-mturk-sp)
+    - [Leverage participants](#subheader-lmer-f-lev-ind-mturk-sp)
+
+[**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr-mturk-sp):
+- [Model specification](#header-lmer-fr-m-mturk-sp)
+- [Model summary](#header-lmer-fr-s-mturk-sp)
+- [Model comparison](#header-lmer-fr-com-mturk-sp)
+- [ANOVA for fixed-effects coefficients](#header-lmer-fr-a-mturk-sp)
+- [Individual participant data for each condition](#header-lmer-fr-ind-mturk-sp)
+- [Homogeneity of variance assumption](#header-lmer-fr-var-mturk-sp) 
+    - [ANOVA for between subjects residuals](#header-lmer-fr-a-res-mturk-sp)
+    - [Fitted vs residuals plot](#subheader-lmer-fr-a-res-plot-mturk-sp)
+    - [Level 1 residuals plot](#subheader-lmer-fr-a-res-plot-l1-mturk-sp)
+    - [Level 2 residuals plot](#subheader-lmer-fr-a-res-plot-l2-int-mturk-sp)
+- [Normality of error term assumption](#header-lmer-fr-nor-mturk-sp) 
+    - [Quantile-Quantile Plot](#subheader-lmer-fr-a-qq-mturk-sp)
+- [Influence check](#header-lmer-fr-inf-mturk-sp)
+    - [Influence datapoints](#subheader-lmer-fr-inf-dp-mturk-sp)
+    - [Influence participants](#subheader-lmer-fr-inf-ind-mturk-sp)
+- [Leverage check](#header-lmer-fr-inf-mturk-sp)
+    - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk-sp)
+    - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk-sp)
+- [Model summary for reffited model](#header-lmer-fr-s-re-mturk-sp)
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re-mturk-sp)
+
+[**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk-sp):
+- [Participants demographics](#header-db-dem-mturk-sp)
+- [Word-ranking for 'anger'](#header-db-anger-mturk-sp)
+- [Word-ranking for 'disgust'](#header-db-disgust-mturk-sp)
+- [Word-ranking for 'fear'](#header-db-fear-mturk-sp)
+- [Word-ranking for 'happiness'](#header-db-happiness-mturk-sp)
+- [Word-ranking for 'sadness'](#header-db-sadness-mturk-sp)
+- [Word-ranking for 'surprise'](#header-db-surprise-mturk-sp)
+
+""")
 
 
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+df_svg = pd.read_csv('data/forced_choice_svg_strings_mturk_espanol.csv')
+
+st.title('Forced-choice results', 'title-fc-mturk-sp')
+
+st.header('Participants demographics', 'header-fc-dem-mturk-sp')
 
 
+## participants by sex ##
+st.write(df_svg['image_title'][0])
+render_svg(df_svg['svg'][0])
 
+## participants by age ##
+st.write(df_svg['image_title'][1])
+render_svg(df_svg['svg'][1])
+
+## participants by ethnicity ##
+st.write(df_svg['image_title'][2])
+render_svg(df_svg['svg'][2])
+
+## participants by formal education ##
+st.write(df_svg['image_title'][3])
+render_svg(df_svg['svg'][3])
+
+## participants by country of origin ##
+st.write(df_svg['image_title'][4])
+render_svg(df_svg['svg'][4])
+
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Overall results', 'header-fc-overall-mturk-sp')
+
+## overall % ##
+st.write(df_svg['image_title'][5])
+render_svg(df_svg['svg'][5])
+
+## overall cnt ##
+st.write(df_svg['image_title'][6])
+render_svg(df_svg['svg'][6])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Results by expected emotion label', 'header-fc-emotions-mturk-sp')
+
+## anger ##
+st.write(df_svg['image_title'][7])
+render_svg(df_svg['svg'][7])
+
+## disgust  ##
+st.write(df_svg['image_title'][8])
+render_svg(df_svg['svg'][8])
+
+## fear  ##
+st.write(df_svg['image_title'][9])
+render_svg(df_svg['svg'][9])
+
+## surprise ##
+st.write(df_svg['image_title'][10])
+render_svg(df_svg['svg'][10])
+
+## happiness  ##
+st.write(df_svg['image_title'][11])
+render_svg(df_svg['svg'][11])
+
+## sadness ##
+st.write(df_svg['image_title'][12])
+render_svg(df_svg['svg'][12])
+
+## uncertain  ##
+st.write(df_svg['image_title'][13])
+render_svg(df_svg['svg'][13])
+
+## neutral ##
+st.write(df_svg['image_title'][14])
+render_svg(df_svg['svg'][14])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Results by expected emotion and ethnicity', 'header-fc-emotions-et-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC images")
+with col2:
+    st.subheader("Caucasian images")
+
+## anger * ethnicity ##
+st.write(df_svg['image_title'][15])
+render_svg(df_svg['svg'][15])
+
+## disgust * ethnicity ##
+st.write(df_svg['image_title'][16])
+render_svg(df_svg['svg'][16])
+
+## fear * ethnicity ##
+st.write(df_svg['image_title'][17])
+render_svg(df_svg['svg'][17])
+
+## surprise * ethnicity ##
+st.write(df_svg['image_title'][18])
+render_svg(df_svg['svg'][18])
+
+## happiness * ethnicity ##
+st.write(df_svg['image_title'][19])
+render_svg(df_svg['svg'][19])
+
+## sadness * ethnicity ##
+st.write(df_svg['image_title'][20])
+render_svg(df_svg['svg'][20])
+
+## neutral * ethnicity ##
+st.write(df_svg['image_title'][21])
+render_svg(df_svg['svg'][21])
+
+## uncertain * ethnicity ##
+st.write(df_svg['image_title'][22])
+render_svg(df_svg['svg'][22])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
