@@ -1709,9 +1709,14 @@ render_svg(df_svg_free['svg'][21])
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
+##################
+##################
+
+## K MEANS RESULTS
 
 ##################
-## K MEANS RESULTS
+##################
+
 
 st.title('K-means clustering results', 'title-km-mturk')
 
@@ -1773,8 +1778,13 @@ render_svg(df_pca_eval['svg'][2])
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
-##############
+######################
+######################
+
 ## PCA RESULTS
+
+######################
+######################
 
 st.title('PCA results', 'title-pca-mturk')
 
@@ -2988,5 +2998,364 @@ render_svg(df_svg_free['svg'][21])
 ## uncertain * ethnicity ##
 st.write(df_svg_free['image_title'][22])
 render_svg(df_svg_free['svg'][22])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+#########################
+#########################
+
+## K MEANS RESULTS
+
+#########################
+#########################
+
+
+st.title('K-means clustering results', 'title-km-mturk-sp')
+
+###########################
+## Forced choice clustering
+
+st.header('Forced-choice clustering', 'header-fc-km-mturk-sp')
+
+## K-means *evaluation* forced choice ##
+st.subheader(df_svg['image_title'][23], 'subheader-fc-km-e-mturk-sp')
+render_svg(df_svg['svg'][23])
+
+## K-means *clusters* forced choice ##
+st.subheader('K-means 6 clusters solution', 'subheader-fc-km-s-mturk-sp')
+image = Image.open('data/k_means_forced_choice_8_mturk_espanol.png')
+st.image(image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+###########################
+## Free labeling clustering
+
+st.header('Free-labeling clustering', 'header-fl-km-mturk-sp')
+
+## K-means *evaluation* free choice ##
+st.subheader(df_svg_free['image_title'][23], 'subheader-fl-km-e-mturk-sp')
+render_svg(df_svg_free['svg'][23])
+
+## K-means *clusters* forced choice ##
+
+st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s-mturk-sp')
+image = Image.open('data/k_means_free_choice_11_mturk_espanol.png')
+st.image(image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+##############################
+## KMeans clusters evaluation
+###############################
+
+df_pca_eval = pd.read_csv('data/pca_svg_strings_mturk_espanol.csv')
+
+st.header('K-means clustering evaluation', 'header-km-eval-mturk-sp')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][0])
+render_svg(df_pca_eval['svg'][0])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][1])
+render_svg(df_pca_eval['svg'][1])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][2])
+render_svg(df_pca_eval['svg'][2])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+######################
+######################
+
+## PCA RESULTS
+
+######################
+######################
+
+st.title('PCA results', 'title-pca-mturk-sp')
+
+## aggregated ##
+
+st.header('2 components solution by survey method', 'header-pca-2d-all-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+image = Image.open('data/pca_chart_2d_images_all_mturk_espanol.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_all_mturk_espanol.png')
+st.image(image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+## forced-choice by ethnicity ##
+
+st.header('Forced-choice 2 components solution by image ethnicity', 'header-pca-2d-forced-et-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC")
+with col2:
+    st.subheader("Caucasian")
+
+image = Image.open('data/pca_chart_2d_images_forced_ethnicity_mturk_espanol.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_forced_ethnicity_mturk_espanol.png')
+st.image(image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+## free-choice by ethnicity ##
+
+st.header('Free-labeling 2 components solution by image ethnicity', 'header-pca-2d-free-et-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC")
+with col2:
+    st.subheader("Caucasian")
+
+image = Image.open('data/pca_chart_2d_images_free_ethnicity_mturk_espanol.png')
+st.image(image)
+
+image = Image.open('data/pca_chart_2d_text_free_ethnicity_mturk_espanol.png')
+st.image(image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+#####################
+## PCA evaluation ##
+####################
+
+st.header('PCA 2 components embeddings evaluation', 'header-2d-pca-eval-mturk-sp')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][3])
+render_svg(df_pca_eval['svg'][3])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][4])
+render_svg(df_pca_eval['svg'][4])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][5])
+render_svg(df_pca_eval['svg'][5])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+############################
+############################
+
+## PCA 3D MTURK ESPANOL
+
+############################
+############################
+
+st.header('3 components solution by survey method', 'header-pca-3d-all-mturk-sp')
+
+st.write("**Interactive charts**: user the pointer to rotate and explore labels")
+
+
+#############################
+## forced-choice PCA 3D mturk
+
+df_label_a = pd.read_csv('data/pca_3d_aggregated_forced_mturk_espanol.csv')
+
+fig_forced = px.scatter_3d(df_label_a, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_forced.update_layout(
+    scene = dict( 
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+
+#############################
+## free-labeling PCA 3D mturk
+
+df_label_free_a = pd.read_csv('data/pca_3d_aggregated_free_mturk_espanol.csv')
+
+fig_free = px.scatter_3d(df_label_free_a, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=7,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+
+st.header('3 components solution by survey method', 'header-pca-3d-all-mturk-sp')
+
+# PLOT #
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling")
+    st.plotly_chart(fig_free)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+#####################################
+## forced-choice PCA 3D - BIPOC mturk
+
+df_label_b = pd.read_csv('data/pca_3d_bipoc_forced_mturk_espanol.csv')
+
+fig_forced = px.scatter_3d(df_label_b, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_forced.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+#####################################
+## Free-choice PCA 3D - BIPOC - mturk
+
+df_label_free_b = pd.read_csv('data/pca_3d_bipoc_free_mturk_espanol.csv')
+
+fig_free = px.scatter_3d(df_label_free_b, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,2.2],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+st.header('3 components solution by survey method - POC', 'header-pca-3d-bipoc-mturk-sp')
+
+# PLOT #
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice - POC")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling - POC")
+    st.plotly_chart(fig_free)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+###########################################
+## forced-choice PCA 3D - Caucasian - mturk
+
+df_label_c = pd.read_csv('data/pca_3d_caucasian_forced_mturk_espanol.csv')
+
+fig_forced = px.scatter_3d(df_label_b, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_forced.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_forced.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.7,1.7],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+
+#########################################
+## Free-choice PCA 3D - Caucasian - mturk
+
+df_label_free_c = pd.read_csv('data/pca_3d_caucasian_free_mturk_espanol.csv')
+
+fig_free = px.scatter_3d(df_label_free_c, width=700, height=600, x='x_pca', y='y_pca', z='z_pca',
+              color='label')
+
+fig_free.update_traces(marker=dict(size=8,
+                              line=dict(width=1,
+                                        color='DarkSlateGrey')),
+                  selector=dict(mode='markers'))
+
+fig_free.update_layout(
+    scene = dict(
+        xaxis = dict(nticks=8, range=[-1.7,2.2],),
+        yaxis = dict(nticks=8, range=[-1.7,1.7],),
+        zaxis = dict(nticks=8, range=[-1.7,1.7],)))
+
+
+st.header('3 components solution by survey method - Caucasian', 'header-pca-3d-caucasian-mturk-sp')
+
+# PLOT #
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice - Caucasian")
+    st.plotly_chart(fig_forced)
+with col2:
+    st.subheader("Free-labeling - Caucasian")
+    st.plotly_chart(fig_free)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+## PCA ****3D**** evaluation ##
+
+st.header('PCA 3 components embeddings evaluation', 'header-3d-pca-eval-mturk-sp')
+
+### silhouette_score ###
+
+st.subheader(df_pca_eval['image_title'][6])
+render_svg(df_pca_eval['svg'][6])
+
+### calinski_harabasz_score ###
+
+st.subheader(df_pca_eval['image_title'][7])
+render_svg(df_pca_eval['svg'][7])
+
+### davies_bouldin_score ###
+
+st.subheader(df_pca_eval['image_title'][8])
+render_svg(df_pca_eval['svg'][8])
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
