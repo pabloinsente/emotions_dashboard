@@ -104,7 +104,7 @@ This is a long dashboard. To jump to the results for each sample of participants
 
 - **I. Undergraduate students sample results.** [Jump to section](#st-sample)
 - **II. English-speaking MTurk sample results.** [Jump to section](#mturk-sample)
-- **III. Spanish-speaking MTurk sample results.** [Jump to section](#mturk-sample-sp)
+- **III. Spanish-speaking Latinamerican MTurk sample results.** [Jump to section](#mturk-sample-sp)
 
 """)
 
@@ -146,7 +146,7 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-2d-chs)
     - [Davies-Bouldin score](#subheader-pca-2d-dbs)
 - [3 components solution by survey method](#header-pca-3d-all)
-- [3 components solution by survey method - BIPOC](#header-pca-3d-bipoc)
+- [3 components solution by survey method - POC](#header-pca-3d-bipoc)
 - [3 components solution by survey method - Caucasian](#header-pca-3d-caucasian)
 - [PCA 3 components embeddings evaluation](#header-3d-pca-eval)
     - [Silhouette score](#subheader-pca-3d-ss)
@@ -702,16 +702,16 @@ fig_free.update_layout(
         yaxis = dict(nticks=8, range=[-1.7,2.2],),
         zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
-st.header('3 components solution by survey method - BIPOC', 'header-pca-3d-bipoc')
+st.header('3 components solution by survey method - POC', 'header-pca-3d-bipoc')
 
 # PLOT #
 col1, col2 = st.beta_columns(2)
 
 with col1:
-    st.subheader("Forced-choice - BIPOC")
+    st.subheader("Forced-choice - POC")
     st.plotly_chart(fig_forced)
 with col2:
-    st.subheader("Free-labeling - BIPOC")
+    st.subheader("Free-labeling - POC")
     st.plotly_chart(fig_free)
 
 st.write("""[back to the toc study I](#st-sample)""")
@@ -1394,7 +1394,7 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-2d-chs-mturk)
     - [Davies-Bouldin score](#subheader-pca-2d-dbs-mturk)
 - [3 components solution by survey method](#header-pca-3d-all-mturk)
-- [3 components solution by survey method - BIPOC](#header-pca-3d-bipoc-mturk)
+- [3 components solution by survey method - POC](#header-pca-3d-bipoc-mturk)
 - [3 components solution by survey method - Caucasian](#header-pca-3d-caucasian-mturk)
 - [PCA 3 components embeddings evaluation](#header-3d-pca-eval-mturk)
     - [Silhouette score](#subheader-pca-3d-ss-mturk)
@@ -1461,6 +1461,15 @@ st.write("""
 st.write("""[back to the toc study II](#mturk-sample)""")
 
 df_svg = pd.read_csv('data/forced_choice_svg_strings_mturk.csv')
+
+###################################
+###################################
+
+# Forced-choice descriptives 
+
+###################################
+###################################
+
 
 st.title('Forced-choice results', 'title-fc-mturk')
 
@@ -1576,6 +1585,13 @@ render_svg(df_svg['svg'][21])
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
+###################################
+###################################
+
+# Free-choice descriptives 
+
+###################################
+###################################
 
 st.title('Free-labeling results', 'title-fl-mturk')
 
@@ -1945,16 +1961,16 @@ fig_free.update_layout(
         yaxis = dict(nticks=8, range=[-1.7,2.2],),
         zaxis = dict(nticks=8, range=[-1.7,1.7],)))
 
-st.header('3 components solution by survey method - BIPOC', 'header-pca-3d-bipoc-mturk')
+st.header('3 components solution by survey method - POC', 'header-pca-3d-bipoc-mturk')
 
 # PLOT #
 col1, col2 = st.beta_columns(2)
 
 with col1:
-    st.subheader("Forced-choice - BIPOC")
+    st.subheader("Forced-choice - POC")
     st.plotly_chart(fig_forced)
 with col2:
-    st.subheader("Free-labeling - BIPOC")
+    st.subheader("Free-labeling - POC")
     st.plotly_chart(fig_free)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
@@ -2651,7 +2667,7 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-2d-chs-mturk-sp)
     - [Davies-Bouldin score](#subheader-pca-2d-dbs-mturk-sp)
 - [3 components solution by survey method](#header-pca-3d-all-mturk-sp)
-- [3 components solution by survey method - BIPOC](#header-pca-3d-bipoc-mturk-sp)
+- [3 components solution by survey method - POC](#header-pca-3d-bipoc-mturk-sp)
 - [3 components solution by survey method - Caucasian](#header-pca-3d-caucasian-mturk-sp)
 - [PCA 3 components embeddings evaluation](#header-3d-pca-eval-mturk-sp)
     - [Silhouette score](#subheader-pca-3d-ss-mturk-sp)
@@ -2717,6 +2733,14 @@ st.write("""
 
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+###################################
+###################################
+
+# Forced-choice descriptives 
+
+###################################
+###################################
 
 df_svg = pd.read_csv('data/forced_choice_svg_strings_mturk_espanol.csv')
 
@@ -2836,5 +2860,133 @@ render_svg(df_svg['svg'][21])
 ## uncertain * ethnicity ##
 st.write(df_svg['image_title'][22])
 render_svg(df_svg['svg'][22])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+###################################
+###################################
+
+# Free-choice descriptives 
+
+###################################
+###################################
+
+st.title('Free-labeling results', 'title-fl-mturk-sp')
+
+df_svg_free = pd.read_csv('data/free_choice_svg_strings_mturk_espanol.csv')
+
+st.header('Participants demographics', 'header-fl-dem-mturk-sp')
+
+## participants by sex ##
+st.write(df_svg_free['image_title'][0])
+render_svg(df_svg_free['svg'][0])
+
+## participants by age ##
+st.write(df_svg_free['image_title'][1])
+render_svg(df_svg_free['svg'][1])
+
+## participants by ethnicity ##
+st.write(df_svg_free['image_title'][2])
+render_svg(df_svg_free['svg'][2])
+
+## participants by formal education ##
+st.write(df_svg_free['image_title'][3])
+render_svg(df_svg_free['svg'][3])
+
+## participants by country of origin ##
+st.write(df_svg_free['image_title'][4])
+render_svg(df_svg_free['svg'][4])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Overall results', 'header-fl-overall-mturk-sp')
+
+## overall % ##
+st.write(df_svg_free['image_title'][5])
+render_svg(df_svg_free['svg'][5])
+
+## overall cnt ##
+st.write(df_svg_free['image_title'][6])
+render_svg(df_svg_free['svg'][6])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Results by expected emotion label', 'header-fl-emotions-mturk-sp')
+
+## anger ##
+st.write(df_svg_free['image_title'][7])
+render_svg(df_svg_free['svg'][7])
+
+## disgust  ##
+st.write(df_svg_free['image_title'][8])
+render_svg(df_svg_free['svg'][8])
+
+## fear  ##
+st.write(df_svg_free['image_title'][9])
+render_svg(df_svg_free['svg'][9])
+
+## surprise ##
+st.write(df_svg_free['image_title'][10])
+render_svg(df_svg_free['svg'][10])
+
+## happiness  ##
+st.write(df_svg_free['image_title'][11])
+render_svg(df_svg_free['svg'][11])
+
+## sadness ##
+st.write(df_svg_free['image_title'][12])
+render_svg(df_svg_free['svg'][12])
+
+## uncertain  ##
+st.write(df_svg_free['image_title'][13])
+render_svg(df_svg_free['svg'][13])
+
+## neutral ##
+st.write(df_svg_free['image_title'][14])
+render_svg(df_svg_free['svg'][14])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+st.header('Results by expected emotion and ethnicity', 'header-fl-emotions-et-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("POC images")
+with col2:
+    st.subheader("Caucasian images")
+
+## anger * ethnicity ##
+st.write(df_svg_free['image_title'][15])
+render_svg(df_svg_free['svg'][15])
+
+## disgust * ethnicity ##
+st.write(df_svg_free['image_title'][16])
+render_svg(df_svg_free['svg'][16])
+
+## fear * ethnicity ##
+st.write(df_svg_free['image_title'][17])
+render_svg(df_svg_free['svg'][17])
+
+## surprise * ethnicity ##
+st.write(df_svg_free['image_title'][18])
+render_svg(df_svg_free['svg'][18])
+
+## happiness * ethnicity ##
+st.write(df_svg_free['image_title'][19])
+render_svg(df_svg_free['svg'][19])
+
+## sadness * ethnicity ##
+st.write(df_svg_free['image_title'][20])
+render_svg(df_svg_free['svg'][20])
+
+## neutral * ethnicity ##
+st.write(df_svg_free['image_title'][21])
+render_svg(df_svg_free['svg'][21])
+
+## uncertain * ethnicity ##
+st.write(df_svg_free['image_title'][22])
+render_svg(df_svg_free['svg'][22])
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
