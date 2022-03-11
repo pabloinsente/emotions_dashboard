@@ -2062,8 +2062,14 @@ render_svg(df_pca_eval['svg'][8])
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
-#####################
+############################
+############################
+
 ## SENTIMENT ANALYSIS
+
+############################
+############################
+
 
 df_sentiment_svg = pd.read_csv('data/sentiment_svg_strings_mturk.csv')
 
@@ -3357,5 +3363,91 @@ render_svg(df_pca_eval['svg'][7])
 
 st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+############################
+############################
+
+## SENTIMENT ANALYSIS
+
+############################
+############################
+
+
+df_sentiment_svg = pd.read_csv('data/sentiment_svg_strings_mturk_espanol.csv')
+
+st.title('Sentiment analysis results', 'title-sen-mturk-sp')
+
+#################################
+## sentiment scores distributions
+
+st.header('Histograms sentiment-score distributions', 'header-sen-d-mturk-sp')
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+## overall sentiment ##
+st.subheader(df_sentiment_svg['image_title'][0])
+render_svg(df_sentiment_svg['svg'][0])
+
+## overall sex ##
+st.subheader(df_sentiment_svg['image_title'][1])
+render_svg(df_sentiment_svg['svg'][1])
+
+## overall ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][2])
+render_svg(df_sentiment_svg['svg'][2])
+
+## overall age ##
+st.subheader(df_sentiment_svg['image_title'][3])
+render_svg(df_sentiment_svg['svg'][3])
+
+## Mean sentiment-scores grouped by participants ##
+st.subheader(df_sentiment_svg['image_title'][4])
+render_svg(df_sentiment_svg['svg'][4])
+
+## Mean sentiment-scores grouped by photos ##
+st.subheader(df_sentiment_svg['image_title'][5])
+render_svg(df_sentiment_svg['svg'][5])
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+#############################
+## boxplots
+
+col1, col2 = st.beta_columns(2)
+
+with col1:
+    st.subheader("Forced-choice")
+with col2:
+    st.subheader("Free-labeling")
+
+st.header('Boxplots sentiment-score by groups', 'header-box-m-mturk-sp')
+
+## boxplot by sex ##
+st.subheader(df_sentiment_svg['image_title'][6])
+render_svg(df_sentiment_svg['svg'][6])
+
+## boxplot by ethnicity ##
+st.subheader(df_sentiment_svg['image_title'][7])
+render_svg(df_sentiment_svg['svg'][7])
+
+## boxplot by age ##
+st.subheader(df_sentiment_svg['image_title'][8])
+render_svg(df_sentiment_svg['svg'][8])
+
+## boxplot by sex and ethnicity - forced-responses##
+st.subheader(df_sentiment_svg['image_title'][9])
+render_svg(df_sentiment_svg['svg'][9])
+
+## boxplot by sex and ethnicity - free-responses##
+st.subheader(df_sentiment_svg['image_title'][10])
+render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
