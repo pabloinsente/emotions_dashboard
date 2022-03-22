@@ -3451,3 +3451,129 @@ st.subheader(df_sentiment_svg['image_title'][10])
 render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+
+#################################
+#################################
+## sentiment categories analysis
+#################################
+#################################
+
+st.header('Emotion categories interactions descriptives')
+
+
+### condition ####
+st.subheader('Emotion categories by survey language (condition)', '...')
+with open('data/cond_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex ####
+st.subheader('Emotion categories by sex', '...')
+with open('data/sex_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### ethnicity ####
+st.subheader('Emotion categories by ethnicity', '...')
+with open('data/ethnicity_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex x language ####
+st.subheader('Two-way interaction: sex and survey language (condition)', '...')
+with open('data/sex_cond_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### ethnicity x language ####
+st.subheader('Two-way interaction: ethnicity and survey language (condition)', '...')
+with open('data/ethnicity_cond_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex x ethnicity ####
+st.subheader('Two-way interaction: sex and ethnicity', '...')
+with open('data/sex_ethnicity_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex X ethnicity x language ####
+st.subheader('Three-way interaction: sex, ethnicity, and survey language (condition)', 'subheader-sen-cat-3way-mturk-sp')
+with open('data/sex_et_cond_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+##################################
+##################################
+### ORDINAL LMER FORCED SURVEY MTURK #####
+
+st.title('Sentiment analysis ordinal mixed-effect model - Forced-choice survey', 'title-lmer-f-mturk-sp')
+
+###############
+### Formula ###
+st.header("Model specification", "header-lmer-f-m-mturk-sp")
+
+with open('data/formula_ord_lmer_summary_forced_mturk_espanol.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+############################
+### OrdinalLMER summary ####
+
+st.header("Model summary", "header-lmer-f-s-mturk-sp")
+
+HtmlFile = open("data/ord_lmer_summary_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 620)
+
+####################################
+### Multicolinearity assumption ####
+
+st.header("Multicolinearity assumption", "header-chi-f-s-mturk-sp")
+
+st.write("**Black** denotes **observed** frequency; **Blue** denotes **expected** frequency")
+
+## sex X ethnicity ##
+st.subheader("Sex X Ethnicity Chi-suare test", "subheader-chi-1-f-s-mturk-sp")
+
+HtmlFile = open("data/chi_sex_et_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 250)
+
+## sex X condition ##
+st.subheader("Sex X Survey language Chi-suare test", "subheader-chi-2-f-s-mturk-sp")
+
+HtmlFile = open("data/chi_sex_cond_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 250)
+
+## ethnicity x condition
+st.subheader("Ethnicity X Survey language Chi-suare test", "subheader-chi-3-f-s-mturk-sp")
+
+HtmlFile = open("data/chi_et_cond_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 250)
+
+
+####################################
+### proportional odds assumption ####
+
+st.header("Proportional odds assumption", "subheader-pro-odds-f-s-mturk-sp")
+
+st.write("Coeeficients with p < .05 = strong evidence that proportional odds assumption is meet")
+
+
+HtmlFile = open("data/nominal_test_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 600)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
