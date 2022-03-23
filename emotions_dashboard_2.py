@@ -156,26 +156,14 @@ st.write("""
 [**Sentiment analysis descriptives results**](#title-sen):
 - [Histograms sentiment-score distributions](#header-sen-d)
 - [Boxplots sentiment-score by groups](#header-box-m)
+- [Emotion categories as ordinal variables descriptives](#header-ord-d)
 
-[**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f):
-- [Model specification](#header-lmer-f-m)
-- [Model summary](#header-lmer-f-s)
-- [Model comparison](#header-lmer-f-com)
-- [ANOVA for fixed-effects coefficients](#header-lmer-f-a)
-- [Individual participant data for each condition](#header-lmer-f-ind)
-- [Homogeneity of variance assumption](#header-lmer-f-var) 
-    - [ANOVA for between subjects residuals](#header-lmer-f-a-res)
-    - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot)
-    - [Level 1 residuals plot](#subheader-lmer-f-a-res-plot-l1)
-    - [Level 2 residuals plot](#subheader-lmer-f-a-res-plot-l2-int)
-- [Normality of error term assumption](#header-lmer-f-nor) 
-    - [Quantile-Quantile Plot](#subheader-lmer-f-a-qq)
-- [Influence check](#header-lmer-f-inf)
-    - [Influence datapoints](#subheader-lmer-f-inf-dp)
-    - [Influence participants](#subheader-lmer-f-inf-ind)
-- [Leverage check](#header-lmer-f-inf)
-    - [Leverage datapoints](#subheader-lmer-f-lev-dp)
-    - [Leverage participants](#subheader-lmer-f-lev-ind)
+[**Sentiment analysis ordinal mixed-effect model - Forced-choice survey**](#title-ord-lmer-f):
+- [Model specification](#header-ord-lmer-f-f)
+- [Model summary](#header-ord-lmer-f-s)
+- [Multicolinearity assumption](#header-chi-f-s)
+    - [Sex X Ethnicity Chi-suare test](#subheader-chi-1-f-s)
+- [Proportional odds assumption](#header-pro-odds-f-s)
 
 [**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr):
 - [Model specification](#header-lmer-fr-m)
@@ -872,161 +860,262 @@ render_svg(df_sentiment_svg['svg'][10])
 
 st.write("""[back to the toc study I](#st-sample)""")
 
-############################
-### LMER FORCED SURVEY #####
 
-st.title('Sentiment analysis linear mixed-effect model - Forced-choice survey', 'title-lmer-f')
+#################################
+#################################
+## sentiment categories analysis
+#################################
+#################################
+
+st.header('Emotion categories as ordinal variables descriptives', 'header-ord-d')
+
+st.write("""
+Emotion categories for the *forced-choice survey* were ordered based on the score awarded by the [VADER sentiment analyzer](https://github.com/cjhutto/vaderSentiment)
+
+From "more positive" to "more negative" the emotions were ordered as:
+
+- Happiness
+- Surprise 
+- Neutral
+- Uncertain
+- Sadness
+- Fear
+- Anger
+- Disgust
+
+The "Other" category was dropped to break the tie with "Neutral".
+""")
+
+### sex ####
+st.subheader('Emotion categories by sex', '...')
+with open('data/sex_forced.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### ethnicity ####
+st.subheader('Emotion categories by ethnicity', '...')
+with open('data/ethnicity_forced.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex x ethnicity ####
+st.subheader('Two-way interaction: sex and ethnicity', '...')
+with open('data/sex_ethnicity_forced.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+##########################################
+##########################################
+### ORDINAL LMER FORCED SURVEY MTURK #####
+
+st.title('Sentiment analysis ordinal mixed-effect model - Forced-choice survey', 'title-ord-lmer-f')
 
 ###############
 ### Formula ###
-st.header("Model specification", "header-lmer-f-m")
+st.header("Model specification", "header-ord-lmer-f-f")
 
-with open('data/formula_lmer_summary_forced_uw_students.txt') as f:
+with open('data/formula_ord_lmer_summary_forced.txt') as f:
     formula = f.read().rstrip()
 
 st.latex(formula)
 
-#####################
-### LMER summary ####
-st.header("Model summary", "header-lmer-f-s")
+############################
+### Ordinal LMER summary ####
 
-HtmlFile = open("data/lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+st.header("Model summary", "header-ord-lmer-f-s")
+
+HtmlFile = open("data/ord_lmer_summary_forced.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 600)
+components.html(source_code, height = 800)
 
-#########################################
-### ANOVA table for model comparison ####
-st.header("ANOVA for model comparison", "header-lmer-f-com")
+####################################
+### Multicolinearity assumption ####
 
-HtmlFile = open("data/anova_comparison_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+st.header("Multicolinearity assumption", "header-chi-f-s")
+
+st.write("**Black** denotes **observed** frequency; **Blue** denotes **expected** frequency")
+
+## sex X ethnicity ##
+st.subheader("Sex X Ethnicity Chi-suare test", "subheader-chi-1-f-s")
+
+HtmlFile = open("data/chi_sex_et_forced.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 250)
+
+####################################
+### proportional odds assumption ####
+
+st.header("Proportional odds assumption", "header-pro-odds-f-s")
+
+st.write("Coeeficients with p < .05 = strong evidence that proportional odds assumption is meet")
+
+HtmlFile = open("data/nominal_test_forced.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code, height = 150)
 
-###############################
-### ANOVA table for coeff ####
-st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-f-a")
-
-HtmlFile = open("data/anova_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 150)
-
-####################################
-### Individual participant data ####
-####################################
-
-st.header("Individual participant data for each condition", "header-lmer-f-ind")
-with open('data/participants_charts_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-############################################
-#### Homogeneity of variance assumption ####
-############################################
-st.header("Homogeneity of variance assumption", "header-lmer-f-var")
-
-    ################################################
-    ### ANOVA table between subjects residuials ####
-st.subheader("ANOVA for between subjects residuals", "subheader-lmer-f-a-res")
-
-HtmlFile = open("data/anova_bwt_res_summary_forced_uw_students.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 100)
-
-    ##################################
-    ### Fitted vs residuals plot  ####
-st.subheader("Fitted vs residuals plot", "subheader-lmer-f-a-res-plot")
-
-with open('data/fitted_vs_residual_plot_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ##################################
-    ### Level 1 residual plot  ####
-st.subheader("Level 1 residuals plot", "subheader-lmer-f-a-res-plot-l1")
-
-with open('data/l1_res_plot_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ###########################################
-    ### Level 2 residual plot - intercept  ####
-st.subheader("Level 2 residuals plot", "subheader-lmer-f-a-res-plot-l2-int")
-
-with open('data/l2_int_res_plot_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
 st.write("""[back to the toc study I](#st-sample)""")
 
-###########################################
-### Normality of error term assumption ###
 
-st.header("Normality of error term assumption", "header-lmer-f-nor")
+# ############################
+# ### LMER FORCED SURVEY #####
 
-    ###########################################
-    ### Quantile-Quantile Plot  ####
-st.subheader("Quantile-Quantile Plot", "subheader-lmer-f-a-qq")
+# st.title('Sentiment analysis linear mixed-effect model - Forced-choice survey', 'title-lmer-f')
 
-with open('data/qqplot_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
+# ###############
+# ### Formula ###
+# st.header("Model specification", "header-lmer-f-m")
 
-render_svg(svg_image)
+# with open('data/formula_lmer_summary_forced_uw_students.txt') as f:
+#     formula = f.read().rstrip()
 
-#######################
-### Influence check ###
+# st.latex(formula)
 
-st.header("Influence check", "header-lmer-f-inf")
+# #####################
+# ### LMER summary ####
+# st.header("Model summary", "header-lmer-f-s")
 
-    ##############################
-    ### Influence datapoints  ####
-st.subheader("Influence datapoints", "subheader-lmer-f-inf-dp")
+# HtmlFile = open("data/lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 600)
 
-with open('data/influence_datapoints_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
+# #########################################
+# ### ANOVA table for model comparison ####
+# st.header("ANOVA for model comparison", "header-lmer-f-com")
 
-render_svg(svg_image)
+# HtmlFile = open("data/anova_comparison_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 150)
 
-    ################################
-    ### Influence participants  ####
-st.subheader("Influence participants", "subheader-lmer-f-inf-ind")
+# ###############################
+# ### ANOVA table for coeff ####
+# st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-f-a")
 
-with open('data/influence_participants_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
+# HtmlFile = open("data/anova_lmer_summary_forced_uw_students.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 150)
 
-render_svg(svg_image)
+# ####################################
+# ### Individual participant data ####
+# ####################################
 
-#######################
-### Influence check ###
+# st.header("Individual participant data for each condition", "header-lmer-f-ind")
+# with open('data/participants_charts_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
 
-st.header("Leverage check", "header-lmer-f-lev")
+# render_svg(svg_image)
 
-    ##############################
-    ### leverage  datapoints  ####
-st.subheader("Leverage datapoints", "subheader-lmer-f-lev-dp")
+# ############################################
+# #### Homogeneity of variance assumption ####
+# ############################################
+# st.header("Homogeneity of variance assumption", "header-lmer-f-var")
 
-with open('data/leverage_datapoints_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
+#     ################################################
+#     ### ANOVA table between subjects residuials ####
+# st.subheader("ANOVA for between subjects residuals", "subheader-lmer-f-a-res")
 
-render_svg(svg_image)
+# HtmlFile = open("data/anova_bwt_res_summary_forced_uw_students.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 100)
 
-    ##############################
-    ### leverage participants  ####
-st.subheader("Leverage participants", "subheader-lmer-f-lev-ind")
+#     ##################################
+#     ### Fitted vs residuals plot  ####
+# st.subheader("Fitted vs residuals plot", "subheader-lmer-f-a-res-plot")
 
-with open('data/leverage_participants_lmer_forced_uw_students.txt') as f:
-    svg_image = f.read().rstrip()
+# with open('data/fitted_vs_residual_plot_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
 
-render_svg(svg_image)
+# render_svg(svg_image)
 
-st.write("""[back to the toc study I](#st-sample)""")
+#     ##################################
+#     ### Level 1 residual plot  ####
+# st.subheader("Level 1 residuals plot", "subheader-lmer-f-a-res-plot-l1")
+
+# with open('data/l1_res_plot_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ###########################################
+#     ### Level 2 residual plot - intercept  ####
+# st.subheader("Level 2 residuals plot", "subheader-lmer-f-a-res-plot-l2-int")
+
+# with open('data/l2_int_res_plot_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# st.write("""[back to the toc study I](#st-sample)""")
+
+# ###########################################
+# ### Normality of error term assumption ###
+
+# st.header("Normality of error term assumption", "header-lmer-f-nor")
+
+#     ###########################################
+#     ### Quantile-Quantile Plot  ####
+# st.subheader("Quantile-Quantile Plot", "subheader-lmer-f-a-qq")
+
+# with open('data/qqplot_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# #######################
+# ### Influence check ###
+
+# st.header("Influence check", "header-lmer-f-inf")
+
+#     ##############################
+#     ### Influence datapoints  ####
+# st.subheader("Influence datapoints", "subheader-lmer-f-inf-dp")
+
+# with open('data/influence_datapoints_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ################################
+#     ### Influence participants  ####
+# st.subheader("Influence participants", "subheader-lmer-f-inf-ind")
+
+# with open('data/influence_participants_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# #######################
+# ### Influence check ###
+
+# st.header("Leverage check", "header-lmer-f-lev")
+
+#     ##############################
+#     ### leverage  datapoints  ####
+# st.subheader("Leverage datapoints", "subheader-lmer-f-lev-dp")
+
+# with open('data/leverage_datapoints_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ##############################
+#     ### leverage participants  ####
+# st.subheader("Leverage participants", "subheader-lmer-f-lev-ind")
+
+# with open('data/leverage_participants_lmer_forced_uw_students.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# st.write("""[back to the toc study I](#st-sample)""")
 
 
 
@@ -1404,26 +1493,14 @@ st.write("""
 [**Sentiment analysis results**](#title-sen-mturk):
 - [Histograms sentiment-score distributions](#header-sen-d-mturk)
 - [Boxplots sentiment-score by groups](#header-box-m-mturk)
+- [Emotion categories as ordinal variables descriptives](#header-ord-d-mturk)
 
-[**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f-mturk):
-- [Model specification](#header-lmer-f-m-mturk)
-- [Model summary](#header-lmer-f-s-mturk)
-- [Model comparison](#header-lmer-f-com-mturk)
-- [ANOVA for fixed-effects coefficients](#header-lmer-f-a-mturk)
-- [Individual participant data for each condition](#header-lmer-f-ind-mturk)
-- [Homogeneity of variance assumption](#header-lmer-f-var-mturk) 
-    - [ANOVA for between subjects residuals](#header-lmer-f-a-res-mturk)
-    - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot-mturk)
-    - [Level 1 residuals plot](#subheader-lmer-f-a-res-plot-l1-mturk)
-    - [Level 2 residuals plot](#subheader-lmer-f-a-res-plot-l2-int-mturk)
-- [Normality of error term assumption](#header-lmer-f-nor-mturk) 
-    - [Quantile-Quantile Plot](#subheader-lmer-f-a-qq-mturk)
-- [Influence check](#header-lmer-f-inf-mturk)
-    - [Influence datapoints](#subheader-lmer-f-inf-dp-mturk)
-    - [Influence participants](#subheader-lmer-f-inf-ind-mturk)
-- [Leverage check](#header-lmer-f-inf-mturk)
-    - [Leverage datapoints](#subheader-lmer-f-lev-dp-mturk)
-    - [Leverage participants](#subheader-lmer-f-lev-ind-mturk)
+[**Sentiment analysis ordinal mixed-effect model - Forced-choice survey**](#title-ord-lmer-f-mturk):
+- [Model specification](#header-ord-lmer-f-f-mturk)
+- [Model summary](#header-ord-lmer-f-s-mturk)
+- [Multicolinearity assumption](#header-chi-f-s-mturk)
+    - [Sex X Ethnicity Chi-suare test](#subheader-chi-1-f-s-mturk)
+- [Proportional odds assumption](#header-pro-odds-f-s-mturk)
 
 [**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr-mturk):
 - [Model specification](#header-lmer-fr-m-mturk)
@@ -2148,161 +2225,261 @@ render_svg(df_sentiment_svg['svg'][10])
 st.write("""[back to the toc study II](#mturk-sample)""")
 
 
-##################################
-##################################
-### LMER FORCED SURVEY MTURK #####
+#################################
+#################################
+## sentiment categories analysis
+#################################
+#################################
 
-st.title('Sentiment analysis linear mixed-effect model - Forced-choice survey', 'title-lmer-f-mturk')
+st.header('Emotion categories as ordinal variables descriptives', 'header-ord-d')
+
+st.write("""
+Emotion categories for the *forced-choice survey* were ordered based on the score awarded by the [VADER sentiment analyzer](https://github.com/cjhutto/vaderSentiment)
+
+From "more positive" to "more negative" the emotions were ordered as:
+
+- Happiness
+- Surprise 
+- Neutral
+- Uncertain
+- Sadness
+- Fear
+- Anger
+- Disgust
+
+The "Other" category was dropped to break the tie with "Neutral".
+""")
+
+### sex ####
+st.subheader('Emotion categories by sex', '...')
+with open('data/sex_forced_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### ethnicity ####
+st.subheader('Emotion categories by ethnicity', '...')
+with open('data/ethnicity_forced_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+### sex x ethnicity ####
+st.subheader('Two-way interaction: sex and ethnicity', '...')
+with open('data/sex_ethnicity_forced_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+##########################################
+##########################################
+### ORDINAL LMER FORCED SURVEY MTURK #####
+
+st.title('Sentiment analysis ordinal mixed-effect model - Forced-choice survey', 'title-ord-lmer-f-mturk')
 
 ###############
 ### Formula ###
-st.header("Model specification", "header-lmer-f-m-mturk")
+st.header("Model specification", "header-ord-lmer-f-f-mturk")
 
-with open('data/formula_lmer_summary_forced_mturk.txt') as f:
+with open('data/formula_ord_lmer_summary_forced_mturk.txt') as f:
     formula = f.read().rstrip()
 
 st.latex(formula)
 
-#####################
-### LMER summary ####
-st.header("Model summary", "header-lmer-f-s-mturk")
+############################
+### Ordinal LMER summary ####
 
-HtmlFile = open("data/lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
+st.header("Model summary", "header-ord-lmer-f-s-mturk")
+
+HtmlFile = open("data/ord_lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 600)
+components.html(source_code, height = 800)
 
-#########################################
-### ANOVA table for model comparison ####
-st.header("ANOVA for model comparison", "header-lmer-f-com-mturk")
+####################################
+### Multicolinearity assumption ####
 
-HtmlFile = open("data/anova_comparison_lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
+st.header("Multicolinearity assumption", "header-chi-f-s-mturk")
+
+st.write("**Black** denotes **observed** frequency; **Blue** denotes **expected** frequency")
+
+## sex X ethnicity ##
+st.subheader("Sex X Ethnicity Chi-suare test", "subheader-chi-1-f-s-mturk")
+
+HtmlFile = open("data/chi_sex_et_forced_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 250)
+
+####################################
+### proportional odds assumption ####
+
+st.header("Proportional odds assumption", "header-pro-odds-f-s-mturk")
+
+st.write("Coeeficients with p < .05 = strong evidence that proportional odds assumption is meet")
+
+HtmlFile = open("data/nominal_test_forced_mturk.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code, height = 150)
-
-###############################
-### ANOVA table for coeff ####
-st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-f-a-mturk")
-
-HtmlFile = open("data/anova_lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 150)
-
-####################################
-### Individual participant data ####
-####################################
-
-st.header("Individual participant data for each condition", "header-lmer-f-ind-mturk")
-with open('data/participants_charts_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-
-############################################
-#### Homogeneity of variance assumption ####
-############################################
-st.header("Homogeneity of variance assumption", "header-lmer-f-var-mturk")
-
-    ################################################
-    ### ANOVA table between subjects residuials ####
-st.subheader("ANOVA for between subjects residuals", "subheader-lmer-f-a-res-mturk")
-
-HtmlFile = open("data/anova_bwt_res_summary_forced_mturk.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 100)
-
-    ##################################
-    ### Fitted vs residuals plot  ####
-st.subheader("Fitted vs residuals plot", "subheader-lmer-f-a-res-plot-mturk")
-
-with open('data/fitted_vs_residual_plot_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ##################################
-    ### Level 1 residual plot  ####
-st.subheader("Level 1 residuals plot", "subheader-lmer-f-a-res-plot-l1-mturk")
-
-with open('data/l1_res_plot_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ###########################################
-    ### Level 2 residual plot - intercept  ####
-st.subheader("Level 2 residuals plot", "subheader-lmer-f-a-res-plot-l2-int-mturk")
-
-with open('data/l2_int_res_plot_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-###########################################
-### Normality of error term assumption ###
-
-st.header("Normality of error term assumption", "header-lmer-f-nor-mturk")
-
-    ###########################################
-    ### Quantile-Quantile Plot  ####
-st.subheader("Quantile-Quantile Plot", "subheader-lmer-f-a-qq-mturk")
-
-with open('data/qqplot_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-#######################
-### Influence check ###
-
-st.header("Influence check", "header-lmer-f-inf-mturk")
-
-    ##############################
-    ### Influence datapoints  ####
-st.subheader("Influence datapoints", "subheader-lmer-f-inf-dp-mturk")
-
-with open('data/influence_datapoints_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ################################
-    ### Influence participants  ####
-st.subheader("Influence participants", "subheader-lmer-f-inf-ind-mturk")
-
-with open('data/influence_participants_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-#######################
-### Influence check ###
-
-st.header("Leverage check", "header-lmer-f-lev-mturk")
-
-    ##############################
-    ### leverage  datapoints  ####
-st.subheader("Leverage datapoints", "subheader-lmer-f-lev-dp-mturk")
-
-with open('data/leverage_datapoints_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
-
-    ##############################
-    ### leverage participants  ####
-st.subheader("Leverage participants", "subheader-lmer-f-lev-ind-mturk")
-
-with open('data/leverage_participants_lmer_forced_mturk.txt') as f:
-    svg_image = f.read().rstrip()
-
-render_svg(svg_image)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+# ##################################
+# ##################################
+# ### LMER FORCED SURVEY MTURK #####
+
+# st.title('Sentiment analysis linear mixed-effect model - Forced-choice survey', 'title-lmer-f-mturk')
+
+# ###############
+# ### Formula ###
+# st.header("Model specification", "header-lmer-f-m-mturk")
+
+# with open('data/formula_lmer_summary_forced_mturk.txt') as f:
+#     formula = f.read().rstrip()
+
+# st.latex(formula)
+
+# #####################
+# ### LMER summary ####
+# st.header("Model summary", "header-lmer-f-s-mturk")
+
+# HtmlFile = open("data/lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 600)
+
+# #########################################
+# ### ANOVA table for model comparison ####
+# st.header("ANOVA for model comparison", "header-lmer-f-com-mturk")
+
+# HtmlFile = open("data/anova_comparison_lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 150)
+
+# ###############################
+# ### ANOVA table for coeff ####
+# st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-f-a-mturk")
+
+# HtmlFile = open("data/anova_lmer_summary_forced_mturk.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 150)
+
+# ####################################
+# ### Individual participant data ####
+# ####################################
+
+# st.header("Individual participant data for each condition", "header-lmer-f-ind-mturk")
+# with open('data/participants_charts_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+
+# ############################################
+# #### Homogeneity of variance assumption ####
+# ############################################
+# st.header("Homogeneity of variance assumption", "header-lmer-f-var-mturk")
+
+#     ################################################
+#     ### ANOVA table between subjects residuials ####
+# st.subheader("ANOVA for between subjects residuals", "subheader-lmer-f-a-res-mturk")
+
+# HtmlFile = open("data/anova_bwt_res_summary_forced_mturk.html", 'r', encoding='utf-8')
+# source_code = HtmlFile.read() 
+# print(source_code)
+# components.html(source_code, height = 100)
+
+#     ##################################
+#     ### Fitted vs residuals plot  ####
+# st.subheader("Fitted vs residuals plot", "subheader-lmer-f-a-res-plot-mturk")
+
+# with open('data/fitted_vs_residual_plot_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ##################################
+#     ### Level 1 residual plot  ####
+# st.subheader("Level 1 residuals plot", "subheader-lmer-f-a-res-plot-l1-mturk")
+
+# with open('data/l1_res_plot_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ###########################################
+#     ### Level 2 residual plot - intercept  ####
+# st.subheader("Level 2 residuals plot", "subheader-lmer-f-a-res-plot-l2-int-mturk")
+
+# with open('data/l2_int_res_plot_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# ###########################################
+# ### Normality of error term assumption ###
+
+# st.header("Normality of error term assumption", "header-lmer-f-nor-mturk")
+
+#     ###########################################
+#     ### Quantile-Quantile Plot  ####
+# st.subheader("Quantile-Quantile Plot", "subheader-lmer-f-a-qq-mturk")
+
+# with open('data/qqplot_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# #######################
+# ### Influence check ###
+
+# st.header("Influence check", "header-lmer-f-inf-mturk")
+
+#     ##############################
+#     ### Influence datapoints  ####
+# st.subheader("Influence datapoints", "subheader-lmer-f-inf-dp-mturk")
+
+# with open('data/influence_datapoints_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ################################
+#     ### Influence participants  ####
+# st.subheader("Influence participants", "subheader-lmer-f-inf-ind-mturk")
+
+# with open('data/influence_participants_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# #######################
+# ### Influence check ###
+
+# st.header("Leverage check", "header-lmer-f-lev-mturk")
+
+#     ##############################
+#     ### leverage  datapoints  ####
+# st.subheader("Leverage datapoints", "subheader-lmer-f-lev-dp-mturk")
+
+# with open('data/leverage_datapoints_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+#     ##############################
+#     ### leverage participants  ####
+# st.subheader("Leverage participants", "subheader-lmer-f-lev-ind-mturk")
+
+# with open('data/leverage_participants_lmer_forced_mturk.txt') as f:
+#     svg_image = f.read().rstrip()
+
+# render_svg(svg_image)
+
+# st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 ############################
@@ -2693,57 +2870,16 @@ st.write("""
 [**Sentiment analysis results**](#title-sen-mturk-sp):
 - [Histograms sentiment-score distributions](#header-sen-d-mturk-sp)
 - [Boxplots sentiment-score by groups](#header-box-m-mturk-sp)
+- [Emotion categories as ordinal variables descriptives](#header-ord-d-mturk-sp)
 
-[**Sentiment analysis linear mixed-effect model - Forced-choice survey**](#title-lmer-f-mturk-sp):
-- [Model specification](#header-lmer-f-m-mturk-sp)
-- [Model summary](#header-lmer-f-s-mturk-sp)
-- [Model comparison](#header-lmer-f-com-mturk-sp)
-- [ANOVA for fixed-effects coefficients](#header-lmer-f-a-mturk-sp)
-- [Individual participant data for each condition](#header-lmer-f-ind-mturk-sp)
-- [Homogeneity of variance assumption](#header-lmer-f-var-mturk-sp) 
-    - [ANOVA for between subjects residuals](#header-lmer-f-a-res-mturk-sp)
-    - [Fitted vs residuals plot](#subheader-lmer-f-a-res-plot-mturk-sp)
-    - [Level 1 residuals plot](#subheader-lmer-f-a-res-plot-l1-mturk-sp)
-    - [Level 2 residuals plot](#subheader-lmer-f-a-res-plot-l2-int-mturk-sp)
-- [Normality of error term assumption](#header-lmer-f-nor-mturk-sp) 
-    - [Quantile-Quantile Plot](#subheader-lmer-f-a-qq-mturk-sp)
-- [Influence check](#header-lmer-f-inf-mturk-sp)
-    - [Influence datapoints](#subheader-lmer-f-inf-dp-mturk-sp)
-    - [Influence participants](#subheader-lmer-f-inf-ind-mturk-sp)
-- [Leverage check](#header-lmer-f-inf-mturk-sp)
-    - [Leverage datapoints](#subheader-lmer-f-lev-dp-mturk-sp)
-    - [Leverage participants](#subheader-lmer-f-lev-ind-mturk-sp)
-
-[**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr-mturk-sp):
-- [Model specification](#header-lmer-fr-m-mturk-sp)
-- [Model summary](#header-lmer-fr-s-mturk-sp)
-- [Model comparison](#header-lmer-fr-com-mturk-sp)
-- [ANOVA for fixed-effects coefficients](#header-lmer-fr-a-mturk-sp)
-- [Individual participant data for each condition](#header-lmer-fr-ind-mturk-sp)
-- [Homogeneity of variance assumption](#header-lmer-fr-var-mturk-sp) 
-    - [ANOVA for between subjects residuals](#header-lmer-fr-a-res-mturk-sp)
-    - [Fitted vs residuals plot](#subheader-lmer-fr-a-res-plot-mturk-sp)
-    - [Level 1 residuals plot](#subheader-lmer-fr-a-res-plot-l1-mturk-sp)
-    - [Level 2 residuals plot](#subheader-lmer-fr-a-res-plot-l2-int-mturk-sp)
-- [Normality of error term assumption](#header-lmer-fr-nor-mturk-sp) 
-    - [Quantile-Quantile Plot](#subheader-lmer-fr-a-qq-mturk-sp)
-- [Influence check](#header-lmer-fr-inf-mturk-sp)
-    - [Influence datapoints](#subheader-lmer-fr-inf-dp-mturk-sp)
-    - [Influence participants](#subheader-lmer-fr-inf-ind-mturk-sp)
-- [Leverage check](#header-lmer-fr-inf-mturk-sp)
-    - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk-sp)
-    - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk-sp)
-- [Model summary for reffited model](#header-lmer-fr-s-re-mturk-sp)
-- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re-mturk-sp)
-
-[**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk-sp):
-- [Participants demographics](#header-db-dem-mturk-sp)
-- [Word-ranking for 'anger'](#header-db-anger-mturk-sp)
-- [Word-ranking for 'disgust'](#header-db-disgust-mturk-sp)
-- [Word-ranking for 'fear'](#header-db-fear-mturk-sp)
-- [Word-ranking for 'happiness'](#header-db-happiness-mturk-sp)
-- [Word-ranking for 'sadness'](#header-db-sadness-mturk-sp)
-- [Word-ranking for 'surprise'](#header-db-surprise-mturk-sp)
+[**Sentiment analysis ordinal mixed-effect model - Forced-choice survey**](#title-ord-lmer-f-mturk-sp):
+- [Model specification](#header-ord-lmer-f-f-mturk-sp)
+- [Model summary](#header-ord-lmer-f-s-mturk-sp)
+- [Multicolinearity assumption](#header-chi-f-s-mturk-sp)
+    - [Sex X Ethnicity Chi-suare test](#subheader-chi-1-f-s-mturk-sp)
+    - [Sex X Survey language Chi-suare test](#subheader-chi-2-f-s-mturk-sp)
+    - [Ethnicity X Survey language Chi-suare test](#subheader-chi-3-f-s-mturk-sp)
+- [Proportional odds assumption](#header-pro-odds-f-s-mturk-sp)
 
 """)
 
@@ -3459,8 +3595,24 @@ st.write("""[back to the toc study III](#mturk-sample-sp)""")
 #################################
 #################################
 
-st.header('Emotion categories interactions descriptives')
+st.header('Emotion categories as ordinal variables descriptives', 'header-ord-d-mturk-sp')
 
+st.write("""
+Emotion categories for the *forced-choice survey* were ordered based on the score awarded by the [VADER sentiment analyzer](https://github.com/cjhutto/vaderSentiment)
+
+From "more positive" to "more negative" the emotions were ordered as:
+
+- Happiness
+- Surprise 
+- Neutral
+- Uncertain
+- Sadness
+- Fear
+- Anger
+- Disgust
+
+The "Other" category was dropped to break the tie with "Neutral".
+""")
 
 ### condition ####
 st.subheader('Emotion categories by survey language (condition)', '...')
@@ -3504,32 +3656,38 @@ with open('data/sex_et_cond_forced_mturk_espanol.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
+st.subheader('Proportion of responses by subgroup (each column adds to 100)', '...')
+st.write('Tables subtitles = [ethnicity.survey-language.sex]')
+with open('data/table_sex_et_cond_forced_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
 
-##################################
-##################################
+##########################################
+##########################################
 ### ORDINAL LMER FORCED SURVEY MTURK #####
 
-st.title('Sentiment analysis ordinal mixed-effect model - Forced-choice survey', 'title-lmer-f-mturk-sp')
+st.title('Sentiment analysis ordinal mixed-effect model - Forced-choice survey', 'title-ord-lmer-f-mturk-sp')
 
 ###############
 ### Formula ###
-st.header("Model specification", "header-lmer-f-m-mturk-sp")
+st.header("Model specification", "header-ord-lmer-f-f-mturk-sp")
 
 with open('data/formula_ord_lmer_summary_forced_mturk_espanol.txt') as f:
     formula = f.read().rstrip()
 
 st.latex(formula)
 
-############################
-### OrdinalLMER summary ####
+#############################
+### Ordinal LMER summary ####
 
-st.header("Model summary", "header-lmer-f-s-mturk-sp")
+st.header("Model summary", "header-ord-lmer-f-s-mturk-sp")
 
 HtmlFile = open("data/ord_lmer_summary_forced_mturk_espanol.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 620)
+components.html(source_code, height = 940)
 
 ####################################
 ### Multicolinearity assumption ####
@@ -3562,18 +3720,16 @@ source_code = HtmlFile.read()
 print(source_code)
 components.html(source_code, height = 250)
 
-
 ####################################
 ### proportional odds assumption ####
 
-st.header("Proportional odds assumption", "subheader-pro-odds-f-s-mturk-sp")
+st.header("Proportional odds assumption", "header-pro-odds-f-s-mturk-sp")
 
 st.write("Coeeficients with p < .05 = strong evidence that proportional odds assumption is meet")
-
 
 HtmlFile = open("data/nominal_test_forced_mturk_espanol.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 600)
+components.html(source_code, height = 200)
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
