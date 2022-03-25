@@ -39,22 +39,20 @@
 <polyline points='40.48,20.16 412.26,20.16 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='141.88,328.50 141.88,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
 <polyline points='310.87,328.50 310.87,5.48 ' style='stroke-width: 1.07; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='65.83' y='20.16' width='152.09' height='53.65' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
-<rect x='65.83' y='73.81' width='152.09' height='31.24' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
-<rect x='65.83' y='105.04' width='152.09' height='49.89' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
-<rect x='65.83' y='154.93' width='152.09' height='21.17' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
-<rect x='65.83' y='176.11' width='152.09' height='47.07' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
-<rect x='65.83' y='223.17' width='152.09' height='23.38' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
-<rect x='65.83' y='246.55' width='152.09' height='40.29' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
-<rect x='65.83' y='286.84' width='152.09' height='26.98' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #053061;' />
-<rect x='234.82' y='20.16' width='152.09' height='44.97' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
-<rect x='234.82' y='65.14' width='152.09' height='44.70' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
-<rect x='234.82' y='109.84' width='152.09' height='49.69' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
-<rect x='234.82' y='159.53' width='152.09' height='18.75' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
-<rect x='234.82' y='178.28' width='152.09' height='38.48' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
-<rect x='234.82' y='216.76' width='152.09' height='25.44' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
-<rect x='234.82' y='242.20' width='152.09' height='40.76' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
-<rect x='234.82' y='282.96' width='152.09' height='30.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #053061;' />
+<rect x='65.83' y='20.16' width='152.09' height='57.81' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
+<rect x='65.83' y='77.98' width='152.09' height='33.66' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
+<rect x='65.83' y='111.64' width='152.09' height='53.77' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
+<rect x='65.83' y='165.41' width='152.09' height='50.72' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
+<rect x='65.83' y='216.13' width='152.09' height='25.19' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
+<rect x='65.83' y='241.32' width='152.09' height='43.42' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
+<rect x='65.83' y='284.75' width='152.09' height='29.07' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
+<rect x='234.82' y='20.16' width='152.09' height='48.04' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
+<rect x='234.82' y='68.20' width='152.09' height='47.75' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
+<rect x='234.82' y='115.96' width='152.09' height='53.08' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
+<rect x='234.82' y='169.04' width='152.09' height='41.10' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
+<rect x='234.82' y='210.14' width='152.09' height='27.18' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
+<rect x='234.82' y='237.32' width='152.09' height='43.54' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
+<rect x='234.82' y='280.86' width='152.09' height='32.96' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>
 <text x='35.55' y='316.97' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";' textLength='17.14px' lengthAdjust='spacingAndGlyphs'>0.00</text>
@@ -66,22 +64,20 @@
 <text x='310.87' y='339.74' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "Arial";' textLength='20.54px' lengthAdjust='spacingAndGlyphs'>white</text>
 <text x='226.37' y='352.20' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='40.36px' lengthAdjust='spacingAndGlyphs'>ethnicity</text>
 <text transform='translate(13.36,166.99) rotate(-90)' text-anchor='middle' style='font-size: 11.00px; font-family: "Arial";' textLength='49.55px' lengthAdjust='spacingAndGlyphs'>proportion</text>
-<text x='428.70' y='99.07' style='font-size: 11.00px; font-family: "Arial";' textLength='39.15px' lengthAdjust='spacingAndGlyphs'>emotion</text>
-<rect x='429.41' y='106.42' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
-<rect x='429.41' y='123.70' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
-<rect x='429.41' y='140.98' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
-<rect x='429.41' y='158.26' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
-<rect x='429.41' y='175.54' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
-<rect x='429.41' y='192.82' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
-<rect x='429.41' y='210.10' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
-<rect x='429.41' y='227.38' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #053061;' />
-<text x='451.46' y='117.50' style='font-size: 8.80px; font-family: "Arial";' textLength='41.58px' lengthAdjust='spacingAndGlyphs'>Happiness</text>
-<text x='451.46' y='134.78' style='font-size: 8.80px; font-family: "Arial";' textLength='32.77px' lengthAdjust='spacingAndGlyphs'>Surprise</text>
-<text x='451.46' y='152.06' style='font-size: 8.80px; font-family: "Arial";' textLength='28.37px' lengthAdjust='spacingAndGlyphs'>Neutral</text>
-<text x='451.46' y='169.34' style='font-size: 8.80px; font-family: "Arial";' textLength='37.66px' lengthAdjust='spacingAndGlyphs'>Uncertain</text>
-<text x='451.46' y='186.62' style='font-size: 8.80px; font-family: "Arial";' textLength='34.25px' lengthAdjust='spacingAndGlyphs'>Sadness</text>
-<text x='451.46' y='203.90' style='font-size: 8.80px; font-family: "Arial";' textLength='18.09px' lengthAdjust='spacingAndGlyphs'>Fear</text>
-<text x='451.46' y='221.18' style='font-size: 8.80px; font-family: "Arial";' textLength='23.49px' lengthAdjust='spacingAndGlyphs'>Anger</text>
-<text x='451.46' y='238.46' style='font-size: 8.80px; font-family: "Arial";' textLength='29.34px' lengthAdjust='spacingAndGlyphs'>Disgust</text>
+<text x='428.70' y='107.71' style='font-size: 11.00px; font-family: "Arial";' textLength='39.15px' lengthAdjust='spacingAndGlyphs'>emotion</text>
+<rect x='429.41' y='115.06' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #B2182B;' />
+<rect x='429.41' y='132.34' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D6604D;' />
+<rect x='429.41' y='149.62' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #F7F7F7;' />
+<rect x='429.41' y='166.90' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #D1E5F0;' />
+<rect x='429.41' y='184.18' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #92C5DE;' />
+<rect x='429.41' y='201.46' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #4393C3;' />
+<rect x='429.41' y='218.74' width='15.86' height='15.86' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #2166AC;' />
+<text x='451.46' y='126.14' style='font-size: 8.80px; font-family: "Arial";' textLength='41.58px' lengthAdjust='spacingAndGlyphs'>Happiness</text>
+<text x='451.46' y='143.42' style='font-size: 8.80px; font-family: "Arial";' textLength='32.77px' lengthAdjust='spacingAndGlyphs'>Surprise</text>
+<text x='451.46' y='160.70' style='font-size: 8.80px; font-family: "Arial";' textLength='28.37px' lengthAdjust='spacingAndGlyphs'>Neutral</text>
+<text x='451.46' y='177.98' style='font-size: 8.80px; font-family: "Arial";' textLength='34.25px' lengthAdjust='spacingAndGlyphs'>Sadness</text>
+<text x='451.46' y='195.26' style='font-size: 8.80px; font-family: "Arial";' textLength='18.09px' lengthAdjust='spacingAndGlyphs'>Fear</text>
+<text x='451.46' y='212.54' style='font-size: 8.80px; font-family: "Arial";' textLength='23.49px' lengthAdjust='spacingAndGlyphs'>Anger</text>
+<text x='451.46' y='229.82' style='font-size: 8.80px; font-family: "Arial";' textLength='29.34px' lengthAdjust='spacingAndGlyphs'>Disgust</text>
 </g>
 </svg>
