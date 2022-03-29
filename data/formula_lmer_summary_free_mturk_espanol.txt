@@ -1,0 +1,36 @@
+\begin{aligned}
+  \operatorname{sentimentScore}_{i}  &\sim N \left(\mu, \sigma^2 \right) \\
+    \mu &=\alpha_{j[i]} + \beta_{1j[i]}(\operatorname{sexC}) + \beta_{2j[i]}(\operatorname{ethnicityC}) + \beta_{3}(\operatorname{conditionC}) + \beta_{4j[i]}(\operatorname{ethnicityC} \times \operatorname{sexC}) + \beta_{5}(\operatorname{conditionC} \times \operatorname{sexC}) + \beta_{6}(\operatorname{conditionC} \times \operatorname{ethnicityC}) + \beta_{7}(\operatorname{conditionC} \times \operatorname{ethnicityC} \times \operatorname{sexC}) \\    
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\alpha_{j} \\
+      &\beta_{1j} \\
+      &\beta_{2j} \\
+      &\beta_{4j}
+    \end{aligned}
+  \end{array}
+\right)
+  &\sim N \left(
+\left(
+  \begin{array}{c} 
+    \begin{aligned}
+      &\mu_{\alpha_{j}} \\
+      &\mu_{\beta_{1j}} \\
+      &\mu_{\beta_{2j}} \\
+      &\mu_{\beta_{4j}}
+    \end{aligned}
+  \end{array}
+\right)
+, 
+\left(
+  \begin{array}{cccc}
+     \sigma^2_{\alpha_{j}} & \rho_{\alpha_{j}\beta_{1j}} & \rho_{\alpha_{j}\beta_{2j}} & \rho_{\alpha_{j}\beta_{4j}} \\ 
+     \rho_{\beta_{1j}\alpha_{j}} & \sigma^2_{\beta_{1j}} & \rho_{\beta_{1j}\beta_{2j}} & \rho_{\beta_{1j}\beta_{4j}} \\ 
+     \rho_{\beta_{2j}\alpha_{j}} & \rho_{\beta_{2j}\beta_{1j}} & \sigma^2_{\beta_{2j}} & \rho_{\beta_{2j}\beta_{4j}} \\ 
+     \rho_{\beta_{4j}\alpha_{j}} & \rho_{\beta_{4j}\beta_{1j}} & \rho_{\beta_{4j}\beta_{2j}} & \sigma^2_{\beta_{4j}}
+  \end{array}
+\right)
+ \right)
+    \text{, for participantId j = 1,} \dots \text{,J}
+\end{aligned}

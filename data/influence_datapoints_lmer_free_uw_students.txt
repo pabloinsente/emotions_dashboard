@@ -14653,15 +14653,15 @@
 <polygon points='427.45,17.22 430.08,21.78 424.82,21.78 ' style='stroke-width: 0.71; stroke: none; fill: #FF0000;' />
 <polygon points='416.91,17.24 419.54,21.80 414.28,21.80 ' style='stroke-width: 0.71; stroke: none; fill: #FF0000;' />
 <polygon points='416.40,17.26 419.03,21.82 413.77,21.82 ' style='stroke-width: 0.71; stroke: none; fill: #FF0000;' />
-<line x1='500.32' y1='38.27' x2='477.16' y2='20.86' style='stroke-width: 1.07;' />
-<line x1='483.79' y1='22.89' x2='459.91' y2='20.33' style='stroke-width: 1.07;' />
-<line x1='471.08' y1='54.80' x2='453.50' y2='21.08' style='stroke-width: 1.07;' />
-<line x1='441.90' y1='32.95' x2='429.06' y2='21.00' style='stroke-width: 1.07;' />
-<text x='520.05' y='44.05' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='35.86px' lengthAdjust='spacingAndGlyphs'>12300</text>
-<text x='499.94' y='27.54' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>5180</text>
-<text x='490.81' y='60.44' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='35.86px' lengthAdjust='spacingAndGlyphs'>14007</text>
-<text x='463.89' y='27.54' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>1623</text>
-<text x='447.54' y='43.98' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='34.90px' lengthAdjust='spacingAndGlyphs'>11980</text>
+<line x1='500.27' y1='38.24' x2='477.16' y2='20.86' style='stroke-width: 1.07;' />
+<line x1='500.32' y1='22.91' x2='459.92' y2='20.27' style='stroke-width: 1.07;' />
+<line x1='473.62' y1='54.82' x2='453.56' y2='21.07' style='stroke-width: 1.07;' />
+<line x1='431.50' y1='37.30' x2='428.42' y2='21.16' style='stroke-width: 1.07;' />
+<text x='520.00' y='44.02' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='35.86px' lengthAdjust='spacingAndGlyphs'>12300</text>
+<text x='516.46' y='27.54' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>5180</text>
+<text x='493.35' y='60.43' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='35.86px' lengthAdjust='spacingAndGlyphs'>14007</text>
+<text x='469.64' y='27.54' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='28.68px' lengthAdjust='spacingAndGlyphs'>1623</text>
+<text x='450.74' y='44.02' text-anchor='middle' style='font-size: 12.90px; font-family: "Arial";' textLength='34.90px' lengthAdjust='spacingAndGlyphs'>11980</text>
 <line x1='412.25' y1='328.50' x2='412.25' y2='5.48' style='stroke-width: 1.07; stroke: #FF0000; stroke-linecap: butt;' />
 </g>
 <g clip-path='url(#cpMC4wMHw1MDQuMDB8MC4wMHwzNjAuMDA=)'>

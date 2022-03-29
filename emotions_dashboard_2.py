@@ -1521,8 +1521,6 @@ st.write("""
 - [Leverage check](#header-lmer-fr-inf-mturk)
     - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk)
     - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk)
-- [Model summary for reffited model](#header-lmer-fr-s-re-mturk)
-- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re-mturk)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk):
 - [Participants demographics](#header-db-dem-mturk)
@@ -2641,26 +2639,6 @@ render_svg(svg_image)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
-#################################################
-### LMER refitted summary for reffited model ####
-st.header("Model summary for reffited model", "header-lmer-fr-s-re-mturk")
-
-HtmlFile = open("data/lmer_refit_summary_free_mturk.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 600)
-
-#######################################
-### ANOVA table for refitted coeff ####
-st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-fr-a-re-mturk")
-
-HtmlFile = open("data/anova_lmer_refit_summary_free_mturk.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 150)
-
-st.write("""[back to the toc study II](#mturk-sample)""")
-
 #######################################
 #######################################
 
@@ -3183,7 +3161,7 @@ render_svg(df_svg_free['svg'][23])
 ## K-means *clusters* forced choice ##
 
 st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s-mturk-sp')
-image = Image.open('data/k_means_free_choice_11_mturk_espanol.png')
+image = Image.open('data/k_means_free_choice_10_mturk_espanol.png')
 st.image(image)
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
@@ -3733,3 +3711,5 @@ print(source_code)
 components.html(source_code, height = 200)
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+##
