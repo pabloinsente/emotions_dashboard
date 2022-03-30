@@ -186,6 +186,10 @@ st.write("""
     - [Leverage participants](#subheader-lmer-fr-lev-ind)
 - [Model summary for reffited model](#header-lmer-fr-s-re)
 - [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re)
+- [Charts for significant effects](#header-lmer-fr-eff)
+    - [Sex main effect on sentiment score](#subheader-lmer-fr-sex-eff)
+    - [Ethnicity main effect on sentiment score](#subheader-lmer-fr-et-eff)
+    - [Sex and ethnicity interaction effect on sentiment score](#subheader-lmer-fr-sex-et-eff)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db):
 - [Participants demographics](#header-db-dem)
@@ -1297,6 +1301,41 @@ components.html(source_code, height = 150)
 
 st.write("""[back to the toc study I](#st-sample)""")
 
+
+######################################
+### Charts for signficant effects ####
+
+st.header("Charts for significant effects", "header-lmer-fr-eff")
+
+    #############
+    ## sex effect
+st.subheader("Sex main effect on sentiment score", "subheader-lmer-fr-sex-eff")
+
+with open('data/sex_effect_free.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    #############
+    ## ethnicity effect
+st.subheader("Ethnicity main effect on sentiment score", "subheader-lmer-fr-et-eff")
+
+with open('data/ethnicity_effect_free.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+    #########################
+    ## Sex * Ethnicity effect
+st.subheader("Sex and ethnicity interaction effect on sentiment score", "subheader-lmer-fr-sex-et-eff")
+
+with open('data/sex_et_effect_free.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+
 #######################################
 #######################################
 
@@ -1521,6 +1560,9 @@ st.write("""
 - [Leverage check](#header-lmer-fr-inf-mturk)
     - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk)
     - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk)
+- [Charts for significant effects](#header-lmer-fr-eff-mturk)
+    - [Sex main effect on sentiment score](#subheader-lmer-fr-sex-eff-mturk)
+    - [Sex and ethnicity interaction effect on sentiment score](#subheader-lmer-fr-sex-et-eff-mturk)
 
 [**Dueling-bandits ranking experiment and comparison with surveys results**](#title-db-mturk):
 - [Participants demographics](#header-db-dem-mturk)
@@ -2639,6 +2681,32 @@ render_svg(svg_image)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
+######################################
+### Charts for signficant effects ####
+
+st.header("Charts for significant effects", "header-lmer-fr-eff-mturk")
+
+    #############
+    ## sex effect
+st.subheader("Sex main effect on sentiment score", "subheader-lmer-fr-sex-eff-mturk")
+
+with open('data/sex_effect_free_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+
+    #########################
+    ## Sex * Ethnicity effect
+st.subheader("Sex and ethnicity interaction effect on sentiment score", "subheader-lmer-fr-sex-et-eff-mturk")
+
+with open('data/sex_et_effect_free_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
 #######################################
 #######################################
 
@@ -2859,8 +2927,33 @@ st.write("""
     - [Ethnicity X Survey language Chi-suare test](#subheader-chi-3-f-s-mturk-sp)
 - [Proportional odds assumption](#header-pro-odds-f-s-mturk-sp)
 
+[**Sentiment analysis linear mixed-effect model - Free-choice survey**](#title-lmer-fr-mturk-sp):
+- [Model specification](#header-lmer-fr-m-mturk-sp)
+- [Model summary](#header-lmer-fr-s-mturk-sp)
+- [Model comparison](#header-lmer-fr-com-mturk-sp)
+- [ANOVA for fixed-effects coefficients](#header-lmer-fr-a-mturk-sp)
+- [Individual participant data for each condition - English data](#header-lmer-fr-ind-mturk-en-sp)
+- [Individual participant data for each condition - Spanish data](#header-lmer-fr-ind-mturk-sp-sp)
+- [Homogeneity of variance assumption](#header-lmer-fr-var-mturk-sp) 
+    - [ANOVA for between subjects residuals](#subheader-lmer-fr-a-res-mturk-sp)
+    - [Fitted vs residuals plot](#subheader-lmer-fr-a-res-plot-mturk-sp)
+    - [Level 1 residuals plot](#subheader-lmer-fr-a-res-plot-l1-mturk-sp)
+    - [Level 2 residuals plot](#subheader-lmer-fr-a-res-plot-l2-int-mturk-sp)
+- [Normality of error term assumption](#header-lmer-fr-nor-mturk-sp) 
+    - [Quantile-Quantile Plot](#subheader-lmer-fr-a-qq-mturk-sp)
+- [Influence check](#header-lmer-fr-inf-mturk-sp)
+    - [Influence datapoints](#subheader-lmer-fr-inf-dp-mturk-sp)
+    - [Influence participants](#subheader-lmer-fr-inf-ind-mturk-sp)
+- [Leverage check](#header-lmer-fr-inf-mturk-sp)
+    - [Leverage datapoints](#subheader-lmer-fr-lev-dp-mturk-sp)
+    - [Leverage participants](#subheader-lmer-fr-lev-ind-mturk-sp)
+- [Model summary for reffited model](#header-lmer-fr-s-re-mturk-sp)
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-fr-a-re-mturk-sp)
+- [Charts for significant effects](#header-lmer-fr-eff-mturk-sp)
+    - [Condition main effect on sentiment score](#subheader-lmer-fr-cond-eff-mturk-sp)
+    - [Sex and condition interaction effect on sentiment score](#subheader-lmer-fr-sex-cond-eff-mturk-sp)
+    - [Sex and ethnicity interaction effect on sentiment score](#subheader-lmer-fr-sex-et-eff-mturk-sp)
 """)
-
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
 
@@ -3665,7 +3758,7 @@ st.header("Model summary", "header-ord-lmer-f-s-mturk-sp")
 HtmlFile = open("data/ord_lmer_summary_forced_mturk_espanol.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
-components.html(source_code, height = 940)
+components.html(source_code, height = 900)
 
 ####################################
 ### Multicolinearity assumption ####
@@ -3712,4 +3805,224 @@ components.html(source_code, height = 200)
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
 
-##
+
+############################
+############################
+### LMER FREE SURVEY #######
+
+st.title('Sentiment analysis linear mixed-effect model - Free-choice survey', 'title-lmer-fr-mturk-sp')
+
+###############
+### Formula ###
+st.header("Model specification", "header-lmer-fr-m-mturk-sp")
+
+with open('data/formula_lmer_summary_free_mturk_espanol.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### LMER summary ####
+st.header("Model summary", "header-lmer-fr-s-mturk-sp")
+
+HtmlFile = open("data/lmer_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 700)
+
+#########################################
+### ANOVA table for model comparison ####
+st.header("ANOVA for model comparison", "header-lmer-fr-com-mturk-sp")
+
+HtmlFile = open("data/anova_comparison_lmer_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 220)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients (full model)", "header-lmer-fr-a-mturk-sp")
+
+HtmlFile = open("data/anova_lmer_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 220)
+
+### Individual participant data ####
+st.header("Individual participant data for each condition  - English data", "header-lmer-fr-ind-mturk-en-sp")
+with open('data/participants_charts_lmer_free_mturk_espanol_en.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+### Individual participant data ####
+st.header("Individual participant data for each condition - Spanish data", "header-lmer-fr-ind-mturk-sp-sp")
+with open('data/participants_charts_lmer_free_mturk_espanol_es.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+############################################
+#### Homogeneity of variance assumption ####
+############################################
+st.header("Homogeneity of variance assumption", "header-lmer-fr-var-mturk-sp")
+
+    ################################################
+    ### ANOVA table between subjects residuials ####
+st.subheader("ANOVA for between subjects residuals", "subheader-lmer-fr-a-res-mturk-sp")
+
+HtmlFile = open("data/anova_bwt_res_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+    ##################################
+    ### Fitted vs residuals plot  ####
+st.subheader("Fitted vs residuals plot", "subheader-lmer-fr-a-res-plot-mturk-sp")
+
+with open('data/fitted_vs_residual_plot_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##################################
+    ### Level 1 residual plot  ####
+st.subheader("Level 1 residuals plot", "subheader-lmer-fr-a-res-plot-l1-mturk-sp")
+
+with open('data/l1_res_plot_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ###########################################
+    ### Level 2 residual plot - intercept  ####
+st.subheader("Level 2 residuals plot", "subheader-lmer-fr-a-res-plot-l2-int-mturk-sp")
+
+with open('data/l2_int_res_plot_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+###########################################
+### Normality of error term assumption ####
+###########################################
+
+st.header("Normality of error term assumption", "header-lmer-fr-nor-mturk-sp")
+
+    ###########################################
+    ### Quantile-Quantile Plot  ####
+st.subheader("Quantile-Quantile Plot", "subheader-lmer-fr-a-qq-mturk-sp")
+
+with open('data/qqplot_lmer_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+#######################
+### Influence check ###
+
+st.header("Influence check", "header-lmer-fr-inf-mturk-sp")
+
+    ##############################
+    ### Influence datapoints  ####
+st.subheader("Influence datapoints", "subheader-lmer-fr-inf-dp-mturk-sp")
+
+with open('data/influence_datapoints_lmer_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ################################
+    ### Influence participants  ####
+st.subheader("Influence participants", "subheader-lmer-fr-inf-ind-mturk-sp")
+
+with open('data/influence_participants_lmer_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+######################
+### Leverage check ###
+
+st.header("Leverage check", "header-lmer-fr-lev-mturk-sp")
+
+    ##############################
+    ### leverage  datapoints  ####
+st.subheader("Leverage datapoints", "subheader-lmer-fr-lev-dp-mturk")
+
+with open('data/leverage_datapoints_lmer_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##############################
+    ### leverage participants  ####
+st.subheader("Leverage participants", "subheader-lmer-fr-lev-ind-mturk-sp")
+
+with open('data/leverage_participants_lmer_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+#################################################
+### LMER refitted summary for reffited model ####
+st.header("Model summary for reffited model", "header-lmer-fr-s-re-mturk-sp")
+
+HtmlFile = open("data/lmer_refit_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 700)
+
+#######################################
+### ANOVA table for refitted coeff ####
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-fr-a-re-mturk-sp")
+
+HtmlFile = open("data/anova_lmer_refit_summary_free_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 220)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
+
+######################################
+### Charts for signficant effects ####
+
+st.header("Charts for significant effects", "header-lmer-fr-eff-mturk-sp")
+
+    ###################
+    ## condition effect
+st.subheader("Condition main effect on sentiment score", "subheader-lmer-fr-cond-eff-mturk-sp")
+
+with open('data/language_effect_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    #########################
+    ## Sex * Condition effect
+st.subheader("Sex and condition interaction effect on sentiment score", "subheader-lmer-fr-sex-cond-eff-mturk-sp")
+
+with open('data/sex_language_effect_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    #########################
+    ## Sex * Ethnicity effect
+st.subheader("Sex and ethnicity interaction effect on sentiment score", "subheader-lmer-fr-sex-et-eff-mturk-sp")
+
+with open('data/sex_et_effect_free_mturk_espanol.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study III](#mturk-sample-sp)""")
