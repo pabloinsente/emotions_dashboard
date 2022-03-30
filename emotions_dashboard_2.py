@@ -8,9 +8,13 @@ from PIL import Image
 import streamlit.components.v1 as components
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide",
+    page_icon="🧊")
 
-st.title('Emotion categorization analysis', 'top')
+st.title('Categorization of facial expressions of emotion: conceptual, methodological, and cultural variations', 'top')
+st.header('Data Analysis and results for PhD Dissertation')
+st.subheader('By Pablo Caceres, PhD (c) in Psychology, UW-Madison')
 
 st.write("""
 
