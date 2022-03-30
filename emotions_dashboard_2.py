@@ -18,17 +18,17 @@ My dissertation investigates three questions at the intersection of cognitive sc
  
 (1) how humans **categorize** and **conceptualize** facial expressions of emotion  
 (2) whether different **methods** for asking people to categorize facial expressions alters such behavior  
-(3) whether perceived **social characteristics** of faces (like race and gender) impacts humans categorization behavior  
+(3) whether perceived **social characteristics** of faces (like race and gender) impacts this kind of categorization behavior  
 
 I approached these questions in three studies on three different samples. I'll briefly describe the stimulus and samples studied, 
 to then concisely describe the three studies.
 
 ## Images of facial expressions 
 
-I study categorization behavior on images of facial expressions, as it is the only source of stimulus that satisfies the requirements 
-for my research goals. These requirements are:
+I study categorization behavior, or *how people make inferences about others' internal states*, using images of facial expressions, as this is the only kind of stimulus that satisfies my research goals requirements.
+These requirements are:
 
-(1) Images from a wide **variety of ethnic, nationality, sex, and age groups**   
+(1) Images from a wide variety of **ethnic, sex, and age groups**   
 (2) Images obtained in a **"naturalistic-like" manner**. This contrasts to images obtained in studio settings, from paid actors 
 *posing* an exaggerated facial configuration of what is thought in western culture as archetypical of certain emotion
 
@@ -45,16 +45,16 @@ of these images were manually annotated by trained raters, following the seven s
 As this research project was done during the COVID-19 pandemic, all the data collection was completed on-line. Data was collected from 
 three groups:
 
-(1) Undergraduates from a large public university in the United States  
-(2) English-speaking adults workers from the United States in Amazon MTurk   
-(3) Spanish-speaking adults workers from South America in Amazon MTurk (pending...)  
+(1) Undergraduates from a large public university on the United States  
+(2) English-speaking adults workers from the United States on Amazon MTurk   
+(3) Spanish-speaking adults workers from Latin America on Amazon MTurk  
 
 Sample sizes were approximately 100 participants (on each group) for the first study, and between 200-300 participants for the second 
 study, yielding a total of approximately 1100 participants overall.
 
 ## Study I: Comparing forced-choice and free-choice methods for the categorization of facial expressions of emotion
 
-The first study, consist of comparing two methods to measure how humans categorize facial expressions of emotion:  
+The first study, consist of **comparing two methods to measure how humans categorize facial expressions of emotion**:  
 
 (1) A **"forced-choice" method**, where participants are presented with a series of images of facial expressions, and asked
  to select among the seven alternatives provided by the basic emotions model. This is the most widely used method in the literature, 
@@ -66,9 +66,10 @@ their own categories to label the images
 
 When asking people to categorize facial expressions, we are effectively asking them to *rank* potential descriptors of such expressions. 
 The force-choice method requires participants to pick the best descriptor among seven pre-selected alternatives, whereas the free-choice 
-method requires selecting the best descriptor among the ones that comes to mind while looking at the image. A reasonable question is 
-whether people would select a different term to describe a facial expression, if they have access to a wider range of words, either written 
-down in from of them, or in the lexicon of their minds during that particular instance in time. They may have chosen differently. 
+method requires selecting the best descriptor among the ones that *comes to mind while looking at the image*. A reasonable question is 
+whether people would select a different term to describe a facial expression, if they have access to a larger selection of words, either written 
+down in front of them, or in the lexicon of their minds during that particular instance in time. In the latter case, they may have chosen differently,
+particularly if low-frequency words, or hard to remember words, are presented as options.  
 
 To address the above-mentioned issue, I utilize a **dueling-banding method** approach, where participants are presented, sequentially, with
 pairs of words to describe a facial expression, and then select which word (from that pair) is the best descriptor. Dueling-bandits experiments 
@@ -79,8 +80,8 @@ The words selected for this study, are the ones produced by participants in the 
 manually selected by myself. Concretely, I combined all the words used to describe a face belonging to a given emotion (in accordance to 
 the annotations in AffecNet), and use that set to run the dueling-bandit study. 
 
-This study was implemented in NEXT, a platform that leverages active learning to crowdsourcing. NEXT computes [Borda Scores](https://en.wikipedia.org/wiki/Borda_count), 
-wich then used to rank descriptors for each face image. 
+This study was implemented in NEXT, a platform that leverages active learning algorithms allowing efficient crowdsourcing answers on the internet.
+NEXT computes [Borda Scores](https://en.wikipedia.org/wiki/Borda_count), wich I used to rank descriptors for each face image. 
 
 ## Study III: Cultural variations in the categorization of facial expression of emotion
 
@@ -92,7 +93,7 @@ are contextual and socioculturally fabricated entities. We can add to these cont
 proposing variations or combinations of both intellectual streams.  
 
 In my third study I contribute to disentangle the debate, by comparing the results obtained in Study I and II, to a sample of native 
-Spanish-speaking participants from South America, which happens to be the region of the world where I come from. 
+Spanish-speaking participants from Latin America, which happens to be the region of the world where I come from. 
 
 """)
 
