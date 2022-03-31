@@ -12,7 +12,7 @@ st.set_page_config(
     layout="wide",
     page_icon="🧊")
 
-st.title('Categorization of facial expressions of emotion: conceptual, methodological, and cultural variations', 'top')
+st.title('Categorization of facial expressions of emotion: conceptualization, methodological challenges, and cultural variations', 'top')
 st.header('Data Analysis and results for PhD Dissertation')
 st.subheader('By Pablo Caceres, PhD (c) in Psychology, UW-Madison')
 
@@ -3732,11 +3732,11 @@ with open('data/sex_et_cond_forced_mturk_espanol.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
-st.subheader('Proportion of responses by subgroup (each column adds to 100)', '...')
-st.write('Tables subtitles = [ethnicity.survey-language.sex]')
-with open('data/table_sex_et_cond_forced_mturk_espanol.txt') as f:
-    svg_image = f.read().rstrip()
-render_svg(svg_image)
+# st.subheader('Proportion of responses by subgroup (each column adds to 100)', '...')
+# st.write('Tables subtitles = [ethnicity.survey-language.sex]')
+# with open('data/table_sex_et_cond_forced_mturk_espanol.txt') as f:
+#     svg_image = f.read().rstrip()
+# render_svg(svg_image)
 
 st.write("""[back to the toc study III](#mturk-sample-sp)""")
 
