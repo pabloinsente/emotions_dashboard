@@ -1,0 +1,8 @@
+\begin{aligned}
+  \operatorname{correct}_{i}  &\sim \operatorname{Binomial}(n = 1, \operatorname{prob}_{\operatorname{correct} = 1} = \widehat{P}) \\
+    \log\left[\frac{\hat{P}}{1 - \hat{P}} \right] &=\alpha_{j[i],k[i]} \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for photoIdF j = 1,} \dots \text{,J} \\
+    \alpha_{k}  &\sim N \left(\gamma_{0}^{\alpha} + \gamma_{1}^{\alpha}(\operatorname{condition.dummy}), \sigma^2_{\alpha_{k}} \right)
+    \text{, for participantIdF k = 1,} \dots \text{,K}
+\end{aligned}

@@ -158,6 +158,16 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-3d-chs)
     - [Davies-Bouldin score](#subheader-pca-3d-dbs)
 
+[**Accuracy descriptives forced-choice vs free-response**](#title-acc):  
+- [Barplot accuracy by survey method](#header-acc-m-d)  
+- [Barplot accuracy by expected label](#header-acc-l-d)  
+- [Barplot accuracy by expected label and survey method](#header-acc-ml-d)     
+
+[**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer):  
+- [Model specification"](#header-acc-lmer-form)  
+- [Model summary](#header-acc-lmer-sum)  
+- [Main effect survey method](#header-acc-lmer-main)
+
 [**Sentiment analysis descriptives results**](#title-sen):
 - [Histograms sentiment-score distributions](#header-sen-d)
 - [Boxplots sentiment-score by groups](#header-box-m)
@@ -789,6 +799,73 @@ st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
 
 st.write("""[back to the toc study I](#st-sample)""")
+
+
+####################
+####################
+#  ACCURACY ANALYSIS
+####################
+####################
+
+st.title('Accuracy descriptives forced-choice vs free-response survey', 'title-acc')
+
+st.write("""
+**Accuracy** was computed as the percentage of responses matching the expected emotion label for each image""")
+
+st.header('Barplot accuracy by survey method', 'header-acc-m-d')
+
+with open('data/correct-survey_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.header('Barplot accuracy by expected label', 'header-acc-l-d')
+
+with open('data/correct-label_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.header('Barplot accuracy by expected label and survey method', 'header-acc-ml-d')
+
+with open('data/correct-label-survey_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+##########################
+# Accuracy LMER logistic
+##########################
+st.title('Logistic Mixed-Effect Model for Accuracy', 'title-acc-lmer')
+
+###############
+### Formula ###
+st.header("Model specification", "header-acc-lmer-form")
+
+with open('data/formula_log_lmer_uw_students.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### Model Summary ###
+st.header('Model summary', 'header-acc-lmer-sum')
+
+HtmlFile = open("data/lmer_summary_free_vs_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 400)
+
+###################
+### Main effect ###
+st.header('Main effect survey method', 'header-acc-lmer-main')
+
+with open('data/predicted_prob_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+
+st.write("""[back to the toc study I](#st-sample)""")
+
 
 #####################
 ## SENTIMENT ANALYSIS
@@ -1534,6 +1611,16 @@ st.write("""
     - [Calinski-Harabasz score](#subheader-pca-3d-chs-mturk)
     - [Davies-Bouldin score](#subheader-pca-3d-dbs-mturk)
 
+[**Accuracy descriptives forced-choice vs free-response**](#title-acc-mturk):  
+- [Barplot accuracy by survey method](#header-acc-m-d-mturk)  
+- [Barplot accuracy by expected label](#header-acc-l-d-mturk)  
+- [Barplot accuracy by expected label and survey method](#header-acc-ml-d-mturk)     
+
+[**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer-mturk):  
+- [Model specification"](#header-acc-lmer-form-mturk)  
+- [Model summary](#header-acc-lmer-sum-mturk)  
+- [Main effect survey method](#header-acc-lmer-main-mturk)
+
 [**Sentiment analysis results**](#title-sen-mturk):
 - [Histograms sentiment-score distributions](#header-sen-d-mturk)
 - [Boxplots sentiment-score by groups](#header-box-m-mturk)
@@ -2183,6 +2270,74 @@ st.subheader(df_pca_eval['image_title'][8])
 render_svg(df_pca_eval['svg'][8])
 
 st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+
+####################
+####################
+#  ACCURACY ANALYSIS
+####################
+####################
+
+st.title('Accuracy descriptives forced-choice vs free-response survey', 'title-acc-mturk')
+
+st.write("""
+**Accuracy** was computed as the percentage of responses matching the expected emotion label for each image""")
+
+st.header('Barplot accuracy by survey method', 'header-acc-m-d-mturk')
+
+with open('data/correct-survey_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.header('Barplot accuracy by expected label', 'header-acc-l-d-mturk')
+
+with open('data/correct-label_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.header('Barplot accuracy by expected label and survey method', 'header-acc-ml-d-mturk')
+
+with open('data/correct-label-survey_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+##########################
+# Accuracy LMER logistic
+##########################
+st.title('Logistic Mixed-Effect Model for Accuracy', 'title-acc-lmer-mturk')
+
+###############
+### Formula ###
+st.header("Model specification", "header-acc-lmer-form-mturk")
+
+with open('data/formula_log_lmer_mturk.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### Model Summary ###
+st.header('Model summary', 'header-acc-lmer-sum-mturk')
+
+HtmlFile = open("data/lmer_summary_free_vs_forced_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 400)
+
+###################
+### Main effect ###
+st.header('Main effect survey method', 'header-acc-lmer-main-mturk')
+
+with open('data/predicted_prob_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
 
 ############################
 ############################
