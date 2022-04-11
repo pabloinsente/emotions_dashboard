@@ -1,0 +1,5 @@
+\begin{aligned}
+  \operatorname{web.frequency}_{i}  &\sim N \left(\alpha_{j[i]} + \beta_{1}(\operatorname{method.dummy}), \sigma^2 \right) \\
+    \alpha_{j}  &\sim N \left(\mu_{\alpha_{j}}, \sigma^2_{\alpha_{j}} \right)
+    \text{, for photoID j = 1,} \dots \text{,J}
+\end{aligned}

@@ -215,6 +215,12 @@ st.write("""
 - [Word-ranking for 'sadness'](#header-db-sadness)
 - [Word-ranking for 'surprise'](#header-db-surprise)
 
+[**Web frequency by method linear mixed-effect model**](#title-wf):  
+- [Boxplot web-frequency by measurement method](#header-lmer-wf-box)  
+- [Model specification](#header-lmer-wf-f)  
+- [Model summary](#header-lmer-wf-s)  
+- [ANOVA for fixed-effects coefficients](#header-lmer-wf-a)  
+- [Mean and SEM for method effect on web-frequency](#header-lmer-wf-me)  
 """)
 
 st.write("""[back to the toc study I](#st-sample)""")
@@ -1577,6 +1583,72 @@ st.write("""[back to the toc study I](#st-sample)""")
 
 ##########################
 ##########################
+# Web frequency by Method 
+##########################
+##########################
+
+st.title('Web frequency by method linear mixed-effect model', 'title-wf')
+
+st.write("""Here we test whether the *frequency of words in the English language*, as defined 
+in the [Google Web Trillion Word Corpus](https://norvig.com/ngrams/), is associated with the 
+*method* to measure which word better describe a given image. This methods are the *free-choice* 
+and the *dueling-bandits* task. I took the **best two descriptors** (i.e., top-two ranked words) 
+for each image in the dueling-bandits study according to their borda score, and the two words with the 
+highest proportion of responses for those same images in the free-choice survey, for a total of
+fourty eight words. Each word has a web-frequency according to the Google Web Trillion Word Corpus.
+Hence, I ran a linear-mixed effect model with web-frequency as target, method (free-choice survey
+vs dueling-bandits) as predictor, and photo-ID as a random-effect (each photo contributes two measures)""")
+
+
+###############
+### Boxplot ###
+st.header('Boxplot web-frequency by measurement method', 'header-lmer-wf-box')
+
+with open('data/web_freq_method_boxplot_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+###############
+### Formula ###
+st.header("Model specification", "header-lmer-wf-f")
+
+with open('data/formula_method_lmer_uw_students.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### LMER summary ####
+st.header("Model summary", "header-lmer-wf-s")
+
+HtmlFile = open("data/lmer_summary_method_ranking_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 300)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients", "header-lmer-wf-a")
+
+HtmlFile = open("data/anova_lmer_method_ranking_free_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+####################
+### Mean and SEM ###
+st.header('Mean and SEM for method effect on web-frequency', 'header-lmer-wf-me')
+
+with open('data/web_freq_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+##########################
+##########################
 ## English-speaking MTurk 
 ##########################
 ##########################
@@ -1682,6 +1754,12 @@ st.write("""
 - [Word-ranking for 'sadness'](#header-db-sadness-mturk)
 - [Word-ranking for 'surprise'](#header-db-surprise-mturk)
 
+[**Web frequency by method linear mixed-effect model**](#title-wf-mturk):  
+- [Boxplot web-frequency by measurement method](#header-lmer-wf-box-mturk)  
+- [Model specification](#header-lmer-wf-f-mturk)  
+- [Model summary](#header-lmer-wf-s-mturk)  
+- [ANOVA for fixed-effects coefficients](#header-lmer-wf-a-mturk)  
+- [Mean and SEM for method effect on web-frequency](#header-lmer-wf-me-mturk)  
 """)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
@@ -3046,6 +3124,72 @@ st.image(image)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
+
+##########################
+##########################
+# Web frequency by Method 
+##########################
+##########################
+
+st.title('Web frequency by method linear mixed-effect model', 'title-wf-mturk')
+
+st.write("""Here we test whether the *frequency of words in the English language*, as defined 
+in the [Google Web Trillion Word Corpus](https://norvig.com/ngrams/), is associated with the 
+*method* to measure which word better describe a given image. This methods are the *free-choice* 
+and the *dueling-bandits* task. I took the **best two descriptors** (i.e., top-two ranked words) 
+for each image in the dueling-bandits study according to their borda score, and the two words with the 
+highest proportion of responses for those same images in the free-choice survey, for a total of
+fourty eight words. Each word has a web-frequency according to the Google Web Trillion Word Corpus.
+Hence, I ran a linear-mixed effect model with web-frequency as target, method (free-choice survey
+vs dueling-bandits) as predictor, and photo-ID as a random-effect (each photo contributes two measures)""")
+
+
+###############
+### Boxplot ###
+st.header('Boxplot web-frequency by measurement method', 'header-lmer-wf-box-mturk')
+
+with open('data/web_freq_method_boxplot_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+###############
+### Formula ###
+st.header("Model specification", "header-lmer-wf-f-mturk")
+
+with open('data/formula_method_lmer_mturk.txt') as f:
+    formula = f.read().rstrip()
+
+st.latex(formula)
+
+#####################
+### LMER summary ####
+st.header("Model summary", "header-lmer-wf-s-mturk")
+
+HtmlFile = open("data/lmer_summary_method_ranking_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 300)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients", "header-lmer-wf-a-mturk")
+
+HtmlFile = open("data/anova_lmer_method_ranking_free_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+####################
+### Mean and SEM ###
+st.header('Mean and SEM for method effect on web-frequency', 'header-lmer-wf-me-mturk')
+
+with open('data/web_freq_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
 
 
 # --------- %% --------- #
