@@ -810,7 +810,18 @@ st.write("""[back to the toc study I](#st-sample)""")
 st.title('Accuracy descriptives forced-choice vs free-response survey', 'title-acc')
 
 st.write("""
-**Accuracy** was computed as the percentage of responses matching the expected emotion label for each image""")
+**Accuracy for the forced-choice survey** was computed as the percentage 
+of responses matching the expected emotion label for each image.  
+
+**Accuracy for the free-response survey** was computed by first grouping expected
+responses by synonyms according to [Wordnet](https://wordnet.princeton.edu/), 
+and then calculating the percentage of (grouped) responses matching the expected 
+emotion label for each image. 
+
+For instance, all the responses matching synonyms for *anger* (ire, choler, wrath, angriness, ira) and *angry*
+(furious, raging, wild, tempestuos) according to Wordnet, were replaced with *anger*, to just then compute
+the proportion of correct responses.
+""")
 
 st.header('Barplot accuracy by survey method', 'header-acc-m-d')
 
@@ -849,6 +860,12 @@ st.latex(formula)
 #####################
 ### Model Summary ###
 st.header('Model summary', 'header-acc-lmer-sum')
+
+HtmlFile = open("data/lmer_summary_odds_free_vs_forced_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 400)
+
 
 HtmlFile = open("data/lmer_summary_free_vs_forced_uw_students.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
@@ -2282,7 +2299,18 @@ st.write("""[back to the toc study II](#mturk-sample)""")
 st.title('Accuracy descriptives forced-choice vs free-response survey', 'title-acc-mturk')
 
 st.write("""
-**Accuracy** was computed as the percentage of responses matching the expected emotion label for each image""")
+**Accuracy for the forced-choice survey** was computed as the percentage 
+of responses matching the expected emotion label for each image.  
+
+**Accuracy for the free-response survey** was computed by first grouping expected
+responses by synonyms according to [Wordnet](https://wordnet.princeton.edu/), 
+and then calculating the percentage of (grouped) responses matching the expected 
+emotion label for each image. 
+
+For instance, all the responses matching synonyms for *anger* (ire, choler, wrath, angriness, ira) and *angry*
+(furious, raging, wild, tempestuos) according to Wordnet, were replaced with *anger*, to just then compute
+the proportion of correct responses.
+""")
 
 st.header('Barplot accuracy by survey method', 'header-acc-m-d-mturk')
 
@@ -2321,6 +2349,11 @@ st.latex(formula)
 #####################
 ### Model Summary ###
 st.header('Model summary', 'header-acc-lmer-sum-mturk')
+
+HtmlFile = open("data/lmer_summary_odds_free_vs_forced_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 400)
 
 HtmlFile = open("data/lmer_summary_free_vs_forced_mturk.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
@@ -3755,7 +3788,18 @@ st.write("""[back to the toc study III](#mturk-sample-sp)""")
 st.title('Accuracy descriptives forced-choice vs free-response survey', 'title-acc-mturk-sp')
 
 st.write("""
-**Accuracy** was computed as the percentage of responses matching the expected emotion label for each image""")
+**Accuracy for the forced-choice survey** was computed as the percentage 
+of responses matching the expected emotion label for each image.  
+
+**Accuracy for the free-response survey** was computed by first grouping expected
+responses by synonyms according to [Wordnet](https://wordnet.princeton.edu/), 
+and then calculating the percentage of (grouped) responses matching the expected 
+emotion label for each image. 
+
+For instance, all the responses matching synonyms for *anger* (ire, choler, wrath, angriness, ira) and *angry*
+(furious, raging, wild, tempestuos) according to Wordnet, were replaced with *anger*, to just then compute
+the proportion of correct responses.
+""")
 
 st.header('Barplot accuracy by survey method', 'header-acc-m-d-mturk-sp')
 
@@ -3794,6 +3838,11 @@ st.latex(formula)
 #####################
 ### Model Summary ###
 st.header('Model summary', 'header-acc-lmer-sum-mturk-sp')
+
+HtmlFile = open("data/lmer_summary_odds_free_vs_forced_mturk_espanol.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 400)
 
 HtmlFile = open("data/lmer_summary_free_vs_forced_mturk_espanol.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
