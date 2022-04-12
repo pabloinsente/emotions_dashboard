@@ -164,7 +164,7 @@ st.write("""
 - [Barplot accuracy by expected label and survey method](#header-acc-ml-d)     
 
 [**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer):  
-- [Model specification"](#header-acc-lmer-form)  
+- [Model specification](#header-acc-lmer-form)  
 - [Model summary](#header-acc-lmer-sum)  
 - [Main effect survey method](#header-acc-lmer-main)
 
@@ -221,6 +221,22 @@ st.write("""
 - [Model summary](#header-lmer-wf-s)  
 - [ANOVA for fixed-effects coefficients](#header-lmer-wf-a)  
 - [Mean and SEM for method effect on web-frequency](#header-lmer-wf-me)  
+- [Homogeneity of variance assumption](#header-lmer-wf-var) 
+    - [ANOVA for between subjects residuals](#header-lmer-wf-a-res)
+    - [Fitted vs residuals plot](#subheader-lmer-wf-a-res-plot)
+- [Normality of error term assumption](#header-lmer-wf-nor) 
+    - [Quantile-Quantile Plot](#subheader-lmer-wf-a-qq)
+- [Influence check](#header-lmer-wf-inf)
+    - [Influence datapoints](#subheader-lmer-wf-inf-dp)
+    - [Influence participants](#subheader-lmer-wf-inf-ind)
+- [Leverage check](#header-lmer-wf-inf)
+    - [Leverage datapoints](#subheader-lmer-wf-lev-dp)
+    - [Leverage participants](#subheader-lmer-wf-lev-ind)
+- [Boxplot web-frequency by measurement method - drop high influence cases](#header-lmer-wf-box-re)  
+- [Model summary for reffited model](#header-lmer-wf-s-re)  
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-wf-a-re)  
+- [Mean and SEM for method effect on web-frequency  - drop high influence cases](#header-lmer-wf-me-re)  
+
 """)
 
 st.write("""[back to the toc study I](#st-sample)""")
@@ -1599,6 +1615,7 @@ fourty eight words. Each word has a web-frequency according to the Google Web Tr
 Hence, I ran a linear-mixed effect model with web-frequency as target, method (free-choice survey
 vs dueling-bandits) as predictor, and photo-ID as a random-effect (each photo contributes two measures)""")
 
+st.header('Report for initial model. Model was reffited after influence and leverage diagnostics')
 
 ###############
 ### Boxplot ###
@@ -1641,6 +1658,137 @@ components.html(source_code, height = 100)
 st.header('Mean and SEM for method effect on web-frequency', 'header-lmer-wf-me')
 
 with open('data/web_freq_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+###########################################
+#### Homogeneity of variance assumption ####
+############################################
+st.header("Homogeneity of variance assumption", "header-lmer-wf-var")
+
+    ################################################
+    ### ANOVA table between subjects residuials ####
+st.subheader("ANOVA for between subjects residuals", "subheader-lmer-wf-a-res")
+
+HtmlFile = open("data/anova_bwt_lmer_method_uw_students.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+    ##################################
+    ### Fitted vs residuals plot  ####
+st.subheader("Fitted vs residuals plot", "subheader-lmer-wf-a-res-plot")
+
+with open('data/fitted_vs_residual_plot_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+###########################################
+### Normality of error term assumption ###
+
+st.header("Normality of error term assumption", "header-lmer-wf-nor")
+
+    ###########################################
+    ### Quantile-Quantile Plot  ####
+st.subheader("Quantile-Quantile Plot", "subheader-lmer-wf-a-qq")
+
+with open('data/qqplot_lmer_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+#######################
+### Influence check ###
+
+st.header("Influence check", "header-lmer-wf-inf")
+
+    ##############################
+    ### Influence datapoints  ####
+st.subheader("Influence datapoints", "subheader-lmer-wf-inf-dp")
+
+with open('data/influence_datapoints_lmer_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ################################
+    ### Influence participants  ####
+st.subheader("Influence participants", "subheader-lmer-wf-inf-ind")
+
+with open('data/influence_participants_lmer_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#######################
+### Leverage check ###
+
+st.header("Leverage check", "header-lmer-wf-lev")
+
+    ##############################
+    ### leverage  datapoints  ####
+st.subheader("Leverage datapoints", "subheader-lmer-wf-lev-dp")
+
+with open('data/leverage_datapoints_lmer_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##############################
+    ### leverage participants  ####
+st.subheader("Leverage participants", "subheader-lmer-wf-lev-ind")
+
+with open('data/leverage_participants_lmer_method_uw_students.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study I](#st-sample)""")
+
+
+###########################
+# refitted model report
+
+###############
+### Boxplot ###
+st.header('Boxplot web-frequency by measurement method - drop high influence data', 'header-lmer-wf-box-re')
+
+with open('data/web_freq_method_boxplot_uw_students_re.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#####################
+### LMER summary ####
+st.header("Model summary for reffited model", "header-lmer-wf-s-re")
+
+HtmlFile = open("data/lmer_summary_method_ranking_uw_students_re.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 300)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-wf-a-re")
+
+HtmlFile = open("data/anova_lmer_method_ranking_free_uw_students_re.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+####################
+### Mean and SEM ###
+st.header('Mean and SEM for method effect on web-frequency - drop high influence data', 'header-lmer-wf-me-re')
+
+with open('data/web_freq_method_uw_students_re.txt') as f:
     svg_image = f.read().rstrip()
 
 render_svg(svg_image)
@@ -1706,7 +1854,7 @@ st.write("""
 - [Barplot accuracy by expected label and survey method](#header-acc-ml-d-mturk)     
 
 [**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer-mturk):  
-- [Model specification"](#header-acc-lmer-form-mturk)  
+- [Model specification](#header-acc-lmer-form-mturk)  
 - [Model summary](#header-acc-lmer-sum-mturk)  
 - [Main effect survey method](#header-acc-lmer-main-mturk)
 
@@ -1760,6 +1908,21 @@ st.write("""
 - [Model summary](#header-lmer-wf-s-mturk)  
 - [ANOVA for fixed-effects coefficients](#header-lmer-wf-a-mturk)  
 - [Mean and SEM for method effect on web-frequency](#header-lmer-wf-me-mturk)  
+- [Homogeneity of variance assumption](#header-lmer-wf-var-mturk) 
+    - [ANOVA for between subjects residuals](#header-lmer-wf-a-res-mturk)
+    - [Fitted vs residuals plot](#subheader-lmer-wf-a-res-plot-mturk)
+- [Normality of error term assumption](#header-lmer-wf-nor-mturk) 
+    - [Quantile-Quantile Plot](#subheader-lmer-wf-a-qq-mturk)
+- [Influence check](#header-lmer-wf-inf-mturk)
+    - [Influence datapoints](#subheader-lmer-wf-inf-dp-mturk)
+    - [Influence participants](#subheader-lmer-wf-inf-ind-mturk)
+- [Leverage check](#header-lmer-wf-inf-mturk)
+    - [Leverage datapoints](#subheader-lmer-wf-lev-dp-mturk)
+    - [Leverage participants](#subheader-lmer-wf-lev-ind-mturk)
+- [Boxplot web-frequency by measurement method - drop high influence cases](#header-lmer-wf-box-re-mturk)  
+- [Model summary for reffited model](#header-lmer-wf-s-re-mturk)  
+- [ANOVA for fixed-effects coefficients for reffited model](#header-lmer-wf-a-re-mturk)  
+- [Mean and SEM for method effect on web-frequency  - drop high influence cases](#header-lmer-wf-me-re-mturk)  
 """)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
@@ -3191,6 +3354,137 @@ render_svg(svg_image)
 
 st.write("""[back to the toc study II](#mturk-sample)""")
 
+###########################################
+#### Homogeneity of variance assumption ####
+############################################
+st.header("Homogeneity of variance assumption", "header-lmer-wf-var-mturk")
+
+    ################################################
+    ### ANOVA table between subjects residuials ####
+st.subheader("ANOVA for between subjects residuals", "subheader-lmer-wf-a-res-mturk")
+
+HtmlFile = open("data/anova_bwt_lmer_method_mturk.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+    ##################################
+    ### Fitted vs residuals plot  ####
+st.subheader("Fitted vs residuals plot", "subheader-lmer-wf-a-res-plot-mturk")
+
+with open('data/fitted_vs_residual_plot_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+###########################################
+### Normality of error term assumption ###
+
+st.header("Normality of error term assumption", "header-lmer-wf-nor-mturk")
+
+    ###########################################
+    ### Quantile-Quantile Plot  ####
+st.subheader("Quantile-Quantile Plot", "subheader-lmer-wf-a-qq-mturk")
+
+with open('data/qqplot_lmer_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+#######################
+### Influence check ###
+
+st.header("Influence check", "header-lmer-wf-inf-mturk")
+
+    ##############################
+    ### Influence datapoints  ####
+st.subheader("Influence datapoints", "subheader-lmer-wf-inf-dp-mturk")
+
+with open('data/influence_datapoints_lmer_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ################################
+    ### Influence participants  ####
+st.subheader("Influence participants", "subheader-lmer-wf-inf-ind-mturk")
+
+with open('data/influence_participants_lmer_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#######################
+### Leverage check ###
+
+st.header("Leverage check", "header-lmer-wf-lev-mturk")
+
+    ##############################
+    ### leverage  datapoints  ####
+st.subheader("Leverage datapoints", "subheader-lmer-wf-lev-dp-mturk")
+
+with open('data/leverage_datapoints_lmer_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+    ##############################
+    ### leverage participants  ####
+st.subheader("Leverage participants", "subheader-lmer-wf-lev-ind-mturk")
+
+with open('data/leverage_participants_lmer_method_mturk.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
+
+###########################
+# refitted model report
+
+###############
+### Boxplot ###
+st.header('Boxplot web-frequency by measurement method - drop high influence data', 'header-lmer-wf-box-re-mturk')
+
+with open('data/web_freq_method_boxplot_mturk_re.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+#####################
+### LMER summary ####
+st.header("Model summary for reffited model", "header-lmer-wf-s-re-mturk")
+
+HtmlFile = open("data/lmer_summary_method_ranking_mturk_re.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 300)
+
+###############################
+### ANOVA table for coeff ####
+st.header("ANOVA for fixed-effects coefficients for reffited model", "header-lmer-wf-a-re-mturk")
+
+HtmlFile = open("data/anova_lmer_method_ranking_mturk_re.html", 'r', encoding='utf-8')
+source_code = HtmlFile.read() 
+print(source_code)
+components.html(source_code, height = 100)
+
+####################
+### Mean and SEM ###
+st.header('Mean and SEM for method effect on web-frequency - drop high influence data', 'header-lmer-wf-me-re-mturk')
+
+with open('data/web_freq_method_mturk_re.txt') as f:
+    svg_image = f.read().rstrip()
+
+render_svg(svg_image)
+
+st.write("""[back to the toc study II](#mturk-sample)""")
+
 
 # --------- %% --------- #
 
@@ -3256,7 +3550,7 @@ st.write("""
 - [Barplot accuracy by expected label and survey method](#header-acc-ml-d-mturk-sp)     
 
 [**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer-mturk-sp):  
-- [Model specification"](#header-acc-lmer-form-mturk-sp)  
+- [Model specification](#header-acc-lmer-form-mturk-sp)  
 - [Model summary](#header-acc-lmer-sum-mturk-sp)  
 - [Main effect survey method](#header-acc-lmer-main-mturk-sp)
 
