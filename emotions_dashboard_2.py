@@ -3546,13 +3546,15 @@ st.write("""
 
 [**Accuracy descriptives forced-choice vs free-response**](#title-acc-mturk-sp):  
 - [Barplot accuracy by survey method](#header-acc-m-d-mturk-sp)  
-- [Barplot accuracy by expected label](#header-acc-l-d-mturk-sp)  
-- [Barplot accuracy by expected label and survey method](#header-acc-ml-d-mturk-sp)     
+- [Barplot accuracy by language condition](#header-acc-l-d-mturk-sp)  
+- [Barplot accuracy by survey method and language condition](#header-acc-ml-d-mturk-sp)     
 
 [**Logistic Mixed-Effect Model for Accuracy**](#title-acc-lmer-mturk-sp):  
-- [Model specification](#header-acc-lmer-form-mturk-sp)  
-- [Model summary](#header-acc-lmer-sum-mturk-sp)  
-- [Main effect survey method](#header-acc-lmer-main-mturk-sp)
+- [Model summary](#header-acc-lmer-sum-mturk-sp)
+- [Odds ratio plot](#header-acc-lmer-odds-mturk-sp)  
+- [Main effect survey method](#header-acc-survey-lmer-main-mturk-sp)
+- [Main effect language condition](#header-acc-lang-lmer-main-mturk-sp)
+- [Interaction effect survey method and language condition](#header-acc-survey-lang-lmer-main-mturk-sp)
 
 
 [**Sentiment analysis results**](#title-sen-mturk-sp):
@@ -4239,21 +4241,21 @@ For instance, all the responses matching synonyms for *anger* (ire, choler, wrat
 the proportion of correct responses.
 """)
 
+## survey
 st.header('Barplot accuracy by survey method', 'header-acc-m-d-mturk-sp')
-
-with open('data/correct-survey_mturk_espanol.txt') as f:
+with open('data/correct_survey_mturk_espanol_english.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
-st.header('Barplot accuracy by expected label', 'header-acc-l-d-mturk-sp')
-
-with open('data/correct-label_mturk_espanol.txt') as f:
+## language
+st.header('Barplot accuracy by language condition', 'header-acc-l-d-mturk-sp')
+with open('data/correct_lang_mturk_espanol_english.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
-st.header('Barplot accuracy by expected label and survey method', 'header-acc-ml-d-mturk-sp')
-
-with open('data/correct-label-survey_mturk_espanol.txt') as f:
+## survey X language
+st.header('Barplot accuracy by survey method and language condition', 'header-acc-ml-d-mturk-sp')
+with open('data/correct_label_survey_lang_mturk_espanol_english.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
@@ -4277,21 +4279,35 @@ st.latex(formula)
 ### Model Summary ###
 st.header('Model summary', 'header-acc-lmer-sum-mturk-sp')
 
-HtmlFile = open("data/lmer_summary_odds_free_vs_forced_mturk_espanol.html", 'r', encoding='utf-8')
+HtmlFile = open("data/lmer_summary_odds_free_vs_forced_mturk_espanol_enlish.html", 'r', encoding='utf-8')
 source_code = HtmlFile.read() 
 print(source_code)
 components.html(source_code, height = 400)
 
-HtmlFile = open("data/lmer_summary_free_vs_forced_mturk_espanol.html", 'r', encoding='utf-8')
-source_code = HtmlFile.read() 
-print(source_code)
-components.html(source_code, height = 400)
+####################
+### Main effects ###
 
-###################
-### Main effect ###
-st.header('Main effect survey method', 'header-acc-lmer-main-mturk-sp')
+## odds ratio chart
+st.header('Odds ratio coefficients', 'header-acc-lmer-odds-mturk-sp')
+with open('data/predicted_odds_mturk_espanol_english.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
 
-with open('data/predicted_prob_mturk_espanol.txt') as f:
+## survey
+st.header('Main effect survey method', 'header-acc-survey-lmer-main-mturk-sp')
+with open('data/survey_predicted_prob_mturk_espanol_english.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+## language
+st.header('Main effect language condition', 'header-acc-lang-lmer-main-mturk-sp')
+with open('data/lang_predicted_prob_mturk_espanol_english.txt') as f:
+    svg_image = f.read().rstrip()
+render_svg(svg_image)
+
+## survey X language
+st.header('Interaction effect survey method and language conditions', 'header-acc-survey-lang-lmer-main-mturk-sp')
+with open('data/interaction_predicted_prob_mturk_espanol_english.txt') as f:
     svg_image = f.read().rstrip()
 render_svg(svg_image)
 
