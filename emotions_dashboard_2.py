@@ -513,7 +513,7 @@ render_svg(df_svg_free['svg'][22])
 ## K-means *clusters* forced choice ##
 
 st.subheader('K-means 10 clusters solution', 'subheader-fl-km-s')
-image = Image.open('data/k_means_free_labeling_10.png')
+image = Image.open('data/k_means_free_choice_14.png')
 st.image(image)
 
 st.write("""[back to the toc study I](#st-sample)""")
